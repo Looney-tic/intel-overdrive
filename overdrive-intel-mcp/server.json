@@ -1,0 +1,20 @@
+{
+  "$schema": "https://registry.modelcontextprotocol.io/schema/server.json",
+  "name": "io.github.Looney-tic/intel-overdrive",
+  "description": "Curated AI coding ecosystem intelligence from 1100+ monitored sources \u2014 search, feed, breaking changes, security alerts, knowledge library, and context-pack briefings for Claude Code and other AI coding tools",
+  "version": "0.9.0",
+  "repository": "https://github.com/Looney-tic/intel-overdrive",
+  "packages": [
+    {
+      "registry": "npm",
+      "name": "intel-overdrive-mcp",
+      "version": "0.9.0"
+    }
+  ],
+  "tools": [
+    {
+      "name": "overdrive_intel",
+      "description": "Query the AI coding ecosystem for latest tools, breaking changes, best practices, MCP servers, and more. Use type parameter to route: search, feed, breaking, briefing, library, similar, action-items, status."
+    }
+  ]
+}

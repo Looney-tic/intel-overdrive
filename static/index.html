@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Overdrive Intel — AI Coding Ecosystem Intelligence</title>
+    <meta
+      name="description"
+      content="Real-time intelligence for AI coding agents. Breaking changes, new tools, security alerts from 900+ sources. One command to install."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #0a0a0c;
+        --bg-raised: #111115;
+        --bg-card: #16161b;
+        --border: #1e1e26;
+        --border-bright: #2a2a36;
+        --text: #e4e4e8;
+        --text-dim: #7a7a88;
+        --text-muted: #4a4a56;
+        --accent: #3b82f6;
+        --accent-dim: #1d4ed8;
+        --green: #22c55e;
+        --green-dim: #15803d;
+        --red: #ef4444;
+        --red-dim: #991b1b;
+        --orange: #f59e0b;
+        --orange-dim: #92400e;
+        --purple: #a78bfa;
+        --mono: "JetBrains Mono", monospace;
+        --sans: "Instrument Sans", system-ui, sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      ::selection {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      /* Noise overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        pointer-events: none;
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        opacity: 0.03;
+      }
+
+      /* Grid bg */
+      .grid-bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background-image:
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 60px 60px;
+        mask-image: radial-gradient(
+          ellipse 80% 60% at 50% 30%,
+          black 20%,
+          transparent 70%
+        );
+        opacity: 0.4;
+      }
+
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ─── HERO ─── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 120px 0 80px;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 100px;
+        background: var(--bg-raised);
+        border: 1px solid var(--border-bright);
+        font-size: 13px;
+        color: var(--text-dim);
+        font-family: var(--mono);
+        margin-bottom: 32px;
+        width: fit-content;
+        animation: fadeUp 0.6s ease both;
+      }
+      .hero-badge .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--green);
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      .hero h1 {
+        font-size: clamp(40px, 6vw, 72px);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        max-width: 800px;
+        animation: fadeUp 0.6s ease 0.1s both;
+      }
+      .hero h1 .dim {
+        color: var(--text-muted);
+      }
+      .hero h1 .accent {
+        background: linear-gradient(135deg, var(--accent), var(--purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-sub {
+        font-size: 18px;
+        color: var(--text-dim);
+        max-width: 540px;
+        margin-top: 24px;
+        line-height: 1.7;
+        animation: fadeUp 0.6s ease 0.2s both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Install block */
+      .install-block {
+        margin-top: 48px;
+        animation: fadeUp 0.6s ease 0.3s both;
+      }
+      .install-label {
+        font-size: 12px;
+        font-family: var(--mono);
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 10px;
+      }
+      .install-cmd {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--bg-raised);
+        border: 1px solid var(--border-bright);
+        border-radius: 10px;
+        padding: 16px 20px;
+        max-width: 620px;
+        font-family: var(--mono);
+        font-size: 15px;
+        cursor: pointer;
+        transition: border-color 0.2s;
+        position: relative;
+      }
+      .install-cmd:hover {
+        border-color: var(--accent);
+      }
+      .install-cmd .prompt {
+        color: var(--green);
+        user-select: none;
+      }
+      .install-cmd .text {
+        color: var(--text);
+        flex: 1;
+      }
+      .install-cmd .copy {
+        font-size: 12px;
+        color: var(--text-muted);
+        padding: 4px 10px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .install-cmd:hover .copy {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+      .install-cmd.copied .copy {
+        color: var(--green);
+        border-color: var(--green);
+      }
+      .install-time {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-top: 12px;
+        font-family: var(--mono);
+      }
+
+      /* ─── LIVE OUTPUT ─── */
+      .live-section {
+        padding: 120px 0;
+      }
+      .section-label {
+        font-size: 12px;
+        font-family: var(--mono);
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 16px;
+      }
+      .section-title {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 12px;
+      }
+      .section-desc {
+        font-size: 16px;
+        color: var(--text-dim);
+        max-width: 520px;
+        margin-bottom: 48px;
+      }
+
+      /* Terminal output */
+      .terminal {
+        background: var(--bg-raised);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .terminal-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .terminal-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--border-bright);
+      }
+      .terminal-title {
+        font-size: 12px;
+        color: var(--text-muted);
+        font-family: var(--mono);
+        margin-left: 8px;
+      }
+      .terminal-body {
+        padding: 20px;
+        font-family: var(--mono);
+        font-size: 13px;
+        line-height: 1.8;
+        overflow-x: auto;
+      }
+
+      /* Result items */
+      .result-item {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .result-item:last-child {
+        border-bottom: none;
+      }
+      .result-header {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .result-num {
+        color: var(--text-muted);
+        min-width: 20px;
+      }
+      .result-title {
+        color: var(--text);
+        font-weight: 500;
+        font-size: 14px;
+      }
+      .result-badge {
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: 500;
+      }
+      .badge-breaking {
+        background: var(--red-dim);
+        color: var(--red);
+      }
+      .badge-major {
+        background: var(--orange-dim);
+        color: var(--orange);
+      }
+      .badge-tool {
+        background: rgba(59, 130, 246, 0.15);
+        color: var(--accent);
+      }
+      .badge-practice {
+        background: rgba(167, 139, 250, 0.15);
+        color: var(--purple);
+      }
+      .badge-established {
+        background: rgba(34, 197, 94, 0.1);
+        color: var(--green);
+        border: 1px solid rgba(34, 197, 94, 0.2);
+      }
+      .badge-emerging {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--orange);
+        border: 1px solid rgba(245, 158, 11, 0.2);
+      }
+
+      .result-meta {
+        display: flex;
+        gap: 16px;
+        margin-top: 6px;
+        font-size: 12px;
+        color: var(--text-muted);
+        flex-wrap: wrap;
+      }
+      .result-meta .stars {
+        color: var(--orange);
+      }
+      .result-summary {
+        margin-top: 6px;
+        font-size: 12.5px;
+        color: var(--text-dim);
+        font-family: var(--sans);
+        line-height: 1.6;
+      }
+
+      /* ─── FEATURES ─── */
+      .features-section {
+        padding: 80px 0 120px;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1px;
+        background: var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+      }
+      .feature {
+        background: var(--bg-card);
+        padding: 32px;
+      }
+      .feature-icon {
+        font-size: 24px;
+        margin-bottom: 16px;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--bg-raised);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+      .feature h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .feature p {
+        font-size: 14px;
+        color: var(--text-dim);
+        line-height: 1.6;
+      }
+
+      /* ─── SOURCES ─── */
+      .sources-section {
+        padding: 80px 0;
+      }
+      .sources-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 24px;
+      }
+      .source-tag {
+        padding: 8px 16px;
+        border-radius: 8px;
+        background: var(--bg-raised);
+        border: 1px solid var(--border);
+        font-size: 13px;
+        font-family: var(--mono);
+        color: var(--text-dim);
+        transition: all 0.2s;
+      }
+      .source-tag:hover {
+        border-color: var(--accent);
+        color: var(--text);
+      }
+      .source-count {
+        font-size: 48px;
+        font-weight: 700;
+        font-family: var(--mono);
+        background: linear-gradient(135deg, var(--accent), var(--purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 8px;
+      }
+
+      /* ─── WORKS WITH ─── */
+      .compat-section {
+        padding: 80px 0;
+      }
+      .compat-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .compat-item {
+        padding: 12px 24px;
+        border-radius: 10px;
+        background: var(--bg-raised);
+        border: 1px solid var(--border);
+        font-size: 15px;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+      .compat-item:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+
+      /* ─── CTA ─── */
+      .cta-section {
+        padding: 120px 0;
+        text-align: center;
+      }
+      .cta-section h2 {
+        font-size: clamp(32px, 5vw, 52px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: 16px;
+      }
+      .cta-section p {
+        font-size: 16px;
+        color: var(--text-dim);
+        margin-bottom: 48px;
+      }
+
+      /* ─── FOOTER ─── */
+      footer {
+        padding: 40px 0;
+        border-top: 1px solid var(--border);
+        font-size: 13px;
+        color: var(--text-muted);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      footer a {
+        color: var(--text-dim);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      footer a:hover {
+        color: var(--text);
+      }
+
+      /* Scroll animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          padding: 0 16px;
+        }
+        .hero {
+          padding: 80px 0 60px;
+          min-height: auto;
+        }
+        .install-cmd {
+          font-size: 12px;
+          padding: 12px 14px;
+        }
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+        .terminal-body {
+          font-size: 11.5px;
+          padding: 14px;
+        }
+        footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-bg"></div>
+
+    <div class="container">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span
+            >MCP Server &middot; 909 sources &middot; updated every 15 min</span
+          >
+        </div>
+
+        <h1>
+          Your AI agent's<br />
+          training data is <span class="dim">stale.</span><br />
+          <span class="accent">This fixes that.</span>
+        </h1>
+
+        <p class="hero-sub">
+          An MCP server that gives your AI coding agent real-time intelligence
+          &mdash; breaking changes, new tools, security alerts, and best
+          practices from 900+ monitored sources. Installs globally, works in
+          every project.
+        </p>
+
+        <div class="install-block">
+          <div class="install-label">Install in 10 seconds</div>
+          <div
+            class="install-cmd"
+            onclick="copyInstall(this)"
+            role="button"
+            tabindex="0"
+          >
+            <span class="prompt">$</span>
+            <span class="text"
+              >bash &lt;(curl -s https://inteloverdrive.com/dl/setup.sh)</span
+            >
+            <span class="copy">Copy</span>
+          </div>
+          <div class="install-time">
+            Zero configuration &middot; Free tier &middot; No email required
+          </div>
+          <div class="install-time" style="margin-top: 8px">
+            Or:
+            <code style="color: var(--text); font-family: var(--mono)"
+              >npm i -g intel-overdrive-mcp</code
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="features-section reveal" style="padding-top: 40px">
+        <div class="section-label">How it works</div>
+        <div class="section-title">Install once, intelligence everywhere</div>
+        <p class="section-desc" style="margin-bottom: 48px">
+          The setup script registers an MCP server with your AI coding tool.
+          From then on, your agent automatically calls it when you ask about
+          tools, breaking changes, or best practices.
+        </p>
+
+        <div
+          class="features-grid"
+          style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))"
+        >
+          <div class="feature">
+            <div
+              class="feature-icon"
+              style="
+                font-family: var(--mono);
+                font-size: 16px;
+                color: var(--green);
+              "
+            >
+              1
+            </div>
+            <h3>Run one command</h3>
+            <p>
+              The setup script registers anonymously, installs the MCP server,
+              and configures your tool. No email, no API keys to manage.
+            </p>
+          </div>
+          <div class="feature">
+            <div
+              class="feature-icon"
+              style="
+                font-family: var(--mono);
+                font-size: 16px;
+                color: var(--green);
+              "
+            >
+              2
+            </div>
+            <h3>Agent calls automatically</h3>
+            <p>
+              When you ask about MCP servers, SDK changes, or AI tools, your
+              agent recognizes the topic and calls the
+              <code
+                style="
+                  color: var(--accent);
+                  font-family: var(--mono);
+                  font-size: 12px;
+                "
+                >overdrive_intel</code
+              >
+              tool.
+            </p>
+          </div>
+          <div class="feature">
+            <div
+              class="feature-icon"
+              style="
+                font-family: var(--mono);
+                font-size: 16px;
+                color: var(--green);
+              "
+            >
+              3
+            </div>
+            <h3>Gets fresh, ranked results</h3>
+            <p>
+              Results include star counts, quality labels, and significance
+              tiers. Your agent recommends battle-tested tools, not random
+              repos.
+            </p>
+          </div>
+          <div class="feature">
+            <div
+              class="feature-icon"
+              style="
+                font-family: var(--mono);
+                font-size: 16px;
+                color: var(--green);
+              "
+            >
+              4
+            </div>
+            <h3>Warns about breaking changes</h3>
+            <p>
+              Before you upgrade a dependency or adopt a pattern, the agent
+              checks for known breaking changes and security issues.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIVE OUTPUT EXAMPLES -->
+      <section class="live-section reveal">
+        <div class="section-label">What your agent sees</div>
+        <div class="section-title">Intelligence, not noise</div>
+        <p class="section-desc">
+          Every item is classified, scored, and ranked. Your agent gets
+          actionable intel, not a raw feed.
+        </p>
+
+        <!-- Breaking changes example -->
+        <div class="terminal" style="margin-bottom: 24px">
+          <div class="terminal-bar">
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <span class="terminal-title"
+              >overdrive_intel({ type: "breaking", query: "breaking changes",
+              days: 14 })</span
+            >
+          </div>
+          <div class="terminal-body">
+            <div class="result-item">
+              <div class="result-header">
+                <span class="result-num">1.</span>
+                <span class="result-title">OpenAI Python SDK v2.25.0</span>
+                <span class="result-badge badge-breaking">breaking</span>
+                <span class="result-badge badge-established">established</span>
+              </div>
+              <div class="result-meta">
+                <span class="stars">&#9733; 30.3k</span>
+                <span>update</span>
+                <span>2026-03-22</span>
+              </div>
+              <div class="result-summary">
+                Removes prompt_cache_key from chat completion responses. Update
+                code that reads this field before upgrading.
+              </div>
+            </div>
+            <div class="result-item">
+              <div class="result-header">
+                <span class="result-num">2.</span>
+                <span class="result-title">Semantic Kernel .NET 1.74.0</span>
+                <span class="result-badge badge-breaking">breaking</span>
+                <span class="result-badge badge-established">established</span>
+              </div>
+              <div class="result-meta">
+                <span class="stars">&#9733; 27.5k</span>
+                <span>update</span>
+                <span>2026-03-20</span>
+              </div>
+              <div class="result-summary">
+                WebFileDownloadPlugin and DocumentPlugin now deny access by
+                default. Review plugin configurations immediately.
+              </div>
+            </div>
+            <div class="result-item">
+              <div class="result-header">
+                <span class="result-num">3.</span>
+                <span class="result-title"
+                  >ContextCrush: Context7 MCP Vulnerability</span
+                >
+                <span class="result-badge badge-breaking">breaking</span>
+              </div>
+              <div class="result-meta">
+                <span>security</span>
+                <span>2026-03-23</span>
+                <span>noma.security</span>
+              </div>
+              <div class="result-summary">
+                Critical vulnerability in Context7 MCP server allows
+                unauthorized context manipulation. Patch or disable immediately.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search example -->
+        <div class="terminal reveal">
+          <div class="terminal-bar">
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <span class="terminal-title"
+              >overdrive_intel({ type: "search", query: "PostgreSQL MCP server"
+              })</span
+            >
+          </div>
+          <div class="terminal-body">
+            <div class="result-item">
+              <div class="result-header">
+                <span class="result-num">1.</span>
+                <span class="result-title">timescale/pg-aiguide</span>
+                <span class="result-badge badge-tool">tool</span>
+                <span class="result-badge badge-established">established</span>
+              </div>
+              <div class="result-meta">
+                <span class="stars">&#9733; 1,640</span>
+                <span>rel: 0.82</span>
+                <span>2026-03-21</span>
+              </div>
+              <div class="result-summary">
+                Postgres documentation MCP with index tuning, EXPLAIN analysis,
+                and health checks. Production-ready.
+              </div>
+            </div>
+            <div class="result-item">
+              <div class="result-header">
+                <span class="result-num">2.</span>
+                <span class="result-title"
+                  >alexanderzuev/supabase-mcp-server</span
+                >
+                <span class="result-badge badge-tool">tool</span>
+                <span class="result-badge badge-emerging">emerging</span>
+              </div>
+              <div class="result-meta">
+                <span class="stars">&#9733; 814</span>
+                <span>rel: 0.80</span>
+                <span>2026-03-20</span>
+              </div>
+              <div class="result-summary">
+                Supabase MCP server with full database access, auth management,
+                and edge function deployment.
+              </div>
+            </div>
+            <div class="result-item">
+              <div class="result-header">
+                <span class="result-num">3.</span>
+                <span class="result-title">JaviMaligno/postgres_mcp</span>
+                <span class="result-badge badge-tool">tool</span>
+                <span class="result-badge badge-emerging">new</span>
+              </div>
+              <div class="result-meta">
+                <span class="stars">&#9733; 6</span>
+                <span>rel: 0.78</span>
+                <span>2026-03-22</span>
+              </div>
+              <div class="result-summary">
+                Lightweight Postgres MCP with SQL injection protection and
+                readonly modes.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="features-section reveal">
+        <div class="section-label">Capabilities</div>
+        <div class="section-title">Built for AI agents</div>
+        <p class="section-desc">
+          One MCP tool, eight query types. Your agent knows when to call it
+          automatically.
+        </p>
+
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">&#128269;</div>
+            <h3>Search &amp; Discovery</h3>
+            <p>
+              Find MCP servers, tools, and frameworks. Intent-aware routing
+              prioritizes the right result type. Quality-ranked with star
+              counts.
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">&#9888;&#65039;</div>
+            <h3>Breaking Changes</h3>
+            <p>
+              SDK updates, API removals, protocol changes &mdash; classified by
+              significance. Your agent warns before you ship broken code.
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">&#128274;</div>
+            <h3>Security Alerts</h3>
+            <p>
+              CVEs, supply-chain attacks, MCP vulnerabilities. ContextCrush,
+              Azure CVSS 9.8 &mdash; surfaced within hours of disclosure.
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">&#128218;</div>
+            <h3>Knowledge Library</h3>
+            <p>
+              Synthesized best practices and gotchas across 50+ topics.
+              Evergreen guides updated from community patterns.
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">&#128202;</div>
+            <h3>Quality Signals</h3>
+            <p>
+              GitHub stars, maintenance status, quality labels. Distinguish a
+              2,400-star battle-tested tool from a weekend project.
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">&#128233;</div>
+            <h3>Slack Notifications</h3>
+            <p>
+              Daily digests, weekly source health, instant breaking change
+              alerts. Coverage gap detection when your queries return nothing.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOURCES -->
+      <section class="sources-section reveal">
+        <div class="section-label">Coverage</div>
+        <div class="source-count">909</div>
+        <div class="section-title">Sources monitored</div>
+        <p class="section-desc" style="margin-bottom: 32px">
+          GitHub releases, RSS feeds, Reddit, Hacker News, Bluesky, npm, PyPI,
+          arXiv, VS Code Marketplace, MCP registries, and more.
+        </p>
+
+        <div class="sources-grid">
+          <span class="source-tag">GitHub Releases</span>
+          <span class="source-tag">RSS / Atom</span>
+          <span class="source-tag">Reddit</span>
+          <span class="source-tag">Hacker News</span>
+          <span class="source-tag">Bluesky</span>
+          <span class="source-tag">npm Registry</span>
+          <span class="source-tag">PyPI</span>
+          <span class="source-tag">arXiv</span>
+          <span class="source-tag">VS Code Marketplace</span>
+          <span class="source-tag">MCP Registry</span>
+          <span class="source-tag">Awesome Lists</span>
+          <span class="source-tag">Sitemaps</span>
+          <span class="source-tag">GitHub Deep Analysis</span>
+          <span class="source-tag">Email Newsletters</span>
+        </div>
+      </section>
+
+      <!-- WORKS WITH -->
+      <section class="compat-section reveal">
+        <div class="section-label">Compatibility</div>
+        <div class="section-title">Works with your tools</div>
+        <p class="section-desc">
+          Overdrive Intel is an
+          <a
+            href="https://modelcontextprotocol.io"
+            style="
+              color: var(--accent);
+              text-decoration: none;
+              border-bottom: 1px solid var(--accent-dim);
+            "
+            >MCP server</a
+          >
+          &mdash; the open standard for connecting AI agents to external tools.
+          Any MCP-compatible client works out of the box.
+        </p>
+
+        <div class="compat-list">
+          <div class="compat-item">Claude Code</div>
+          <div class="compat-item">Cursor</div>
+          <div class="compat-item">GitHub Copilot</div>
+          <div class="compat-item">Windsurf</div>
+          <div class="compat-item">Claude Desktop</div>
+          <div class="compat-item">Aider</div>
+          <div class="compat-item">Cody</div>
+          <div class="compat-item">Continue</div>
+        </div>
+
+        <p style="margin-top: 24px; font-size: 14px; color: var(--text-muted)">
+          Also available as a
+          <a
+            href="/v1/guide"
+            style="
+              color: var(--text-dim);
+              text-decoration: none;
+              border-bottom: 1px solid var(--border);
+            "
+            >REST API</a
+          >
+          with 44 endpoints. Use directly from scripts, CI/CD pipelines, or
+          custom integrations.
+        </p>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-section reveal">
+        <h2>Start in 10 seconds</h2>
+        <p>One command. Zero configuration. Free to get started.</p>
+
+        <div style="display: flex; justify-content: center">
+          <div
+            class="install-cmd"
+            onclick="copyInstall(this)"
+            role="button"
+            tabindex="0"
+            style="max-width: 620px"
+          >
+            <span class="prompt">$</span>
+            <span class="text"
+              >bash &lt;(curl -s https://inteloverdrive.com/dl/setup.sh)</span
+            >
+            <span class="copy">Copy</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <span
+          >Overdrive Intel &middot; Built for developers who ship with AI</span
+        >
+        <div style="display: flex; gap: 24px">
+          <a href="/v1/guide">API Docs</a>
+          <a href="https://github.com/Looney-tic/intel-overdrive">GitHub</a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      function copyInstall(el) {
+        const cmd = "bash <(curl -s https://inteloverdrive.com/dl/setup.sh)";
+        navigator.clipboard.writeText(cmd).then(() => {
+          el.classList.add("copied");
+          el.querySelector(".copy").textContent = "Copied!";
+          setTimeout(() => {
+            el.classList.remove("copied");
+            el.querySelector(".copy").textContent = "Copy";
+          }, 2000);
+        });
+      }
+
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      // Keyboard accessibility for install blocks
+      document.querySelectorAll(".install-cmd").forEach((el) => {
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            copyInstall(el);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

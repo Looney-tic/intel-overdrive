@@ -1,0 +1,91 @@
+services:
+  api:
+    build:
+      context: .
+      target: api
+    command: uvicorn src.api.app:app --host 0.0.0.0 --port 8000 --workers 2
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      ENVIRONMENT: production
+    depends_on:
+      redis:
+        condition: service_healthy
+    # C-3: Healthcheck enables external watchdog (UptimeRobot/BetterStack) to poll
+    # /health and detect Redis-down scenarios — the ARQ dead man's switch cannot
+    # self-alert when Redis is down. Configure UptimeRobot to poll this endpoint.
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+
+  fast-worker:
+    build:
+      context: .
+      target: fast-worker
+    command: arq src.workers.settings.WorkerSettings
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      ENVIRONMENT: production
+    depends_on:
+      redis:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 768m
+
+  slow-worker:
+    build:
+      context: .
+      target: slow-worker
+    command: arq src.workers.settings.SlowWorkerSettings
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      ENVIRONMENT: production
+    depends_on:
+      redis:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 384m
+
+  redis:
+    image: redis:7-alpine
+    # H-5: No default password — Redis fails to start if REDIS_PASSWORD is unset.
+    # This is intentional: a missing password is safer than a trivially guessable one.
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru --requirepass ${REDIS_PASSWORD}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "--no-auth-warning", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    volumes:
+      - redisdata:/data
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+      - /srv/static:/srv/static:ro
+
+volumes:
+  redisdata:
+  caddy_data:
+  caddy_config:

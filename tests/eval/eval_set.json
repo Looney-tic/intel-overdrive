@@ -1,0 +1,2402 @@
+[
+  {
+    "url": "https://github.com/tj-actions/claude-code-action",
+    "title": "Claude Code GitHub Action \u2014 Automated PR review with Claude",
+    "content": "A GitHub Action that uses Claude Code to automatically review pull requests and suggest improvements. Integrates directly into CI/CD workflows with configurable review prompts and inline comment posting.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "github-actions",
+      "claude-code",
+      "ci-cd",
+      "automation"
+    ]
+  },
+  {
+    "url": "https://github.com/zce/claude-code-hooks-collection",
+    "title": "Claude Code Hooks Collection \u2014 Pre/post commit automation hooks",
+    "content": "A curated collection of Claude Code hooks for pre-commit validation, post-commit summarization, and test-run triggers. Each hook is a shell script that integrates with Claude Code lifecycle events.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "hooks",
+      "claude-code",
+      "automation",
+      "pre-commit"
+    ]
+  },
+  {
+    "url": "https://github.com/nicholasess/claude-code-workflow-templates",
+    "title": "Claude Code Workflow Templates \u2014 Reusable multi-step automation",
+    "content": "A repository of reusable Claude Code workflow templates for common development tasks: code review, refactoring, documentation generation, and test writing. Drop-in templates for any project.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "workflow",
+      "claude-code",
+      "templates",
+      "automation"
+    ]
+  },
+  {
+    "url": "https://dev.to/claudedev/building-custom-slash-commands-for-claude-code",
+    "title": "Building Custom Slash Commands for Claude Code",
+    "content": "A step-by-step guide to creating custom slash commands in Claude Code for your specific workflow. Covers command syntax, parameter passing, and chaining multiple operations into a single command.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "slash-commands",
+      "claude-code",
+      "workflow",
+      "customization"
+    ]
+  },
+  {
+    "url": "https://github.com/mattpocock/claude-code-typescript-prompts",
+    "title": "Claude Code TypeScript Prompts \u2014 Typed prompt engineering patterns",
+    "content": "A collection of prompt engineering patterns specifically optimized for TypeScript development with Claude Code. Includes type-safe refactoring prompts, migration helpers, and interface generation templates.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "typescript",
+      "prompt-engineering",
+      "claude-code",
+      "patterns"
+    ]
+  },
+  {
+    "url": "https://github.com/webpilot-ai/claude-code-skills",
+    "title": "Claude Code Skills Library \u2014 Community AI development skills",
+    "content": "Community-maintained library of Claude Code skill files for common AI development tasks. Covers API integration, model evaluation, and dataset preparation workflows.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "skills",
+      "claude-code",
+      "ai-development",
+      "community"
+    ]
+  },
+  {
+    "url": "https://github.com/xyflow/claude-code-hook-security",
+    "title": "Security Hooks for Claude Code \u2014 Pre-execution safety checks",
+    "content": "Claude Code hooks that add security pre-checks before executing shell commands. Validates against a blocklist of dangerous commands, logs all executions, and alerts on suspicious patterns.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "hooks",
+      "security",
+      "claude-code",
+      "safety"
+    ]
+  },
+  {
+    "url": "https://medium.com/@aidev/claude-code-multiagent-patterns",
+    "title": "Multi-Agent Patterns with Claude Code \u2014 Orchestration recipes",
+    "content": "Practical recipes for orchestrating multiple Claude Code instances on complex tasks. Covers the fan-out/fan-in pattern, sequential chains, and parallel-with-merge patterns with working examples.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "multi-agent",
+      "claude-code",
+      "orchestration",
+      "patterns"
+    ]
+  },
+  {
+    "url": "https://github.com/sindresorhus/claude-code-prompts",
+    "title": "Sindre's Claude Code Prompts \u2014 Battle-tested prompt collection",
+    "content": "A personal collection of battle-tested Claude Code prompts for open-source project maintenance: changelog generation, PR description writing, issue triage, and documentation updates.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "prompts",
+      "claude-code",
+      "open-source",
+      "maintenance"
+    ]
+  },
+  {
+    "url": "https://github.com/n8n-io/claude-code-n8n-workflow",
+    "title": "Claude Code + n8n Workflow \u2014 No-code AI automation",
+    "content": "n8n workflow template that integrates Claude Code into no-code automation pipelines. Trigger Claude Code tasks from webhooks, schedule prompts, and route outputs to Slack, email, or databases.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "n8n",
+      "claude-code",
+      "automation",
+      "no-code"
+    ]
+  },
+  {
+    "url": "https://github.com/zackproser/claude-code-test-generator",
+    "title": "Test Generator Skill \u2014 Auto-generate test suites with Claude Code",
+    "content": "A Claude Code skill that analyzes source code and generates comprehensive test suites. Supports Jest, Pytest, and Vitest with configurable coverage targets and mocking strategies.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "testing",
+      "claude-code",
+      "skill",
+      "test-generation"
+    ]
+  },
+  {
+    "url": "https://gist.github.com/threepointone/claude-code-commit-hook",
+    "title": "Claude Code Commit Hook \u2014 AI-powered commit message generation",
+    "content": "A post-commit hook for Claude Code that generates structured commit messages following conventional commits format. Analyzes the diff and produces a subject line, body, and breaking change notes.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "hooks",
+      "git",
+      "commit-messages",
+      "claude-code"
+    ]
+  },
+  {
+    "url": "https://github.com/buildwithdan/claude-code-review-skill",
+    "title": "Code Review Skill for Claude Code \u2014 Structured review workflows",
+    "content": "A parameterized Claude Code skill that performs structured code reviews. Supports security audit mode, performance review mode, and architecture review mode with checklist output.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "code-review",
+      "claude-code",
+      "skill",
+      "security"
+    ]
+  },
+  {
+    "url": "https://github.com/swyx/claude-code-blog-writing",
+    "title": "Blog Writing Workflow \u2014 Claude Code for technical content",
+    "content": "A Claude Code workflow for writing technical blog posts from code examples. The skill extracts key concepts, generates outline, writes sections, and produces a final polished post.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "writing",
+      "claude-code",
+      "workflow",
+      "content"
+    ]
+  },
+  {
+    "url": "https://github.com/devcontainers/claude-code-devcontainer-skill",
+    "title": "DevContainer Skill \u2014 Configure development environments with Claude",
+    "content": "Claude Code skill for automatically generating and optimizing devcontainer configurations. Detects project language, dependencies, and required tools to produce a ready-to-use devcontainer.json.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "devcontainer",
+      "claude-code",
+      "skill",
+      "docker"
+    ]
+  },
+  {
+    "url": "https://github.com/elixir-lang/claude-code-elixir-hooks",
+    "title": "Elixir Claude Code Hooks \u2014 Language-specific automation",
+    "content": "Claude Code hooks tailored for Elixir development: mix format pre-commit, dialyzer type checks, and ExUnit test execution with AI-powered failure analysis.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "elixir",
+      "hooks",
+      "claude-code",
+      "testing"
+    ]
+  },
+  {
+    "url": "https://github.com/remotion-dev/claude-code-documentation-skill",
+    "title": "Documentation Generation Skill \u2014 Auto-doc from code",
+    "content": "A Claude Code skill that generates documentation from source code. Analyzes function signatures, types, and existing comments to produce JSDoc, docstrings, or Markdown API references.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "documentation",
+      "claude-code",
+      "skill",
+      "jsdoc"
+    ]
+  },
+  {
+    "url": "https://github.com/chakra-ui/claude-code-component-skill",
+    "title": "React Component Skill \u2014 Generate UI components with Claude Code",
+    "content": "Claude Code skill for generating accessible React components following a design system. Takes component specs and produces TypeScript components with Storybook stories and unit tests.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "react",
+      "components",
+      "claude-code",
+      "skill"
+    ]
+  },
+  {
+    "url": "https://github.com/vercel-labs/claude-code-deployment-hook",
+    "title": "Deployment Hook \u2014 Post-deploy summaries with Claude Code",
+    "content": "A Claude Code post-deploy hook that analyzes deployment diffs and generates a human-readable deployment summary. Posts summaries to Slack and creates GitHub deployment notes automatically.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "deployment",
+      "hooks",
+      "claude-code",
+      "slack"
+    ]
+  },
+  {
+    "url": "https://github.com/prisma/claude-code-db-skill",
+    "title": "Database Migration Skill \u2014 Prisma schema management with Claude",
+    "content": "A Claude Code skill for Prisma schema evolution: analyzes existing schema and application requirements to generate migration files with rollback procedures and data transformation logic.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "prisma",
+      "database",
+      "claude-code",
+      "migrations"
+    ]
+  },
+  {
+    "url": "https://github.com/unkeyed/claude-code-api-skill",
+    "title": "API Key Management Skill \u2014 Claude Code for auth workflows",
+    "content": "Claude Code skill for API key lifecycle management: rotation reminders, permission audits, and usage analysis. Generates secure key patterns and audit trails from configuration files.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "api-keys",
+      "auth",
+      "claude-code",
+      "security"
+    ]
+  },
+  {
+    "url": "https://github.com/shadcn/claude-code-migration-skill",
+    "title": "Library Migration Skill \u2014 Automated dependency upgrades",
+    "content": "Claude Code skill that automates library migration tasks. Given a source and target library version, it identifies breaking changes, rewrites affected code, and updates tests.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "migration",
+      "dependencies",
+      "claude-code",
+      "skill"
+    ]
+  },
+  {
+    "url": "https://github.com/glennreyes/claude-code-graphql-skill",
+    "title": "GraphQL Code Generation Skill \u2014 Schema-first API development",
+    "content": "A Claude Code skill that generates TypeScript types, resolvers, and client hooks from GraphQL schemas. Integrates with Apollo Client and supports subscription types.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "graphql",
+      "typescript",
+      "claude-code",
+      "code-generation"
+    ]
+  },
+  {
+    "url": "https://github.com/turborepo/claude-code-monorepo-skill",
+    "title": "Monorepo Management Skill \u2014 Package coordination with Claude",
+    "content": "Claude Code skill for monorepo maintenance: identifies cross-package dependencies, detects circular imports, and generates workspace-aware refactoring plans for Turborepo and Nx projects.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "monorepo",
+      "turborepo",
+      "claude-code",
+      "skill"
+    ]
+  },
+  {
+    "url": "https://github.com/effect-ts/claude-code-fp-patterns",
+    "title": "Functional Programming Patterns for Claude Code \u2014 Effect-TS prompts",
+    "content": "A collection of Claude Code prompts for functional programming patterns with Effect-TS: error channel modeling, layer composition, and stream processing templates.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "functional-programming",
+      "effect-ts",
+      "claude-code",
+      "patterns"
+    ]
+  },
+  {
+    "url": "https://github.com/trpc/claude-code-trpc-skill",
+    "title": "tRPC Router Generation Skill \u2014 End-to-end type-safe APIs",
+    "content": "A Claude Code skill that generates tRPC routers with input validation, error handling, and middleware from a natural language description of the API endpoints needed.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "trpc",
+      "typescript",
+      "claude-code",
+      "api"
+    ]
+  },
+  {
+    "url": "https://github.com/cloudflare/workers-mcp-server",
+    "title": "Cloudflare Workers MCP Server \u2014 Edge compute integration",
+    "content": "An MCP server exposing Cloudflare Workers management APIs to AI coding assistants. Deploy workers, manage KV namespaces, query analytics, and configure routes through natural language.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "cloudflare",
+      "workers",
+      "edge"
+    ]
+  },
+  {
+    "url": "https://github.com/supabase-community/supabase-mcp",
+    "title": "Supabase MCP Server \u2014 Database and auth operations",
+    "content": "Community MCP server for Supabase that enables AI-driven database operations, user management, and storage operations. Wraps the Supabase JS client as MCP tools.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "supabase",
+      "database",
+      "auth"
+    ]
+  },
+  {
+    "url": "https://github.com/stripe/stripe-mcp",
+    "title": "Stripe MCP Server \u2014 Payment processing via AI tools",
+    "content": "Official Stripe MCP server that exposes payment intent creation, customer management, and subscription operations as tools for AI coding assistants.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "stripe",
+      "payments",
+      "api"
+    ]
+  },
+  {
+    "url": "https://github.com/linear-app/linear-mcp-server",
+    "title": "Linear MCP Server \u2014 Issue tracking integration",
+    "content": "MCP server for Linear that allows AI assistants to create issues, update status, query backlogs, and manage projects through the Linear GraphQL API.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "linear",
+      "project-management",
+      "issues"
+    ]
+  },
+  {
+    "url": "https://github.com/vercel/vercel-mcp-server",
+    "title": "Vercel MCP Server \u2014 Deployment and project management",
+    "content": "MCP server exposing Vercel's deployment and project APIs to AI coding tools. Trigger deployments, inspect build logs, manage environment variables, and check domain status.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "vercel",
+      "deployment",
+      "hosting"
+    ]
+  },
+  {
+    "url": "https://github.com/axiomhq/axiom-mcp-server",
+    "title": "Axiom MCP Server \u2014 Log querying and analytics",
+    "content": "MCP server for Axiom log management that enables AI tools to run APL queries, inspect traces, and analyze application logs through natural language requests.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "axiom",
+      "logging",
+      "observability"
+    ]
+  },
+  {
+    "url": "https://github.com/resend/resend-mcp-server",
+    "title": "Resend MCP Server \u2014 Transactional email from AI tools",
+    "content": "MCP server wrapping Resend's email API for sending transactional emails, managing templates, and tracking delivery from AI coding environments.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "email",
+      "resend",
+      "transactional"
+    ]
+  },
+  {
+    "url": "https://github.com/turso-tech/turso-mcp-server",
+    "title": "Turso MCP Server \u2014 Edge SQLite database operations",
+    "content": "MCP server for Turso's libSQL databases providing schema inspection, query execution, and replication management through AI tools.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "turso",
+      "sqlite",
+      "edge-database"
+    ]
+  },
+  {
+    "url": "https://github.com/planetscale/planetscale-mcp-server",
+    "title": "PlanetScale MCP Server \u2014 Serverless MySQL operations",
+    "content": "MCP server for PlanetScale that allows AI assistants to execute queries, manage branches, and monitor database performance on PlanetScale's serverless MySQL platform.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "planetscale",
+      "mysql",
+      "database"
+    ]
+  },
+  {
+    "url": "https://github.com/grafana/mcp-grafana",
+    "title": "Grafana MCP Server \u2014 Dashboards and alerting from AI tools",
+    "content": "MCP server for Grafana that enables querying dashboards, executing Prometheus queries, managing alert rules, and inspecting data sources through AI coding tools.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "grafana",
+      "monitoring",
+      "observability"
+    ]
+  },
+  {
+    "url": "https://github.com/clerk-dev/clerk-mcp-server",
+    "title": "Clerk MCP Server \u2014 User management operations",
+    "content": "MCP server exposing Clerk authentication and user management APIs. Create users, manage sessions, inspect organization memberships, and configure authentication settings.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "clerk",
+      "auth",
+      "user-management"
+    ]
+  },
+  {
+    "url": "https://github.com/neon-database/neon-mcp-server",
+    "title": "Neon MCP Server \u2014 Serverless Postgres branching",
+    "content": "MCP server for Neon's serverless Postgres that enables branch creation, SQL execution, schema inspection, and connection string management through AI tools.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "neon",
+      "postgres",
+      "serverless"
+    ]
+  },
+  {
+    "url": "https://github.com/aider-chat/aider-mcp-bridge",
+    "title": "Aider MCP Bridge \u2014 AI pair programmer as MCP tool",
+    "content": "MCP server wrapping the Aider AI coding assistant, enabling Claude Code to delegate deep refactoring tasks to Aider's specialized coding model as a sub-tool.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "aider",
+      "coding-assistant",
+      "tool"
+    ]
+  },
+  {
+    "url": "https://www.npmjs.com/package/@modelcontextprotocol/sdk-validation",
+    "title": "MCP SDK Validation Tool \u2014 Protocol compliance testing",
+    "content": "CLI tool for validating MCP server implementations against the official protocol specification. Runs a suite of compliance tests and generates a detailed conformance report.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "validation",
+      "cli",
+      "testing"
+    ]
+  },
+  {
+    "url": "https://github.com/render-com/render-mcp-server",
+    "title": "Render MCP Server \u2014 Cloud hosting management",
+    "content": "MCP server for Render.com that exposes service deployment, environment variable management, log streaming, and database provisioning to AI development tools.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "render",
+      "hosting",
+      "deployment"
+    ]
+  },
+  {
+    "url": "https://github.com/openai/openai-mcp-server",
+    "title": "OpenAI MCP Server \u2014 Cross-model tool access",
+    "content": "MCP server exposing OpenAI's API through the MCP protocol. Allows Claude-based AI tools to call GPT-4, DALL-E, and Whisper as external MCP tools.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "openai",
+      "cross-model",
+      "tool"
+    ]
+  },
+  {
+    "url": "https://github.com/dagger/dagger-mcp-server",
+    "title": "Dagger MCP Server \u2014 Programmable CI/CD pipelines",
+    "content": "MCP server for the Dagger CI/CD platform. Enables AI tools to define, run, and inspect container-based build pipelines through natural language commands.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "dagger",
+      "ci-cd",
+      "containers"
+    ]
+  },
+  {
+    "url": "https://github.com/directus/directus-mcp-server",
+    "title": "Directus MCP Server \u2014 Headless CMS operations",
+    "content": "MCP server for Directus that enables AI tools to query collections, manage content, handle files, and configure permissions through the Directus REST API.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "directus",
+      "cms",
+      "headless"
+    ]
+  },
+  {
+    "url": "https://github.com/sentry-io/sentry-mcp-server",
+    "title": "Sentry MCP Server \u2014 Error monitoring and debugging",
+    "content": "Official Sentry MCP server that exposes error events, performance traces, and release health data to AI coding tools for debugging and root cause analysis.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "sentry",
+      "error-monitoring",
+      "debugging"
+    ]
+  },
+  {
+    "url": "https://github.com/honeycombio/honeycomb-mcp-server",
+    "title": "Honeycomb MCP Server \u2014 Distributed tracing queries",
+    "content": "MCP server for Honeycomb observability platform. Run BQL queries, inspect traces, analyze slow operations, and query datasets through AI coding tools.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "honeycomb",
+      "observability",
+      "tracing"
+    ]
+  },
+  {
+    "url": "https://github.com/auth0/auth0-mcp-server",
+    "title": "Auth0 MCP Server \u2014 Identity platform operations",
+    "content": "MCP server for Auth0 that enables AI tools to manage users, applications, rules, and connections through the Auth0 Management API.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "auth0",
+      "identity",
+      "authentication"
+    ]
+  },
+  {
+    "url": "https://github.com/liveblocks/liveblocks-mcp-server",
+    "title": "Liveblocks MCP Server \u2014 Real-time collaboration tooling",
+    "content": "MCP server for Liveblocks that exposes room management, presence queries, and yjs document inspection to AI development environments.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "liveblocks",
+      "realtime",
+      "collaboration"
+    ]
+  },
+  {
+    "url": "https://github.com/twilio-labs/twilio-mcp-server",
+    "title": "Twilio MCP Server \u2014 Communications API integration",
+    "content": "MCP server wrapping Twilio's communications APIs for SMS, voice, and email. Enables AI tools to send messages, query call logs, and manage phone numbers.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "twilio",
+      "sms",
+      "communications"
+    ]
+  },
+  {
+    "url": "https://github.com/sanity-io/sanity-mcp-server",
+    "title": "Sanity MCP Server \u2014 Structured content management",
+    "content": "MCP server for the Sanity CMS that exposes GROQ queries, document creation, asset management, and dataset operations to AI coding tools.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "sanity",
+      "cms",
+      "groq"
+    ]
+  },
+  {
+    "url": "https://github.com/posthog/posthog-mcp-server",
+    "title": "PostHog MCP Server \u2014 Product analytics for AI tools",
+    "content": "MCP server for PostHog product analytics. Enables AI tools to run insights queries, explore funnels, inspect feature flags, and analyze user paths.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "posthog",
+      "analytics",
+      "product-analytics"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-3-opus",
+    "title": "Claude 3 Opus Release \u2014 Most capable Claude model",
+    "content": "Anthropic announces Claude 3 Opus, the most intelligent model in the Claude 3 family with leading performance on graduate-level reasoning benchmarks and vision capabilities.",
+    "expected_type": "update",
+    "expected_tags": [
+      "claude-3",
+      "model-release",
+      "anthropic",
+      "opus"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/api/changelog",
+    "title": "Anthropic API Changelog \u2014 Version history and breaking changes",
+    "content": "Official changelog for the Anthropic Messages API documenting breaking changes, new features, and deprecated endpoints across API versions.",
+    "expected_type": "update",
+    "expected_tags": [
+      "api",
+      "changelog",
+      "breaking-changes",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-4-announcement",
+    "title": "Claude 4 Release \u2014 Next-generation model family",
+    "content": "Anthropic announces the Claude 4 model family with dramatically improved reasoning, longer context windows, and new multimodal capabilities for images and documents.",
+    "expected_type": "update",
+    "expected_tags": [
+      "claude-4",
+      "model-release",
+      "anthropic",
+      "multimodal"
+    ]
+  },
+  {
+    "url": "https://github.com/modelcontextprotocol/specification/releases/tag/v1.1.0",
+    "title": "MCP Specification v1.1.0 \u2014 Protocol update with streaming support",
+    "content": "Model Context Protocol specification version 1.1.0 adds streaming tool responses, partial result delivery, and progress notification events to the base protocol.",
+    "expected_type": "update",
+    "expected_tags": [
+      "mcp",
+      "specification",
+      "streaming",
+      "protocol-update"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/about-claude/models/claude-3-5-sonnet-20241022",
+    "title": "Claude 3.5 Sonnet October 2024 \u2014 Updated model specs",
+    "content": "Updated specification page for Claude 3.5 Sonnet (October 2024 version) with revised benchmark scores, pricing, and context window details.",
+    "expected_type": "update",
+    "expected_tags": [
+      "claude-3-5",
+      "model-specs",
+      "sonnet",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/token-efficient-tool-use",
+    "title": "Token-Efficient Tool Use \u2014 API update for reduced costs",
+    "content": "Anthropic announces token-efficient tool use format that reduces the token overhead of tool definitions by 40% for most common tool schemas.",
+    "expected_type": "update",
+    "expected_tags": [
+      "tool-use",
+      "api-update",
+      "cost-reduction",
+      "tokens"
+    ]
+  },
+  {
+    "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.35.0",
+    "title": "Anthropic Python SDK v0.35.0 \u2014 Streaming improvements",
+    "content": "Python SDK release v0.35.0 adds improved streaming support with automatic reconnection, better error recovery, and new streaming event types for extended thinking.",
+    "expected_type": "update",
+    "expected_tags": [
+      "python-sdk",
+      "release",
+      "streaming",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/deprecation-legacy-claude-2",
+    "title": "Claude 2 Deprecation Notice \u2014 Migration guide to Claude 3",
+    "content": "Anthropic announces the deprecation timeline for Claude 2 and Claude 2.1 APIs with migration instructions for upgrading to Claude 3 family models.",
+    "expected_type": "update",
+    "expected_tags": [
+      "deprecation",
+      "claude-2",
+      "migration",
+      "breaking-changes"
+    ]
+  },
+  {
+    "url": "https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v1.0.0",
+    "title": "MCP TypeScript SDK v1.0.0 \u2014 Stable release",
+    "content": "The Model Context Protocol TypeScript SDK reaches version 1.0.0 with a stable API, comprehensive type exports, and official support for browser and Node.js environments.",
+    "expected_type": "update",
+    "expected_tags": [
+      "mcp",
+      "typescript-sdk",
+      "release",
+      "stable"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-code-v1-launch",
+    "title": "Claude Code v1.0 Launch \u2014 General availability announcement",
+    "content": "Anthropic announces the general availability of Claude Code v1.0 with enterprise features, team management, and production SLA commitments.",
+    "expected_type": "update",
+    "expected_tags": [
+      "claude-code",
+      "release",
+      "ga",
+      "enterprise"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/about-claude/rate-limits",
+    "title": "Anthropic Rate Limit Updates \u2014 New tier structure",
+    "content": "Anthropic updates rate limits with a new tiered structure offering higher throughput for verified accounts and introducing dedicated rate limit endpoints for production workloads.",
+    "expected_type": "update",
+    "expected_tags": [
+      "rate-limits",
+      "api",
+      "anthropic",
+      "production"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/extended-context-200k",
+    "title": "200K Context Window \u2014 Extended context update",
+    "content": "Anthropic expands Claude's context window to 200,000 tokens, enabling processing of entire codebases, long documents, and multi-hour transcripts in a single request.",
+    "expected_type": "update",
+    "expected_tags": [
+      "context-window",
+      "update",
+      "long-context",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/v0.26.0",
+    "title": "Anthropic TypeScript SDK v0.26.0 \u2014 Streaming API revamp",
+    "content": "TypeScript SDK release v0.26.0 revamps the streaming API with a new event emitter interface, improved TypeScript types for stream events, and automatic retry handling.",
+    "expected_type": "update",
+    "expected_tags": [
+      "typescript-sdk",
+      "release",
+      "streaming",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/blog/mcp-2025-roadmap",
+    "title": "MCP 2025 Roadmap \u2014 Protocol evolution plans",
+    "content": "The MCP team publishes the 2025 protocol roadmap including planned support for binary transports, authentication standardization, and server discovery mechanisms.",
+    "expected_type": "update",
+    "expected_tags": [
+      "mcp",
+      "roadmap",
+      "protocol",
+      "2025"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/vision-api-updates",
+    "title": "Vision API Updates \u2014 Improved image understanding",
+    "content": "Anthropic updates Claude's vision capabilities with improved document understanding, higher resolution support, and new image annotation features in the Messages API.",
+    "expected_type": "update",
+    "expected_tags": [
+      "vision",
+      "api-update",
+      "images",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/about-claude/models/overview-deprecated",
+    "title": "Deprecated Model Overview \u2014 Sunset timeline",
+    "content": "Overview of all deprecated Claude API endpoints with their end-of-life dates, migration paths, and compatibility notes for affected API consumers.",
+    "expected_type": "update",
+    "expected_tags": [
+      "deprecated",
+      "models",
+      "migration",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-code-enterprise-2025",
+    "title": "Claude Code Enterprise 2025 \u2014 Team features and SSO",
+    "content": "Anthropic launches enterprise features for Claude Code including SSO integration, team usage analytics, centralized billing, and enterprise-grade audit logs.",
+    "expected_type": "update",
+    "expected_tags": [
+      "claude-code",
+      "enterprise",
+      "sso",
+      "teams"
+    ]
+  },
+  {
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v1.2.0",
+    "title": "Claude Code v1.2.0 \u2014 Memory improvements and new commands",
+    "content": "Claude Code v1.2.0 improves CLAUDE.md auto-discovery, adds new /memory and /history commands, and reduces latency for repeated context loading.",
+    "expected_type": "update",
+    "expected_tags": [
+      "claude-code",
+      "release",
+      "memory",
+      "commands"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/files-api-launch",
+    "title": "Anthropic Files API Launch \u2014 Persistent file storage",
+    "content": "Anthropic launches the Files API enabling persistent document storage for multi-turn conversations, removing the need to re-upload documents in every request.",
+    "expected_type": "update",
+    "expected_tags": [
+      "files-api",
+      "launch",
+      "anthropic",
+      "documents"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/about-claude/models/claude-haiku-3-5",
+    "title": "Claude Haiku 3.5 \u2014 Model capabilities and pricing",
+    "content": "Model specification page for Claude Haiku 3.5 covering capabilities, benchmark scores, pricing tiers, and comparison with the previous Haiku generation.",
+    "expected_type": "update",
+    "expected_tags": [
+      "haiku",
+      "model-specs",
+      "claude-3-5",
+      "pricing"
+    ]
+  },
+  {
+    "url": "https://martinfowler.com/articles/ai-pair-programmer-patterns.html",
+    "title": "AI Pair Programmer Patterns \u2014 Martin Fowler on AI coding",
+    "content": "Martin Fowler explores established patterns for effective AI pair programming: when to lead vs. follow, how to structure context handoffs, and maintaining code ownership with AI collaboration.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "ai-coding",
+      "pair-programming",
+      "patterns",
+      "methodology"
+    ]
+  },
+  {
+    "url": "https://blog.testcontainers.com/ai-assisted-test-patterns",
+    "title": "AI-Assisted Test Patterns \u2014 TDD with Claude Code",
+    "content": "Practical patterns for test-driven development with AI coding tools. Covers red-green-refactor with AI assistance, avoiding test brittleness, and maintaining meaningful test coverage.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "testing",
+      "tdd",
+      "ai-coding",
+      "patterns"
+    ]
+  },
+  {
+    "url": "https://www.honeybadger.io/blog/context-management-claude-code/",
+    "title": "Context Management for Long Claude Code Sessions",
+    "content": "Techniques for managing context window usage in extended Claude Code sessions. Covers CLAUDE.md optimization, progressive compaction strategies, and state preservation patterns.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "context-management",
+      "claude-code",
+      "best-practices",
+      "workflow"
+    ]
+  },
+  {
+    "url": "https://blog.langchain.dev/agent-architecture-patterns-2025",
+    "title": "Agent Architecture Patterns for 2025 \u2014 LangChain best practices",
+    "content": "An analysis of proven agent architecture patterns: ReAct vs. tool-calling agents, when to use multi-agent vs. single agent, and how to implement effective agent memory.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "agent-architecture",
+      "patterns",
+      "langchain",
+      "multi-agent"
+    ]
+  },
+  {
+    "url": "https://increment.com/software-architecture/ai-code-review-practices/",
+    "title": "Effective AI Code Review Practices \u2014 Engineering team guide",
+    "content": "Engineering teams share their practices for incorporating AI code review into the development process: what AI reviewers excel at, where human review remains essential, and workflow integration.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "code-review",
+      "ai-coding",
+      "best-practices",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://blog.anthropic.com/prompt-engineering-production-systems",
+    "title": "Prompt Engineering for Production Systems \u2014 Anthropic guide",
+    "content": "Anthropic's engineering team shares production prompt engineering practices: version control for prompts, regression testing, gradual rollouts, and monitoring for prompt drift.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "prompt-engineering",
+      "production",
+      "best-practices",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://www.thoughtworks.com/insights/blog/ai-coding-guardrails",
+    "title": "AI Coding Guardrails \u2014 Enterprise security practices",
+    "content": "ThoughtWorks guide to implementing guardrails for AI-assisted development in enterprise settings: secret scanning, code review gates, and IP protection strategies.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "security",
+      "ai-coding",
+      "enterprise",
+      "guardrails"
+    ]
+  },
+  {
+    "url": "https://engineering.shopify.com/blogs/engineering/ai-assisted-onboarding",
+    "title": "AI-Assisted Developer Onboarding \u2014 Shopify Engineering",
+    "content": "Shopify Engineering's approach to using AI coding tools for developer onboarding: codebase tours with Claude, automated setup verification, and interactive architecture explanations.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "onboarding",
+      "ai-coding",
+      "developer-experience",
+      "codebase"
+    ]
+  },
+  {
+    "url": "https://netflixtechblog.com/ai-code-generation-testing-strategy",
+    "title": "Testing AI-Generated Code \u2014 Netflix TechBlog",
+    "content": "Netflix's strategy for testing AI-generated code at scale: property-based testing, contract testing for generated interfaces, and mutation testing to catch subtle AI errors.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "testing",
+      "ai-generated-code",
+      "netflix",
+      "quality"
+    ]
+  },
+  {
+    "url": "https://github.com/dair-ai/prompt-engineering-guide/blob/main/guides/agentic-patterns.md",
+    "title": "Agentic Prompt Patterns \u2014 DAIR.AI comprehensive guide",
+    "content": "Comprehensive guide to agentic prompt patterns from the DAIR.AI research group: chain-of-thought, self-consistency, tree-of-thought, and ReAct patterns with implementation examples.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "prompt-engineering",
+      "agents",
+      "patterns",
+      "chain-of-thought"
+    ]
+  },
+  {
+    "url": "https://refactoring.fm/p/ai-refactoring-patterns",
+    "title": "AI Refactoring Patterns \u2014 When and how to use AI for code improvement",
+    "content": "A practitioner's guide to AI-assisted refactoring: identifying refactoring opportunities, scoping AI tasks appropriately, and validating refactored code with comprehensive tests.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "refactoring",
+      "ai-coding",
+      "patterns",
+      "code-quality"
+    ]
+  },
+  {
+    "url": "https://www.infoq.com/articles/ai-coding-prompting-architecture",
+    "title": "Architecture-Driven AI Prompting \u2014 Effective system design with Claude",
+    "content": "InfoQ article on prompting strategies for system architecture work: how to describe requirements, iteratively refine designs, and use Claude to explore architectural trade-offs.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "architecture",
+      "ai-coding",
+      "prompting",
+      "system-design"
+    ]
+  },
+  {
+    "url": "https://blog.gitbutler.com/ai-commit-message-workflow",
+    "title": "AI Commit Message Workflow \u2014 Best practices for git hygiene",
+    "content": "Best practices for using AI to generate commit messages: conventional commits format, linking to issues, capturing breaking changes, and maintaining accurate git history.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "git",
+      "commit-messages",
+      "ai-coding",
+      "best-practices"
+    ]
+  },
+  {
+    "url": "https://leaddev.com/agile-other-ways-working/ai-sprint-planning-practices",
+    "title": "AI-Assisted Sprint Planning \u2014 Agile team practices",
+    "content": "Engineering managers share practices for incorporating AI tools into sprint planning: task estimation with AI assistance, generating user stories from feature briefs, and dependency analysis.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "agile",
+      "ai-coding",
+      "sprint-planning",
+      "team-practices"
+    ]
+  },
+  {
+    "url": "https://www.accenture.com/us-en/insights/technology/ai-pair-programming-enterprise",
+    "title": "Enterprise AI Pair Programming \u2014 ROI and adoption guide",
+    "content": "Accenture research on enterprise adoption of AI pair programming tools with measured ROI data, effective change management strategies, and team training approaches.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "enterprise",
+      "ai-coding",
+      "roi",
+      "pair-programming"
+    ]
+  },
+  {
+    "url": "https://www.joshcollinsworth.com/blog/llm-context-hygiene",
+    "title": "LLM Context Hygiene \u2014 Managing conversation quality",
+    "content": "Practical guide to maintaining conversation quality with AI coding assistants: when to start fresh sessions, how to summarize context efficiently, and avoiding context pollution.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "context-management",
+      "llm",
+      "best-practices",
+      "workflow"
+    ]
+  },
+  {
+    "url": "https://www.uber.com/blog/ai-assisted-database-migrations",
+    "title": "AI-Assisted Database Migrations \u2014 Uber Engineering patterns",
+    "content": "Uber Engineering's patterns for using AI tools to plan and execute database migrations at scale: schema analysis, rollback planning, and zero-downtime migration strategies.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "database",
+      "migrations",
+      "ai-coding",
+      "patterns"
+    ]
+  },
+  {
+    "url": "https://blog.cloudflare.com/ai-code-security-review-workflow",
+    "title": "AI Code Security Review \u2014 Cloudflare's automated approach",
+    "content": "Cloudflare's workflow for using AI to augment security code reviews: structured prompts for vulnerability patterns, false positive management, and integration with security scanning tools.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "security",
+      "code-review",
+      "ai-coding",
+      "cloudflare"
+    ]
+  },
+  {
+    "url": "https://www.atlassian.com/engineering/ai-driven-incident-response",
+    "title": "AI-Driven Incident Response \u2014 Atlassian Engineering",
+    "content": "Atlassian Engineering's use of AI coding tools for incident response: automated root cause analysis prompts, runbook generation from logs, and post-incident review templates.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "incident-response",
+      "ai-coding",
+      "devops",
+      "practices"
+    ]
+  },
+  {
+    "url": "https://blog.pragmaticengineer.com/ai-code-documentation-practices",
+    "title": "AI Documentation Practices \u2014 The Pragmatic Engineer",
+    "content": "The Pragmatic Engineer's research on how top engineering teams use AI tools to maintain documentation: continuous doc updates, architecture decision records, and API documentation.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "documentation",
+      "ai-coding",
+      "practices",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://vercel.com/docs/ai/getting-started",
+    "title": "Vercel AI Getting Started Guide \u2014 Build AI applications",
+    "content": "Official Vercel AI SDK getting started guide for building AI-powered applications with Next.js. Covers streaming, generative UI, and connecting to Claude and other AI providers.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "vercel",
+      "ai-sdk",
+      "getting-started",
+      "nextjs"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/files",
+    "title": "Files API Reference \u2014 Uploading and managing files",
+    "content": "API reference documentation for Anthropic's Files API covering file upload, listing, retrieval, and deletion endpoints with code examples in Python and TypeScript.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "files-api",
+      "reference",
+      "anthropic",
+      "api"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/docs/concepts/sampling",
+    "title": "MCP Sampling \u2014 LLM calls from MCP servers",
+    "content": "Documentation for the MCP sampling capability that allows MCP servers to make LLM API calls through the client, enabling server-side AI reasoning without direct API access.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "sampling",
+      "reference",
+      "llm"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/multimodal",
+    "title": "Multimodal Documentation \u2014 Images, PDFs, and documents",
+    "content": "Official Anthropic documentation for multimodal inputs covering base64 encoding, URL-based images, PDF processing, and best practices for document analysis.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "multimodal",
+      "images",
+      "pdf",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/docs/server/fastmcp",
+    "title": "FastMCP Documentation \u2014 High-level MCP server framework",
+    "content": "Official documentation for FastMCP, the high-level Python framework for building MCP servers. Covers decorators, resource types, and deployment patterns.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "fastmcp",
+      "mcp",
+      "python",
+      "framework"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/api/errors",
+    "title": "Anthropic API Errors Reference \u2014 Error codes and handling",
+    "content": "Complete reference for Anthropic API error codes, HTTP status meanings, retry strategies, and error response schemas for all endpoint types.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "api",
+      "error-handling",
+      "reference",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/docs/concepts/transports",
+    "title": "MCP Transports \u2014 stdio and HTTP communication",
+    "content": "Documentation for MCP transport mechanisms: stdio-based local servers, HTTP with server-sent events, and the wire format for each transport type.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "transports",
+      "stdio",
+      "http"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking/overview",
+    "title": "Extended Thinking Overview \u2014 Deep reasoning documentation",
+    "content": "Overview documentation for Claude's extended thinking feature: how it works, when to use it, thinking token budgets, and streaming considerations.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "extended-thinking",
+      "documentation",
+      "reasoning",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/structured-outputs",
+    "title": "Structured Outputs \u2014 JSON schema enforcement documentation",
+    "content": "Official documentation for Anthropic's structured outputs feature enabling JSON schema enforcement on Claude responses with guaranteed format compliance.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "structured-outputs",
+      "json-schema",
+      "api",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/tutorials/building-a-client",
+    "title": "Building an MCP Client \u2014 Step-by-step tutorial",
+    "content": "Tutorial for building a custom MCP client that connects to servers, discovers available tools, and executes tool calls with proper protocol handling.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "tutorial",
+      "client",
+      "sdk"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/context-windows",
+    "title": "Context Windows Documentation \u2014 Managing token limits",
+    "content": "Documentation covering Claude's context window sizes, token counting, strategies for managing long contexts, and how to work within context limits effectively.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "context-window",
+      "tokens",
+      "reference",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/citations",
+    "title": "Citations API \u2014 Source attribution documentation",
+    "content": "Documentation for Anthropic's Citations API that enables Claude to attribute statements to specific source documents with character-level precision.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "citations",
+      "api",
+      "documentation",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/docs/concepts/roots",
+    "title": "MCP Roots \u2014 Filesystem context for servers",
+    "content": "Documentation for MCP roots, the mechanism that clients use to inform servers about relevant filesystem locations and URI namespaces in the user's environment.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "roots",
+      "filesystem",
+      "context"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use/computer-use",
+    "title": "Computer Use Tool Reference \u2014 API for desktop automation",
+    "content": "Complete API reference for Claude's computer use tool including screenshot formats, action schemas, coordinate systems, and safety guidelines.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "computer-use",
+      "tool-use",
+      "api-reference",
+      "automation"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/system-prompts",
+    "title": "System Prompts Guide \u2014 Best practices for instruction",
+    "content": "Official guide to writing effective system prompts for Claude: instruction clarity, role assignment, formatting guidelines, and common patterns for production applications.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "system-prompts",
+      "guide",
+      "best-practices",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/tutorials/debugging",
+    "title": "MCP Debugging Tutorial \u2014 Inspecting server communication",
+    "content": "Tutorial for debugging MCP servers using the MCP Inspector, protocol-level logging, and common error patterns when building and testing MCP implementations.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "debugging",
+      "tutorial",
+      "inspector"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/best-practices-for-operators",
+    "title": "Operator Best Practices \u2014 Responsible Claude deployment",
+    "content": "Anthropic's documentation on best practices for operators deploying Claude in applications: content policies, safety considerations, and responsible use guidelines.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "operators",
+      "best-practices",
+      "safety",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/docs/concepts/security",
+    "title": "MCP Security \u2014 Trust model and safe server development",
+    "content": "Security documentation for the Model Context Protocol covering the trust model between hosts, clients, and servers, and guidelines for building safe MCP servers.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "security",
+      "trust-model",
+      "reference"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/test-and-evaluate/eval-approaches",
+    "title": "Evaluation Approaches \u2014 Testing Claude applications",
+    "content": "Anthropic's documentation on evaluation approaches for Claude-powered applications: automated evals, human evaluation, LLM-as-judge, and A/B testing methodologies.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "evaluation",
+      "testing",
+      "llm-judge",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/streaming",
+    "title": "Streaming API Documentation \u2014 Real-time response handling",
+    "content": "Complete documentation for the Anthropic streaming API including SSE event types, stream lifecycle, partial text handling, and streaming tool use responses.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "streaming",
+      "sse",
+      "api-reference",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/docs/server/typescript",
+    "title": "MCP TypeScript Server SDK \u2014 API reference",
+    "content": "API reference for the Model Context Protocol TypeScript server SDK covering Server class, tool registration, resource handlers, and transport configuration.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "typescript",
+      "sdk-reference",
+      "server"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/token-counting",
+    "title": "Token Counting API \u2014 Pre-flight token estimation",
+    "content": "Documentation for Anthropic's token counting API endpoint that estimates input token counts before sending requests, enabling cost estimation and context management.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "tokens",
+      "token-counting",
+      "api",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://github.com/anthropics/claude-code/blob/main/docs/installation.md",
+    "title": "Claude Code Installation Guide \u2014 Platform setup docs",
+    "content": "Official installation documentation for Claude Code on macOS, Linux, and Windows including prerequisites, authentication setup, and initial configuration.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "installation",
+      "claude-code",
+      "setup",
+      "guide"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/security",
+    "title": "Claude Code Security Documentation \u2014 Permissions and sandboxing",
+    "content": "Security documentation for Claude Code covering filesystem permissions, network access controls, sandboxing options, and enterprise security configurations.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "security",
+      "claude-code",
+      "permissions",
+      "enterprise"
+    ]
+  },
+  {
+    "url": "https://github.com/anthropics/anthropic-cookbook/tree/main/patterns/multiagent",
+    "title": "Multi-Agent Cookbook \u2014 Orchestration patterns and examples",
+    "content": "Anthropic cookbook section on multi-agent patterns with working Python code examples for orchestrator-worker architectures, parallel execution, and result aggregation.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "multi-agent",
+      "cookbook",
+      "patterns",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/docs/server/python",
+    "title": "MCP Python SDK Documentation \u2014 Server development guide",
+    "content": "Documentation for the official MCP Python SDK covering server setup, tool definition, resource exposure, and prompt template registration with code examples.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "python",
+      "sdk",
+      "server-development"
+    ]
+  },
+  {
+    "url": "https://github.com/astro-build/claude-code-astro-skill",
+    "title": "Astro Component Skill \u2014 Generate Astro components with Claude",
+    "content": "Claude Code skill for generating Astro components with Islands architecture awareness. Takes component specifications and produces .astro files with correct framework directives and client-side hydration strategies.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "astro",
+      "components",
+      "claude-code",
+      "skill"
+    ]
+  },
+  {
+    "url": "https://github.com/solidjs/claude-code-solid-skill",
+    "title": "SolidJS Skill \u2014 Reactive component generation with Claude Code",
+    "content": "Claude Code skill that generates SolidJS reactive components including signals, stores, and effects. Handles fine-grained reactivity patterns and generates optimized components without virtual DOM overhead.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "solidjs",
+      "components",
+      "claude-code",
+      "reactivity"
+    ]
+  },
+  {
+    "url": "https://github.com/drizzle-team/claude-code-drizzle-skill",
+    "title": "Drizzle ORM Skill \u2014 Type-safe schema and query generation",
+    "content": "Claude Code skill for Drizzle ORM that generates type-safe schema definitions, migration files, and complex query builders. Supports PostgreSQL, MySQL, and SQLite dialects.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "drizzle",
+      "orm",
+      "claude-code",
+      "database"
+    ]
+  },
+  {
+    "url": "https://github.com/zod-dev/claude-code-validation-skill",
+    "title": "Zod Validation Skill \u2014 Schema generation from requirements",
+    "content": "A Claude Code skill that generates Zod validation schemas from natural language descriptions of data models. Produces runtime-safe types, error messages, and transformation pipelines.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "zod",
+      "validation",
+      "claude-code",
+      "typescript"
+    ]
+  },
+  {
+    "url": "https://github.com/storybook-js/claude-code-storybook-skill",
+    "title": "Storybook Story Generation Skill \u2014 Component documentation automation",
+    "content": "Claude Code skill that analyzes React/Vue/Svelte components and generates comprehensive Storybook stories with controls, args tables, and interaction tests.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "storybook",
+      "documentation",
+      "claude-code",
+      "testing"
+    ]
+  },
+  {
+    "url": "https://github.com/playwright-dev/claude-code-e2e-skill",
+    "title": "E2E Test Generation Skill \u2014 Playwright tests from user stories",
+    "content": "Claude Code skill that generates Playwright end-to-end tests from user story descriptions. Produces page objects, test fixtures, and CI configuration for browser testing.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "playwright",
+      "e2e-testing",
+      "claude-code",
+      "automation"
+    ]
+  },
+  {
+    "url": "https://github.com/convex-dev/claude-code-convex-skill",
+    "title": "Convex Schema Skill \u2014 Real-time database schema generation",
+    "content": "Claude Code skill for Convex that generates schema definitions, validators, and query/mutation functions for real-time applications. Includes automatic TypeScript type inference.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "convex",
+      "database",
+      "claude-code",
+      "real-time"
+    ]
+  },
+  {
+    "url": "https://github.com/hono-dev/claude-code-hono-skill",
+    "title": "Hono API Skill \u2014 Edge-ready API generation with Claude Code",
+    "content": "Claude Code skill for generating Hono web framework APIs with middleware, validators, and OpenAPI spec generation. Produces edge-compatible handlers for Cloudflare Workers and Deno Deploy.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "hono",
+      "api",
+      "claude-code",
+      "edge"
+    ]
+  },
+  {
+    "url": "https://github.com/payload-cms/claude-code-payload-skill",
+    "title": "Payload CMS Skill \u2014 Collection and global generation",
+    "content": "Claude Code skill for Payload CMS that generates collection configurations, access control rules, and admin UI customizations from content model descriptions.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "payload-cms",
+      "collections",
+      "claude-code",
+      "cms"
+    ]
+  },
+  {
+    "url": "https://github.com/inngest/claude-code-workflows-skill",
+    "title": "Inngest Workflow Skill \u2014 Durable workflow generation",
+    "content": "Claude Code skill that generates Inngest durable workflow functions with retry logic, fan-out patterns, and scheduled triggers from plain-language workflow descriptions.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "inngest",
+      "workflows",
+      "claude-code",
+      "durable"
+    ]
+  },
+  {
+    "url": "https://github.com/temporal-io/claude-code-temporal-skill",
+    "title": "Temporal Workflow Skill \u2014 Orchestration code generation",
+    "content": "Claude Code skill for generating Temporal workflow and activity definitions. Handles retry policies, timeouts, signals, and queries from business process descriptions.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "temporal",
+      "workflows",
+      "claude-code",
+      "orchestration"
+    ]
+  },
+  {
+    "url": "https://github.com/algolia/claude-code-search-skill",
+    "title": "Algolia Search Skill \u2014 Search integration automation",
+    "content": "Claude Code skill for integrating Algolia search: generates index configuration, record transformations, and InstantSearch UI components from data schema descriptions.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "algolia",
+      "search",
+      "claude-code",
+      "skill"
+    ]
+  },
+  {
+    "url": "https://github.com/opentelemetry/claude-code-otel-skill",
+    "title": "OpenTelemetry Instrumentation Skill \u2014 Auto-generate tracing code",
+    "content": "Claude Code skill that instruments application code with OpenTelemetry spans, metrics, and logs. Analyzes existing code and adds appropriate tracing without manual instrumentation.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "opentelemetry",
+      "tracing",
+      "claude-code",
+      "observability"
+    ]
+  },
+  {
+    "url": "https://github.com/oclif/claude-code-cli-skill",
+    "title": "CLI Tool Generation Skill \u2014 Oclif command scaffolding",
+    "content": "Claude Code skill for generating oclif-based CLI tools. Takes command specifications and produces fully typed command classes, help text, and integration tests.",
+    "expected_type": "skill",
+    "expected_tags": [
+      "cli",
+      "oclif",
+      "claude-code",
+      "code-generation"
+    ]
+  },
+  {
+    "url": "https://github.com/upstash/upstash-mcp-server",
+    "title": "Upstash MCP Server \u2014 Serverless Redis and QStash operations",
+    "content": "MCP server for Upstash that provides Redis cache operations, QStash message queue management, and rate limit inspection through AI coding tools.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "upstash",
+      "redis",
+      "serverless"
+    ]
+  },
+  {
+    "url": "https://github.com/airtable/airtable-mcp-server",
+    "title": "Airtable MCP Server \u2014 Spreadsheet database operations",
+    "content": "MCP server for Airtable that enables AI tools to query bases, create records, manage views, and run automations through the Airtable API.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "airtable",
+      "database",
+      "no-code"
+    ]
+  },
+  {
+    "url": "https://github.com/notion-so/notion-mcp-server",
+    "title": "Notion MCP Server \u2014 Knowledge base integration",
+    "content": "MCP server for Notion that allows AI tools to read and write pages, manage databases, search workspace content, and create blocks through the Notion API.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "notion",
+      "knowledge-base",
+      "productivity"
+    ]
+  },
+  {
+    "url": "https://github.com/figma/figma-mcp-server",
+    "title": "Figma MCP Server \u2014 Design file inspection and creation",
+    "content": "MCP server for Figma that exposes file structures, component libraries, and design tokens to AI coding tools for design-to-code workflows.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "figma",
+      "design",
+      "design-tokens"
+    ]
+  },
+  {
+    "url": "https://github.com/jira-software/jira-mcp-server",
+    "title": "Jira MCP Server \u2014 Issue tracking and sprint management",
+    "content": "MCP server for Atlassian Jira that enables AI tools to create issues, manage sprints, query backlogs, and update issue status through the Jira REST API.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "jira",
+      "project-management",
+      "atlassian"
+    ]
+  },
+  {
+    "url": "https://github.com/datadog/datadog-mcp-server",
+    "title": "Datadog MCP Server \u2014 APM and infrastructure monitoring",
+    "content": "MCP server for Datadog that enables AI tools to run metric queries, inspect APM traces, manage monitors, and analyze log streams for debugging and optimization.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "datadog",
+      "monitoring",
+      "apm"
+    ]
+  },
+  {
+    "url": "https://github.com/elastic/elasticsearch-mcp-server",
+    "title": "Elasticsearch MCP Server \u2014 Search and analytics operations",
+    "content": "MCP server for Elasticsearch that wraps search, indexing, and cluster management APIs. Allows AI tools to perform complex queries and analyze document corpora.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "elasticsearch",
+      "search",
+      "analytics"
+    ]
+  },
+  {
+    "url": "https://www.npmjs.com/package/mcp-server-firecrawl",
+    "title": "Firecrawl MCP Server \u2014 Web scraping and crawling",
+    "content": "MCP server wrapping the Firecrawl API for clean web content extraction. Enables AI tools to scrape websites, extract structured data, and crawl entire domains.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "firecrawl",
+      "web-scraping",
+      "crawling"
+    ]
+  },
+  {
+    "url": "https://github.com/pagerduty/pagerduty-mcp-server",
+    "title": "PagerDuty MCP Server \u2014 On-call and incident management",
+    "content": "MCP server for PagerDuty that exposes incident management, on-call schedules, and escalation policies to AI tools for automated incident response workflows.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "pagerduty",
+      "incident-management",
+      "on-call"
+    ]
+  },
+  {
+    "url": "https://github.com/aws-labs/aws-mcp-server",
+    "title": "AWS MCP Server \u2014 Cloud resource management from AI tools",
+    "content": "MCP server wrapping AWS SDK operations for EC2, S3, Lambda, and CloudFormation. Enables AI tools to inspect and manage AWS infrastructure through natural language.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "aws",
+      "cloud",
+      "infrastructure"
+    ]
+  },
+  {
+    "url": "https://github.com/gcp-labs/gcp-mcp-server",
+    "title": "Google Cloud MCP Server \u2014 GCP resource management",
+    "content": "MCP server for Google Cloud Platform covering Compute Engine, Cloud Storage, BigQuery, and Pub/Sub operations. Enables AI tools to query and manage GCP resources.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "gcp",
+      "google-cloud",
+      "infrastructure"
+    ]
+  },
+  {
+    "url": "https://github.com/azure-samples/azure-mcp-server",
+    "title": "Azure MCP Server \u2014 Microsoft cloud integration",
+    "content": "MCP server for Azure services including Azure OpenAI, Cognitive Services, Storage, and Azure Functions. Enables AI tools to orchestrate Azure cloud workloads.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "azure",
+      "microsoft",
+      "cloud"
+    ]
+  },
+  {
+    "url": "https://github.com/shopify/shopify-mcp-server",
+    "title": "Shopify MCP Server \u2014 E-commerce store management",
+    "content": "MCP server for Shopify that enables AI tools to manage products, orders, customers, and inventory through the Shopify Admin API.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "shopify",
+      "e-commerce",
+      "admin-api"
+    ]
+  },
+  {
+    "url": "https://github.com/hubspot/hubspot-mcp-server",
+    "title": "HubSpot MCP Server \u2014 CRM and marketing automation",
+    "content": "MCP server for HubSpot CRM that exposes contacts, deals, pipelines, and email campaign management to AI tools for sales and marketing automation.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "hubspot",
+      "crm",
+      "marketing"
+    ]
+  },
+  {
+    "url": "https://github.com/snowflake-db/snowflake-mcp-server",
+    "title": "Snowflake MCP Server \u2014 Data warehouse queries",
+    "content": "MCP server for Snowflake data warehouse that enables AI tools to execute SQL queries, inspect schema metadata, manage warehouses, and monitor query performance.",
+    "expected_type": "tool",
+    "expected_tags": [
+      "mcp",
+      "snowflake",
+      "data-warehouse",
+      "sql"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-api-v2-launch",
+    "title": "Claude API v2 Launch \u2014 Unified API endpoint",
+    "content": "Anthropic announces the Claude API v2 with a unified messages endpoint, improved streaming protocol, and consolidated model naming scheme replacing the legacy completions API.",
+    "expected_type": "update",
+    "expected_tags": [
+      "api",
+      "v2",
+      "anthropic",
+      "launch"
+    ]
+  },
+  {
+    "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.40.0",
+    "title": "Anthropic Python SDK v0.40.0 \u2014 Extended thinking support",
+    "content": "Python SDK v0.40.0 adds native extended thinking support with ThinkingBlock types, streaming thinking events, and budget_tokens parameter for controlling reasoning depth.",
+    "expected_type": "update",
+    "expected_tags": [
+      "python-sdk",
+      "release",
+      "extended-thinking",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/changelog/2025-04",
+    "title": "MCP April 2025 Changelog \u2014 Authentication and discovery",
+    "content": "MCP April 2025 changelog introduces OAuth 2.0 server authentication support, server discovery via well-known URLs, and deprecation of the legacy initialization handshake.",
+    "expected_type": "update",
+    "expected_tags": [
+      "mcp",
+      "changelog",
+      "oauth",
+      "authentication"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-computer-use-ga",
+    "title": "Claude Computer Use General Availability",
+    "content": "Anthropic announces general availability of Claude's computer use capability with improved accuracy, reduced hallucinations in UI interactions, and new coordinate-free action modes.",
+    "expected_type": "update",
+    "expected_tags": [
+      "computer-use",
+      "ga",
+      "anthropic",
+      "desktop-automation"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/about-claude/models/claude-3-5-haiku-20241022",
+    "title": "Claude 3.5 Haiku October 2024 \u2014 Updated specifications",
+    "content": "Updated model card for Claude 3.5 Haiku (October 2024) with revised latency benchmarks, updated pricing per million tokens, and new capability comparisons.",
+    "expected_type": "update",
+    "expected_tags": [
+      "haiku",
+      "model-specs",
+      "claude-3-5",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.2.0",
+    "title": "MCP Python SDK v1.2.0 \u2014 Async improvements",
+    "content": "MCP Python SDK v1.2.0 adds full asyncio support for server handlers, resource streaming, and improved context management for long-running tool executions.",
+    "expected_type": "update",
+    "expected_tags": [
+      "mcp",
+      "python-sdk",
+      "release",
+      "async"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/system-prompt-improvements",
+    "title": "System Prompt Following Improvements \u2014 Model update",
+    "content": "Anthropic announces improvements to system prompt adherence across Claude 3.5 models with significantly better instruction following for complex, multi-part system prompts.",
+    "expected_type": "update",
+    "expected_tags": [
+      "system-prompts",
+      "model-update",
+      "instruction-following",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v1.5.0",
+    "title": "Claude Code v1.5.0 \u2014 Tool approval flow redesign",
+    "content": "Claude Code v1.5.0 redesigns the tool approval flow with granular permission controls, persistent approval memory, and a new audit mode for enterprise deployments.",
+    "expected_type": "update",
+    "expected_tags": [
+      "claude-code",
+      "release",
+      "permissions",
+      "enterprise"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/batch-api-pricing-update",
+    "title": "Batch API Pricing Update \u2014 Reduced costs for bulk processing",
+    "content": "Anthropic reduces Batch API pricing by 30% for high-volume customers, introduces tiered pricing based on monthly token volume, and adds priority processing options.",
+    "expected_type": "update",
+    "expected_tags": [
+      "batch-api",
+      "pricing",
+      "anthropic",
+      "cost-reduction"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/about-claude/models/all-models",
+    "title": "All Claude Models Page \u2014 Complete model catalog",
+    "content": "Updated complete catalog of all available Claude models with current API names, context windows, pricing, and capability comparisons across the model family.",
+    "expected_type": "update",
+    "expected_tags": [
+      "models",
+      "catalog",
+      "anthropic",
+      "reference"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/tool-use-parallel",
+    "title": "Parallel Tool Use \u2014 Multiple simultaneous tool calls",
+    "content": "Anthropic enables parallel tool use where Claude can call multiple tools simultaneously in a single turn, reducing latency for workflows requiring multiple data sources.",
+    "expected_type": "update",
+    "expected_tags": [
+      "tool-use",
+      "parallel",
+      "api-update",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://github.com/modelcontextprotocol/specification/releases/tag/v1.0.1",
+    "title": "MCP Specification v1.0.1 \u2014 Bug fix and clarification release",
+    "content": "Model Context Protocol specification v1.0.1 clarifies resource URI resolution rules, fixes ambiguities in the error response schema, and updates conformance test requirements.",
+    "expected_type": "update",
+    "expected_tags": [
+      "mcp",
+      "specification",
+      "bug-fix",
+      "protocol"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-vertex-ai",
+    "title": "Claude on Google Vertex AI \u2014 GCP availability announcement",
+    "content": "Anthropic announces Claude models are now available through Google Cloud Vertex AI with enterprise SLAs, VPC integration, and data residency controls.",
+    "expected_type": "update",
+    "expected_tags": [
+      "vertex-ai",
+      "gcp",
+      "enterprise",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/api/migrating-from-text-completions",
+    "title": "Migrating from Text Completions API \u2014 Deprecation guide",
+    "content": "Migration guide for developers moving from the deprecated Claude text completions API to the Messages API with code examples, parameter mappings, and behavior differences.",
+    "expected_type": "update",
+    "expected_tags": [
+      "migration",
+      "deprecation",
+      "api",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/claude-prompt-caching-ga",
+    "title": "Prompt Caching General Availability \u2014 Cost reduction feature",
+    "content": "Anthropic announces general availability of prompt caching across all Claude 3 models with up to 90% cost reduction for repeated context and improved documentation.",
+    "expected_type": "update",
+    "expected_tags": [
+      "prompt-caching",
+      "ga",
+      "cost-reduction",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://github.com/anthropics/anthropic-sdk-go/releases/tag/v0.2.0",
+    "title": "Anthropic Go SDK v0.2.0 \u2014 Stable release with streaming",
+    "content": "Anthropic Go SDK v0.2.0 achieves stable API status with full streaming support, context cancellation, automatic retries, and comprehensive godoc documentation.",
+    "expected_type": "update",
+    "expected_tags": [
+      "go-sdk",
+      "release",
+      "streaming",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/workspaces-announcement",
+    "title": "Anthropic Workspaces \u2014 Multi-team API management",
+    "content": "Anthropic launches Workspaces for organizing multiple teams under a single account with separate API key management, usage budgets, and access controls per workspace.",
+    "expected_type": "update",
+    "expected_tags": [
+      "workspaces",
+      "teams",
+      "api-management",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/blog/2024-year-in-review",
+    "title": "MCP 2024 Year in Review \u2014 Protocol growth and milestones",
+    "content": "Model Context Protocol team reviews 2024 milestones: server count reaching 2000+, enterprise adoption, SDK releases, and community contributions across 50+ countries.",
+    "expected_type": "update",
+    "expected_tags": [
+      "mcp",
+      "milestones",
+      "community",
+      "review"
+    ]
+  },
+  {
+    "url": "https://www.anthropic.com/news/anthropic-api-keys-v2",
+    "title": "API Keys v2 \u2014 Scoped permissions and usage limits",
+    "content": "Anthropic revamps API key management with scoped permissions per key, per-key spending limits, expiration dates, and activity logs for enterprise security compliance.",
+    "expected_type": "update",
+    "expected_tags": [
+      "api-keys",
+      "security",
+      "permissions",
+      "enterprise"
+    ]
+  },
+  {
+    "url": "https://github.com/anthropics/anthropic-sdk-java/releases/tag/v0.5.0",
+    "title": "Anthropic Java SDK v0.5.0 \u2014 Production ready release",
+    "content": "Anthropic Java SDK v0.5.0 reaches production stability with full streaming support, Spring Boot integration, virtual thread compatibility, and Maven Central publishing.",
+    "expected_type": "update",
+    "expected_tags": [
+      "java-sdk",
+      "release",
+      "spring-boot",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://tidyfirst.substack.com/p/ai-coding-small-steps",
+    "title": "AI Coding and Small Steps \u2014 Kent Beck on incremental AI development",
+    "content": "Kent Beck explores how the principle of small, safe steps applies to AI-assisted coding. Argues that AI tendency for large changes must be countered with disciplined TDD and commit discipline.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "methodology",
+      "tdd",
+      "ai-coding",
+      "incremental"
+    ]
+  },
+  {
+    "url": "https://charity.wtf/2024/ai-observability-practices",
+    "title": "Observability for AI Systems \u2014 Charity Majors on AI debugging",
+    "content": "Charity Majors outlines observability practices for AI-powered systems: tracing LLM calls, measuring hallucination rates, tracking prompt latency, and building dashboards for AI behavior.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "observability",
+      "ai-systems",
+      "debugging",
+      "monitoring"
+    ]
+  },
+  {
+    "url": "https://www.swyx.io/ai-coding-workflow-2025",
+    "title": "AI Coding Workflow 2025 \u2014 Swyx evolved approach",
+    "content": "Swyx shares an evolved AI coding workflow for 2025: when to use chat vs. inline assistance vs. autonomous agents, context hygiene practices, and output verification strategies.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "workflow",
+      "ai-coding",
+      "agents",
+      "methodology"
+    ]
+  },
+  {
+    "url": "https://blog.jim-nielsen.com/ai-context-files",
+    "title": "AI Context Files Best Practices \u2014 What to put in CLAUDE.md",
+    "content": "A practical guide to crafting effective AI context files for coding assistants. Covers what information to include, how to structure rules, and maintaining context files as living documents.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "context-files",
+      "claude-md",
+      "best-practices",
+      "ai-coding"
+    ]
+  },
+  {
+    "url": "https://www.brettflorio.com/blog/ai-code-ownership",
+    "title": "Code Ownership in the Age of AI \u2014 Team conventions",
+    "content": "Engineering teams share conventions for maintaining code ownership when AI generates significant portions of the codebase: review requirements, attribution practices, and knowledge transfer.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "code-ownership",
+      "team-practices",
+      "ai-coding",
+      "conventions"
+    ]
+  },
+  {
+    "url": "https://lethain.com/ai-engineering-principles",
+    "title": "AI Engineering Principles \u2014 Will Larson on AI-assisted development",
+    "content": "Will Larson articulates engineering principles for AI-assisted development: maintaining intellectual engagement, building evaluation capacity, and preserving architectural judgment.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "engineering",
+      "principles",
+      "ai-coding",
+      "leadership"
+    ]
+  },
+  {
+    "url": "https://www.joelonsoftware.com/ai-specification-practices",
+    "title": "Specification-Driven AI Development \u2014 Writing AI-ready specs",
+    "content": "How to write functional specifications that work well as AI coding prompts. Covers the level of detail needed, how to express constraints, and iterative spec refinement based on AI output.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "specifications",
+      "ai-coding",
+      "requirements",
+      "methodology"
+    ]
+  },
+  {
+    "url": "https://blog.codinghorror.com/ai-rubber-duck-debugging",
+    "title": "AI Rubber Duck Debugging \u2014 Explaining code to Claude",
+    "content": "A technique for debugging by explaining code to Claude without asking for a solution. The act of formulating the explanation often reveals the bug, and Claude questions guide the diagnosis.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "debugging",
+      "ai-coding",
+      "methodology",
+      "techniques"
+    ]
+  },
+  {
+    "url": "https://overreacted.io/ai-component-design-patterns",
+    "title": "AI-Assisted Component Design Patterns \u2014 Dan Abramov on React architecture",
+    "content": "Dan Abramov shares patterns for using AI tools effectively in component design: when to generate vs. when to write by hand, and how to maintain design intentionality with AI assistance.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "react",
+      "component-design",
+      "ai-coding",
+      "patterns"
+    ]
+  },
+  {
+    "url": "https://blog.nelhage.com/ai-code-review-prompt-patterns",
+    "title": "Effective AI Code Review Prompt Patterns \u2014 Nelson Elhage",
+    "content": "Nelson Elhage catalogues prompt patterns for getting high-quality code review feedback from AI: structured review templates, security focus modes, and asking for specific code improvements.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "code-review",
+      "prompts",
+      "ai-coding",
+      "patterns"
+    ]
+  },
+  {
+    "url": "https://www.hillelwayne.com/ai-testing-practices",
+    "title": "AI Testing Practices \u2014 Property-based testing with AI assistance",
+    "content": "Hillel Wayne approach to AI-assisted testing: using AI to generate property-based test cases, explore edge cases systematically, and maintain test suite coverage over time.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "testing",
+      "property-based",
+      "ai-coding",
+      "quality"
+    ]
+  },
+  {
+    "url": "https://blog.brownfield.dev/ai-legacy-code-practices",
+    "title": "AI-Assisted Legacy Code Migration \u2014 Brownfield practices",
+    "content": "Strategies for using AI coding tools to migrate legacy codebases: characterization test generation, incremental strangler fig pattern, and AI-assisted documentation of undocumented code.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "legacy-code",
+      "migration",
+      "ai-coding",
+      "refactoring"
+    ]
+  },
+  {
+    "url": "https://architectelevator.com/ai-architecture-review",
+    "title": "AI-Assisted Architecture Reviews \u2014 The Architecture Elevator",
+    "content": "Gregor Hohpe framework for using AI tools in architecture reviews: having Claude challenge assumptions, generate alternative designs, and identify architectural anti-patterns.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "architecture",
+      "review",
+      "ai-coding",
+      "patterns"
+    ]
+  },
+  {
+    "url": "https://blog.staffeng.com/ai-staff-engineer-practices",
+    "title": "Staff Engineer AI Practices \u2014 Leveraging AI for technical leadership",
+    "content": "How staff engineers use AI coding tools differently from individual contributors: for codebase archaeology, technical strategy documents, and mentoring through AI-assisted code examples.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "staff-engineer",
+      "technical-leadership",
+      "ai-coding",
+      "mentoring"
+    ]
+  },
+  {
+    "url": "https://www.oreilly.com/library/view/ai-coding-teams",
+    "title": "AI Coding for Teams \u2014 O'Reilly practical guide",
+    "content": "O'Reilly guide on integrating AI coding tools into engineering teams: establishing team conventions, handling disagreements about AI-generated code, and measuring productivity impact.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "teams",
+      "ai-coding",
+      "conventions",
+      "productivity"
+    ]
+  },
+  {
+    "url": "https://thenewstack.io/ai-driven-devops-practices",
+    "title": "AI-Driven DevOps Practices \u2014 Automation and intelligence",
+    "content": "DevOps teams share practices for integrating AI coding tools into CI/CD: automated code quality gates, AI-generated release notes, and intelligent deployment decision support.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "devops",
+      "ci-cd",
+      "ai-coding",
+      "automation"
+    ]
+  },
+  {
+    "url": "https://blog.acolyer.org/ai-prompting-science-2024",
+    "title": "The Science of AI Prompting 2024 \u2014 Research-backed techniques",
+    "content": "Adrian Colyer summarizes research findings on effective AI prompting: why chain-of-thought works, optimal instruction placement, and evidence-based techniques for improving LLM accuracy.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "prompting",
+      "research",
+      "chain-of-thought",
+      "techniques"
+    ]
+  },
+  {
+    "url": "https://www.infoq.com/articles/ai-security-code-practices",
+    "title": "Secure AI Coding Practices \u2014 OWASP AI security guide",
+    "content": "OWASP-aligned guide to secure AI coding practices: preventing prompt injection in AI-assisted code, securing AI tool integrations, and safe handling of AI-generated credentials.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "security",
+      "owasp",
+      "prompt-injection",
+      "ai-coding"
+    ]
+  },
+  {
+    "url": "https://engineering.linkedin.com/blog/ai-code-quality-practices",
+    "title": "AI Code Quality at Scale \u2014 LinkedIn Engineering",
+    "content": "LinkedIn Engineering shares practices for maintaining code quality at scale with AI assistance: custom linting rules for AI patterns, required human review stages, and code smell detection.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "code-quality",
+      "scale",
+      "ai-coding",
+      "linkedin"
+    ]
+  },
+  {
+    "url": "https://blog.stripe.com/ai-infrastructure-patterns",
+    "title": "AI Infrastructure Patterns \u2014 Stripe Engineering",
+    "content": "Stripe Engineering patterns for building AI-powered developer tools infrastructure: prompt version management, AB testing LLM outputs, and fallback strategies for model outages.",
+    "expected_type": "practice",
+    "expected_tags": [
+      "infrastructure",
+      "patterns",
+      "ai-coding",
+      "stripe"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/computer-use/reference",
+    "title": "Computer Use API Reference \u2014 Complete action schema",
+    "content": "Complete API reference for all computer use action types: mouse_move, left_click, screenshot, key, type, and scroll with parameter definitions and example responses.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "computer-use",
+      "api-reference",
+      "anthropic",
+      "actions"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/specification/2024-11-05/server/utilities/ping",
+    "title": "MCP Ping Utility \u2014 Connection health check reference",
+    "content": "Protocol reference for the MCP ping/pong utility used to verify connection health between clients and servers with timing and timeout specifications.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "specification",
+      "ping",
+      "reference"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use/implementing-tools",
+    "title": "Implementing Tools \u2014 Detailed tool use patterns",
+    "content": "Detailed documentation on implementing tools for Claude: defining tool schemas, handling tool calls, returning results, and managing multi-turn tool conversations.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "tool-use",
+      "implementation",
+      "patterns",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-library",
+    "title": "Anthropic Prompt Library \u2014 Curated prompt collection",
+    "content": "Official Anthropic prompt library with categorized, tested prompts for common use cases: summarization, code review, data analysis, creative writing, and customer service.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "prompts",
+      "library",
+      "reference",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/about-claude/claude-in-use",
+    "title": "Claude in Use \u2014 Real-world deployment documentation",
+    "content": "Documentation covering Claude behavior in real-world deployments: how it handles ambiguity, honesty commitments, refusal behaviors, and guidance for content moderation.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "deployment",
+      "behavior",
+      "documentation",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/docs/concepts/lifecycle",
+    "title": "MCP Connection Lifecycle \u2014 Initialization and shutdown",
+    "content": "Documentation for the MCP connection lifecycle: capability negotiation during initialization, the active request phase, and graceful shutdown procedures.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "lifecycle",
+      "connection",
+      "initialization"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/vision/pdf-support",
+    "title": "PDF Support Documentation \u2014 Processing documents with Claude",
+    "content": "Documentation for Claude native PDF processing capability covering supported PDF types, page count limits, text extraction, and handling of embedded images.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "pdf",
+      "vision",
+      "documents",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/api/admin-api",
+    "title": "Admin API Reference \u2014 Organization management endpoints",
+    "content": "API reference for Anthropic Admin API covering workspace management, user provisioning, API key administration, and organization settings for enterprise accounts.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "admin-api",
+      "enterprise",
+      "organization",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/specification/2024-11-05/basic/jsonrpc",
+    "title": "MCP JSON-RPC Protocol \u2014 Message format specification",
+    "content": "Specification for the JSON-RPC 2.0 message format used in MCP including request, response, and notification message schemas with required fields and error handling.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "jsonrpc",
+      "specification",
+      "protocol"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/about-claude/supported-regions",
+    "title": "Supported Regions \u2014 Geographic availability documentation",
+    "content": "Documentation listing all geographic regions where Anthropic API is available, regional endpoints, data residency information, and compliance certifications.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "regions",
+      "compliance",
+      "data-residency",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use/best-practices",
+    "title": "Tool Use Best Practices \u2014 Designing effective tools",
+    "content": "Anthropic best practices for designing effective tools for Claude: naming conventions, description quality, schema design, and avoiding common pitfalls in tool definitions.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "tool-use",
+      "best-practices",
+      "schema-design",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://modelcontextprotocol.io/docs/concepts/elicitation",
+    "title": "MCP Elicitation \u2014 Requesting user input from servers",
+    "content": "Documentation for MCP elicitation, the mechanism that allows MCP servers to request additional information or confirmation from users through the client interface.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "mcp",
+      "elicitation",
+      "user-input",
+      "interaction"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/guardrails",
+    "title": "Claude Guardrails \u2014 Implementing safety controls",
+    "content": "Documentation for implementing safety guardrails in Claude-powered applications: content filtering, output validation, rate limiting, and monitoring for misuse patterns.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "guardrails",
+      "safety",
+      "content-filtering",
+      "anthropic"
+    ]
+  },
+  {
+    "url": "https://docs.anthropic.com/en/docs/about-claude/compliance",
+    "title": "Compliance Documentation \u2014 SOC 2, GDPR, and HIPAA",
+    "content": "Anthropic compliance documentation covering SOC 2 Type II certification, GDPR data processing agreements, HIPAA Business Associate Agreements, and data retention policies.",
+    "expected_type": "docs",
+    "expected_tags": [
+      "compliance",
+      "soc2",
+      "gdpr",
+      "hipaa"
+    ]
+  }
+]

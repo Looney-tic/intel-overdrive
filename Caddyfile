@@ -1,0 +1,47 @@
+inteloverdrive.com {
+	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	header -Server
+	header -Via
+
+	request_body {
+		max_size 64KB
+	}
+
+	handle /dl/* {
+		root * /srv/static
+		uri strip_prefix /dl
+		file_server
+	}
+
+	handle {
+		reverse_proxy api:8000 {
+			header_down -Server
+		}
+	}
+}
+
+www.inteloverdrive.com {
+	redir https://inteloverdrive.com{uri} permanent
+}
+
+:80 {
+	header -Server
+	header -Via
+
+	# Static files only (setup scripts downloaded before TLS is configured)
+	handle /dl/* {
+		root * /srv/static
+		uri strip_prefix /dl
+		file_server
+	}
+
+	# Health check — for load balancers that probe :80
+	handle /health {
+		respond "OK" 200
+	}
+
+	# All other :80 traffic is rejected — full API is HTTPS-only via domain block
+	handle {
+		respond 404
+	}
+}

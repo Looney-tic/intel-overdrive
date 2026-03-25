@@ -1,0 +1,25 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+*.tgz
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.DS_Store
+.idea/
+.vscode/
+.mcp.json
+
+# Internal operational files (not for public repo)
+.planning/
+reviews/
+deploy/
+test-trigger-rate.sh

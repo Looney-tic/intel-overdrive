@@ -1,0 +1,41 @@
+name: "Overdrive Intel Ecosystem Check"
+description: "Check for breaking changes in the AI coding ecosystem affecting your dependencies"
+branding:
+  icon: "activity"
+  color: "blue"
+inputs:
+  api-key:
+    description: "Overdrive Intel API key (store as GitHub secret)"
+    required: true
+  days:
+    description: "Lookback window in days"
+    default: "7"
+  fail-on-breaking:
+    description: "Fail the action if breaking changes found"
+    default: "false"
+outputs:
+  breaking-count:
+    description: "Number of breaking changes found"
+    value: ${{ steps.check.outputs.breaking_count }}
+  report:
+    description: "Human-readable report of findings"
+    value: ${{ steps.check.outputs.report }}
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - name: Install overdrive-intel
+      shell: bash
+      run: pip install overdrive-intel --quiet
+    - name: Check ecosystem
+      id: check
+      shell: bash
+      env:
+        OVERDRIVE_API_KEY: ${{ inputs.api-key }}
+      run: |
+        python ${{ github.action_path }}/scripts/check_breaking.py \
+          --days "${{ inputs.days }}" \
+          --fail-on-breaking "${{ inputs.fail-on-breaking }}"

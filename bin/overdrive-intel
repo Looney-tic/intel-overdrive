@@ -1,0 +1,333 @@
+#!/usr/bin/env bash
+# overdrive-intel — Claude Code ecosystem intelligence CLI
+# Zero dependencies: bash + curl + jq (optional for pretty-print)
+#
+# Install: curl -fsSL https://your-server/install.sh | bash
+# Auth:    export OVERDRIVE_API_KEY=dti_v1_...
+#          or save to ~/.config/overdrive-intel/api-key
+#
+# Usage:   overdrive-intel <command> [options]
+# An LLM agent can call any command and parse the JSON output directly.
+
+set -euo pipefail
+
+# --- Config ---
+API_URL="${OVERDRIVE_API_URL:-http://localhost:8000}"
+API_KEY="${OVERDRIVE_API_KEY:-}"
+
+# Warn when using default localhost URL
+if [[ "${OVERDRIVE_API_URL:-}" = "" ]]; then
+  echo "Warning: OVERDRIVE_API_URL not set, using localhost" >&2
+fi
+
+# Fallback: read key from config file
+if [[ -z "$API_KEY" && -f "$HOME/.config/overdrive-intel/api-key" ]]; then
+  API_KEY=$(cat "$HOME/.config/overdrive-intel/api-key")
+fi
+
+if [[ -z "$API_KEY" && "${1:-}" != "help" && "${1:-}" != "--help" && "${1:-}" != "auth" ]]; then
+  echo '{"error": "No API key. Set OVERDRIVE_API_KEY or run: overdrive-intel auth <key>"}' >&2
+  exit 1
+fi
+
+# --- Helpers ---
+_curl() {
+  curl -sf -H "X-API-Key: $API_KEY" -H "Accept: application/json" "$@"
+}
+
+_jq_or_cat() {
+  if command -v jq &>/dev/null; then jq .; else cat; fi
+}
+
+_urlencode() {
+  python3 -c "import urllib.parse, sys; print(urllib.parse.quote_plus(sys.argv[1]))" "$1"
+}
+
+_urlencode_path() {
+  python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1]))" "$1"
+}
+
+# --- Commands ---
+
+cmd_feed() {
+  local params="limit=20&days=7"
+  local since=""
+  local sort=""
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --type)         params+="&type=$2"; shift 2 ;;
+      --tag)          params+="&tag=$2"; shift 2 ;;
+      --significance) params+="&significance=$2"; shift 2 ;;
+      --days)         params="${params/days=7/days=$2}"; shift 2 ;;
+      --limit)        params="${params/limit=20/limit=$2}"; shift 2 ;;
+      --offset)       params+="&offset=$2"; shift 2 ;;
+      --since)        since="$2"; shift 2 ;;
+      --sort)         sort="$2"; shift 2 ;;
+      *) echo "Unknown option: $1" >&2; exit 1 ;;
+    esac
+  done
+  [[ -n "$since" ]] && params+="&since=$(_urlencode_path "$since")"
+  [[ -n "$sort" ]]  && params+="&sort=${sort}"
+  _curl "$API_URL/v1/feed?$params" | _jq_or_cat
+}
+
+cmd_search() {
+  local query="${1:?Usage: overdrive-intel search <query>}"
+  shift
+  local params="limit=20"
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --limit)        params="${params/limit=20/limit=$2}"; shift 2 ;;
+      --offset)       params+="&offset=$2"; shift 2 ;;
+      --type)         params+="&type=$2"; shift 2 ;;
+      --tag)          params+="&tag=$2"; shift 2 ;;
+      --significance) params+="&significance=$2"; shift 2 ;;
+      --days)         params+="&days=$2"; shift 2 ;;
+      *) echo "Unknown option: $1" >&2; exit 1 ;;
+    esac
+  done
+  local encoded_q
+  encoded_q=$(_urlencode "$query")
+  _curl "$API_URL/v1/search?q=${encoded_q}&$params" | _jq_or_cat
+}
+
+cmd_status() {
+  _curl "$API_URL/v1/status" | _jq_or_cat
+}
+
+cmd_info() {
+  local id="${1:?Usage: overdrive-intel info <id-or-url>}"
+  _curl "$API_URL/v1/info/$id" | _jq_or_cat
+}
+
+cmd_auth() {
+  local key="${1:?Usage: overdrive-intel auth <api-key>}"
+  mkdir -p "$HOME/.config/overdrive-intel"
+  printf '%s' "$key" > "$HOME/.config/overdrive-intel/api-key"
+  chmod 600 "$HOME/.config/overdrive-intel/api-key"
+  echo '{"status": "ok", "stored": "~/.config/overdrive-intel/api-key"}'
+}
+
+cmd_alerts() {
+  local subcmd="${1:-status}"
+  shift 2>/dev/null || true
+  case "$subcmd" in
+    set-slack)
+      local url="${1:?Usage: overdrive-intel alerts set-slack <url>}"
+      _curl -X POST "$API_URL/v1/alerts/slack-webhook" \
+        -H "Content-Type: application/json" \
+        -d "{\"webhook_url\": \"$url\"}" | _jq_or_cat
+      ;;
+    set-webhook)
+      local url="${1:?Usage: overdrive-intel alerts set-webhook <url>}"
+      _curl -X POST "$API_URL/v1/alerts/webhook" \
+        -H "Content-Type: application/json" \
+        -d "{\"webhook_url\": \"$url\"}" | _jq_or_cat
+      ;;
+    status|list)
+      _curl "$API_URL/v1/alerts/status" | _jq_or_cat
+      ;;
+    *)
+      echo "Usage: overdrive-intel alerts [set-slack|set-webhook|status|list]" >&2
+      exit 1
+      ;;
+  esac
+}
+
+cmd_profile() {
+  case "${1:-show}" in
+    --sync)
+      echo '{"error": "Profile sync not supported in bash CLI. Use: pipx install overdrive-intel"}' >&2
+      exit 1
+      ;;
+    show|*)
+      _curl "$API_URL/v1/profile" | _jq_or_cat
+      ;;
+  esac
+}
+
+cmd_feedback() {
+  local subcmd="${1:?Usage: overdrive-intel feedback <miss|noise> <url|id>}"
+  local arg="${2:?Provide URL or ID}"
+  shift 2
+  case "$subcmd" in
+    miss)
+      _curl -X POST "$API_URL/v1/feedback" \
+        -H "Content-Type: application/json" \
+        -d "{\"type\": \"miss\", \"url\": \"$arg\"}" | _jq_or_cat
+      ;;
+    noise)
+      _curl -X POST "$API_URL/v1/feedback" \
+        -H "Content-Type: application/json" \
+        -d "{\"type\": \"noise\", \"item_id\": \"$arg\"}" | _jq_or_cat
+      ;;
+    *)
+      echo "Usage: overdrive-intel feedback [miss|noise] <url|id>" >&2
+      exit 1
+      ;;
+  esac
+}
+
+cmd_library() {
+  local subcmd="${1:-topics}"
+  shift 2>/dev/null || true
+  case "$subcmd" in
+    topics)
+      # GET /v1/library/topics (unauthenticated — but still use key if available)
+      _curl "$API_URL/v1/library/topics" | _jq_or_cat
+      ;;
+    topic)
+      local topic="${1:?Usage: overdrive-intel library topic <topic>}"
+      shift
+      local params="limit=20"
+      while [[ $# -gt 0 ]]; do
+        case "$1" in
+          --limit) params="${params/limit=20/limit=$2}"; shift 2 ;;
+          --type)  params+="&entry_type=$2"; shift 2 ;;
+          *) echo "Unknown option: $1" >&2; exit 1 ;;
+        esac
+      done
+      _curl "$API_URL/v1/library/$(_urlencode_path "$topic")?$params" | _jq_or_cat
+      ;;
+    get)
+      local slug="${1:?Usage: overdrive-intel library get <slug>}"
+      _curl "$API_URL/v1/library/$(_urlencode_path "$slug")" | _jq_or_cat
+      ;;
+    search)
+      local query="${1:?Usage: overdrive-intel library search <query>}"
+      shift
+      local params="limit=5"
+      while [[ $# -gt 0 ]]; do
+        case "$1" in
+          --topic) params+="&topic=$2"; shift 2 ;;
+          --limit) params="${params/limit=5/limit=$2}"; shift 2 ;;
+          *) echo "Unknown option: $1" >&2; exit 1 ;;
+        esac
+      done
+      local encoded_q
+      encoded_q=$(_urlencode "$query")
+      _curl "$API_URL/v1/library/search?q=${encoded_q}&$params" | _jq_or_cat
+      ;;
+    recommend)
+      _curl "$API_URL/v1/library/recommend" | _jq_or_cat
+      ;;
+    helpful)
+      local slug="${1:?Usage: overdrive-intel library helpful <slug>}"
+      _curl -X POST "$API_URL/v1/library/$(_urlencode_path "$slug")/signals" \
+        -H "Content-Type: application/json" \
+        -d '{"action": "helpful"}' | _jq_or_cat
+      ;;
+    outdated)
+      local slug="${1:?Usage: overdrive-intel library outdated <slug>}"
+      _curl -X POST "$API_URL/v1/library/$(_urlencode_path "$slug")/signals" \
+        -H "Content-Type: application/json" \
+        -d '{"action": "outdated"}' | _jq_or_cat
+      ;;
+    suggest)
+      local desc="${1:?Usage: overdrive-intel library suggest <description>}"
+      _curl -X POST "$API_URL/v1/library/suggest" \
+        -H "Content-Type: application/json" \
+        -d "{\"topic\": \"suggestion\", \"description\": \"$desc\"}" | _jq_or_cat
+      ;;
+    *)
+      echo "Usage: overdrive-intel library [topics|topic|get|search|recommend|helpful|outdated|suggest]" >&2
+      exit 1
+      ;;
+  esac
+}
+
+cmd_help() {
+  cat << 'HELP'
+overdrive-intel — Claude Code ecosystem intelligence
+
+COMMANDS:
+  feed      Get curated intelligence feed (tools, skills, updates, practices)
+  search    Full-text search across all classified items
+  library   Browse the knowledge library (evergreen best practices)
+  status    Pipeline health, source status, spend remaining
+  info      Detailed view of a specific item by ID
+  alerts    Manage alert rules and Slack notifications
+  profile   View your developer profile
+  feedback  Report false positives (noise) or false negatives (miss)
+  auth      Store API key locally
+
+FEED OPTIONS:
+  --type <type>           skill, tool, update, practice, docs
+  --tag <tag>             Filter by tag (e.g., mcp, claude-code, hooks)
+  --significance <level>  breaking, major, minor, informational
+  --days <n>              Recency window in days (default: 7)
+  --since <timestamp>     ISO8601 timestamp — only items newer than this
+  --sort <field>          Sort order: significance or score
+  --limit <n>             Results per page (default: 20, max: 100)
+  --offset <n>            Pagination offset
+
+SEARCH OPTIONS:
+  --type <type>           Filter by primary_type
+  --tag <tag>             Filter by tag
+  --significance <level>  Filter by significance tier
+  --days <n>              Limit to items from last N days
+  --limit <n>             Results per page (default: 20)
+  --offset <n>            Pagination offset
+
+LIBRARY SUBCOMMANDS:
+  library topics                Browse topic index
+  library topic <topic>         Entries in a topic (by evergreen score)
+  library get <slug>            Full entry content
+  library search <query>        Semantic search across library
+  library recommend             Profile-matched recommendations
+  library helpful <slug>        Signal: this entry was helpful
+  library outdated <slug>       Signal: this entry is stale
+  library suggest <description> Suggest a missing topic
+
+ALERTS SUBCOMMANDS:
+  alerts set-slack <url>  Configure Slack webhook for alerts
+  alerts set-webhook <url> Configure generic webhook for alerts
+  alerts status           Show active alert rules and delivery status
+  alerts list             List all configured alert rules
+
+FEEDBACK SUBCOMMANDS:
+  feedback miss <url>     Report a missed item (false negative)
+  feedback noise <id>     Report a noisy/irrelevant item (false positive)
+
+EXAMPLES:
+  overdrive-intel feed --type tool --days 3
+  overdrive-intel feed --since 2026-01-01T00:00:00Z
+  overdrive-intel feed --sort significance --limit 5
+  overdrive-intel feed --tag mcp --type tool
+  overdrive-intel search "agentic workflow"
+  overdrive-intel search "mcp server" --type tool --significance major
+  overdrive-intel alerts set-slack https://hooks.slack.com/...
+  overdrive-intel alerts status
+  overdrive-intel profile
+  overdrive-intel feedback miss https://example.com/article
+  overdrive-intel feedback noise 550e8400-e29b-41d4-a716-446655440000
+  overdrive-intel status
+
+OUTPUT:
+  All output is JSON. When jq is available, it's pretty-printed.
+  Pipe to jq for field extraction: overdrive-intel feed | jq '.items[].summary'
+
+AUTH:
+  export OVERDRIVE_API_KEY=dti_v1_...
+  or: overdrive-intel auth dti_v1_...
+
+ENVIRONMENT:
+  OVERDRIVE_API_KEY    API key (required)
+  OVERDRIVE_API_URL    API base URL (default: http://localhost:8000)
+HELP
+}
+
+# --- Dispatch ---
+case "${1:-help}" in
+  feed)     shift; cmd_feed "$@" ;;
+  search)   shift; cmd_search "$@" ;;
+  library)  shift; cmd_library "$@" ;;
+  status)   cmd_status ;;
+  info)     shift; cmd_info "$@" ;;
+  alerts)   shift; cmd_alerts "$@" ;;
+  profile)  shift; cmd_profile "$@" ;;
+  feedback) shift; cmd_feedback "$@" ;;
+  auth)     shift; cmd_auth "$@" ;;
+  help|--help|-h) cmd_help ;;
+  *) echo "Unknown command: $1. Run: overdrive-intel help" >&2; exit 1 ;;
+esac

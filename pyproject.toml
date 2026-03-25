@@ -1,0 +1,79 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "overdrive-intel"
+version = "0.1.0"
+description = "Persistent intelligence pipeline for the Claude Code ecosystem"
+requires-python = ">=3.12"
+dependencies = [
+    "sqlalchemy[asyncio]>=2.0.36",
+    "asyncpg==0.29.0",
+    "alembic==1.14.0",
+    "pgvector==0.3.6",
+    "pydantic-settings==2.7.0",
+    "structlog==24.4.0",
+    "redis==5.2.0",
+    "anthropic>=0.84.0",
+    "voyageai>=0.3.0",
+    "fastapi==0.128.0",
+    "uvicorn[standard]==0.34.0",
+    "httpx>=0.28.1",
+    "arq==0.27.0",
+    "python-multipart>=0.0.12",
+    "feedparser>=6.0.11",
+    "tenacity>=9.0.0",
+    "slowapi>=0.1.9",
+    "typer[all]>=0.12.0",
+    "keyring>=25.0.0",
+    "gitpython>=3.1.0",
+    "mcp>=1.0.0",
+    "playwright>=1.50.0",
+    "atproto>=0.0.60",
+    "trafilatura>=2.0.0",
+]
+
+[project.scripts]
+overdrive-intel = "cli.main:app"
+
+[project.optional-dependencies]
+dev = [
+    "ruff==0.9.0",
+    "mypy==1.13.0",
+    "pytest==8.3.0",
+    "pytest-asyncio==0.24.0",
+    "hatchling>=1.26",
+    "build>=1.0.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "N", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+strict = true
+plugins = ["pydantic.mypy"]
+ignore_missing_imports = true
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "src/cli",
+    "src/api",
+    "src/core",
+    "src/models",
+    "src/services",
+    "src/workers",
+]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/mcp_server.py" = "mcp_server.py"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]

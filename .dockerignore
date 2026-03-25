@@ -1,0 +1,14 @@
+.env
+.env.*
+__pycache__
+*.pyc
+.pytest_cache
+.planning
+node_modules
+.git
+reviews/
+docs/
+tests/
+*.md
+overdrive-intel-mcp/
+*.tgz
