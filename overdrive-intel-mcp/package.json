@@ -1,7 +1,7 @@
 {
   "name": "intel-overdrive-mcp",
-  "version": "0.9.1",
-  "description": "MCP server for Overdrive Intel \u2014 Claude Code ecosystem intelligence feed",
+  "version": "0.9.2",
+  "description": "MCP server for Overdrive Intel — Claude Code ecosystem intelligence feed",
   "type": "module",
   "bin": {
     "intel-overdrive-mcp": "./dist/index.js"

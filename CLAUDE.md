@@ -1,16 +1,25 @@
 # Overdrive Intel
 
-A persistent intelligence pipeline for AI-assisted development — monitors 1100+ sources for new tools, breaking changes, best practices, and patterns relevant to developers using Claude Code and other AI coding agents.
+## Prime Directive
 
-## What This Project Is For
+The main purpose of this MCP server is to give Claude Code (and other AI coding agents) **fast, efficient access to the latest developments** — new tools, MCP servers, skills, agents, frameworks, SDK updates, breaking changes — that are **not in the agent's training data**.
 
-The unique niche: the **intersection of general software development and AI coding tools**. Not "what's new in Next.js" (other tools cover that) but "what changed in Next.js that will cause an AI agent to generate outdated code." Three core needs this serves:
+Users currently get this information from social channels (Twitter, Reddit, Discord, Bluesky) and newsletters, which is basically a day job at the speed things move. Overdrive Intel replaces that by monitoring 1,000+ sources and feeding the knowledge directly into the agent. The agent either:
 
-1. **"Did this API change since my training?"** — Breaking changes in SDKs/frameworks that cause agents to generate wrong code
-2. **"Is there a tool/MCP/library that already solves this?"** — New tools, MCP servers, extensions that prevent agents from building from scratch
+1. **Detects automatically** — when the user asks about tools, SDKs, or features, the agent calls `overdrive_intel` before falling back to (slow, expensive, unreliable) web search
+2. **On-demand** — the user asks "what's new?", "what MCP servers exist for X?", "best agent framework?" and gets instant, quality-ranked results
+
+This is **faster, cheaper, and more reliable** than the agent's own web search. One API call vs 10-30s of Googling and scraping random pages.
+
+## What This Project Covers
+
+The unique niche: the **intersection of general software development and AI coding tools**. Three core needs:
+
+1. **"What new tools/MCPs/agents exist for X?"** — New MCP servers, Claude Code skills, agent frameworks, extensions. Quality-ranked with star counts so the agent recommends proven tools
+2. **"Did this API change since my training?"** — Breaking changes in SDKs/frameworks that cause agents to generate wrong code
 3. **"What's the current best practice for X?"** — Evolving workflows, prompt patterns, CLAUDE.md conventions, project structures that work well with agents
 
-Users are developers building **everything** (web apps, APIs, databases, mobile) with AI coding tools. The most valuable intelligence is what changed in the general coding world that will cause an AI agent to generate outdated or wrong patterns.
+Users are developers building **everything** (web apps, APIs, databases, mobile) with AI coding tools. The most valuable intelligence is what's new and what changed that the agent doesn't know about yet.
 
 ## Source Selection Rules
 
