@@ -110,6 +110,10 @@ python -m src.mcp_server    # Start MCP server
 
 Requires Python 3.12+, PostgreSQL with pgvector, Redis, Voyage AI key, Anthropic key.
 
+## Contact
+
+Questions, feedback, or ideas: [tijmen.r.devries@gmail.com](mailto:tijmen.r.devries@gmail.com)
+
 ## License
 
 [Elastic License 2.0](LICENSE) — free to use, modify, and self-host. Cannot be offered as a competing hosted service.

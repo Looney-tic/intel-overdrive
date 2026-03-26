@@ -21,5 +21,9 @@ build/
 # Internal operational files (not for public repo)
 .planning/
 reviews/
+research/
 deploy/
 test-trigger-rate.sh
+trigger-test-results.md
+CONTEXT-SEED.md
+.npmrc
