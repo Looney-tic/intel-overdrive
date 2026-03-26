@@ -124,6 +124,18 @@ python -m src.mcp_server    # Start MCP server
 
 Requires Python 3.12+, PostgreSQL with pgvector, Redis, Voyage AI key, Anthropic key.
 
+## Why I built this
+
+I got frustrated. Every morning I was scrolling Twitter, checking Reddit, skimming newsletters — just to stay current on what's new in the AI coding ecosystem. New MCP servers, new Claude Code features, new agent frameworks, breaking SDK changes. It felt like a part-time job.
+
+Then I realized something worse: when I asked Claude Code about recent developments or current best practices, it just started Googling for me. Scraping random pages, burning tokens, returning outdated results. My AI coding agent — the thing that's supposed to make me more productive — couldn't tell me what shipped last week.
+
+So I built Overdrive Intel. A pipeline that monitors 1,000+ sources, classifies everything with AI, scores it for quality, and feeds it directly into Claude Code as an MCP tool. Now when I ask "what's the best MCP server for databases?" or "did anything break in the Anthropic SDK?", my agent already knows. One call, instant answer, quality-ranked.
+
+It changed how I work. I stopped manually tracking the ecosystem and started just building. Now I'm sharing it with everyone.
+
+— Tijmen
+
 ## Contact
 
 Questions, feedback, or ideas: [tijmen.r.devries@gmail.com](mailto:tijmen.r.devries@gmail.com)
