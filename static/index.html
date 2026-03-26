@@ -3,15 +3,35 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Overdrive Intel — AI Coding Ecosystem Intelligence</title>
+    <title>Overdrive Intel — Real-time Intelligence for AI Coding Agents</title>
     <meta
       name="description"
-      content="Real-time intelligence for AI coding agents. Breaking changes, new tools, security alerts from 900+ sources. One command to install."
+      content="An MCP server that gives your AI coding agent real-time intelligence. Breaking changes, new tools, security alerts from 1,000+ sources. One command to install."
+    />
+    <meta
+      property="og:title"
+      content="Overdrive Intel — Real-time Intelligence for AI Coding Agents"
+    />
+    <meta
+      property="og:description"
+      content="An MCP server that gives your AI coding agent real-time intelligence. Breaking changes, new tools, security alerts from 1,000+ sources."
+    />
+    <meta property="og:url" content="https://inteloverdrive.com" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Overdrive Intel" />
+    <meta
+      name="twitter:description"
+      content="Real-time intelligence for AI coding agents. 1,000+ sources, one command to install."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Geist:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -41,7 +61,7 @@
         --orange-dim: #92400e;
         --purple: #a78bfa;
         --mono: "JetBrains Mono", monospace;
-        --sans: "Instrument Sans", system-ui, sans-serif;
+        --sans: "Geist", system-ui, sans-serif;
       }
       html {
         scroll-behavior: smooth;
@@ -67,7 +87,7 @@
         z-index: 9999;
         pointer-events: none;
         background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-        opacity: 0.03;
+        opacity: 0.04;
       }
 
       /* Grid bg */
@@ -95,13 +115,58 @@
         z-index: 1;
       }
 
+      /* ─── NAV ─── */
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        position: relative;
+        z-index: 2;
+      }
+      .nav-logo {
+        font-family: var(--mono);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text);
+        text-decoration: none;
+      }
+      .nav-links {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .nav-link {
+        font-size: 13px;
+        color: var(--text-dim);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-link:hover {
+        color: var(--text);
+      }
+      .star-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #fff;
+        background: rgba(245, 158, 11, 0.1);
+        border: 1px solid var(--orange);
+        padding: 7px 16px;
+        border-radius: 8px;
+        transition: all 0.2s;
+        text-decoration: none;
+      }
+      .star-btn:hover {
+        background: var(--orange);
+        color: #000;
+      }
+
       /* ─── HERO ─── */
       .hero {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 120px 0 80px;
+        padding: 80px 0 100px;
       }
       .hero-badge {
         display: inline-flex;
@@ -136,10 +201,10 @@
       }
 
       .hero h1 {
-        font-size: clamp(40px, 6vw, 72px);
-        font-weight: 700;
-        line-height: 1.05;
-        letter-spacing: -0.03em;
+        font-size: clamp(36px, 5.5vw, 64px);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -0.035em;
         max-width: 800px;
         animation: fadeUp 0.6s ease 0.1s both;
       }
@@ -155,10 +220,42 @@
       .hero-sub {
         font-size: 18px;
         color: var(--text-dim);
-        max-width: 540px;
+        max-width: 580px;
         margin-top: 24px;
         line-height: 1.7;
         animation: fadeUp 0.6s ease 0.2s both;
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 40px;
+        animation: fadeUp 0.6s ease 0.3s both;
+        flex-wrap: wrap;
+      }
+      .hero-star-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #000;
+        background: var(--orange);
+        border: none;
+        padding: 14px 24px;
+        border-radius: 10px;
+        transition: all 0.2s;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .hero-star-btn:hover {
+        background: #fbbf24;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+      }
+      .hero-star-btn svg {
+        flex-shrink: 0;
       }
 
       @keyframes fadeUp {
@@ -174,8 +271,8 @@
 
       /* Install block */
       .install-block {
-        margin-top: 48px;
-        animation: fadeUp 0.6s ease 0.3s both;
+        margin-top: 20px;
+        animation: fadeUp 0.6s ease 0.35s both;
       }
       .install-label {
         font-size: 12px;
@@ -197,11 +294,12 @@
         font-family: var(--mono);
         font-size: 15px;
         cursor: pointer;
-        transition: border-color 0.2s;
+        transition: all 0.2s;
         position: relative;
       }
       .install-cmd:hover {
         border-color: var(--accent);
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.08);
       }
       .install-cmd .prompt {
         color: var(--green);
@@ -235,10 +333,7 @@
         font-family: var(--mono);
       }
 
-      /* ─── LIVE OUTPUT ─── */
-      .live-section {
-        padding: 120px 0;
-      }
+      /* ─── SECTION COMMON ─── */
       .section-label {
         font-size: 12px;
         font-family: var(--mono);
@@ -258,9 +353,61 @@
         color: var(--text-dim);
         max-width: 520px;
         margin-bottom: 48px;
+        line-height: 1.7;
       }
 
-      /* Terminal output */
+      /* ─── WHAT IS MCP ─── */
+      .mcp-explainer {
+        padding: 80px 0 40px;
+      }
+      .mcp-box {
+        background: var(--bg-raised);
+        border: 1px solid var(--border-bright);
+        border-radius: 12px;
+        padding: 32px;
+        max-width: 700px;
+      }
+      .mcp-box h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--text);
+      }
+      .mcp-box p {
+        font-size: 15px;
+        color: var(--text-dim);
+        line-height: 1.7;
+      }
+      .mcp-box code {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 13px;
+      }
+      .mcp-flow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+      .mcp-flow-step {
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-family: var(--mono);
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        color: var(--text-dim);
+      }
+      .mcp-flow-arrow {
+        color: var(--text-muted);
+        font-size: 16px;
+      }
+
+      /* ─── LIVE OUTPUT ─── */
+      .live-section {
+        padding: 100px 0;
+      }
       .terminal {
         background: var(--bg-raised);
         border: 1px solid var(--border);
@@ -367,6 +514,58 @@
         color: var(--text-dim);
         font-family: var(--sans);
         line-height: 1.6;
+      }
+
+      /* ─── HOW IT WORKS ─── */
+      .how-section {
+        padding: 80px 0 100px;
+      }
+      .how-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+      }
+      .how-step {
+        background: var(--bg-card);
+        padding: 32px;
+      }
+      .how-step-num {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--green);
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .how-step h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .how-step p {
+        font-size: 14px;
+        color: var(--text-dim);
+        line-height: 1.6;
+      }
+      .how-step .example {
+        margin-top: 12px;
+        padding: 10px 14px;
+        background: var(--bg-raised);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--text-dim);
+        line-height: 1.6;
+      }
+      .how-step .example .you {
+        color: var(--text-muted);
+      }
+      .how-step .example .agent {
+        color: var(--accent);
       }
 
       /* ─── FEATURES ─── */
@@ -483,6 +682,13 @@
         color: var(--text-dim);
         margin-bottom: 48px;
       }
+      .cta-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
 
       /* ─── FOOTER ─── */
       footer {
@@ -516,13 +722,17 @@
         transform: translateY(0);
       }
 
+      @media (max-width: 768px) {
+        .how-grid {
+          grid-template-columns: 1fr;
+        }
+      }
       @media (max-width: 640px) {
         .container {
           padding: 0 16px;
         }
         .hero {
-          padding: 80px 0 60px;
-          min-height: auto;
+          padding: 60px 0 60px;
         }
         .install-cmd {
           font-size: 12px;
@@ -539,6 +749,17 @@
           flex-direction: column;
           align-items: flex-start;
         }
+        .hero-actions {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .hero-star-btn {
+          width: 100%;
+          justify-content: center;
+        }
+        .nav-links {
+          gap: 10px;
+        }
       }
     </style>
   </head>
@@ -546,27 +767,66 @@
     <div class="grid-bg"></div>
 
     <div class="container">
+      <!-- NAV -->
+      <nav class="nav">
+        <a href="/" class="nav-logo">&#9889; Overdrive Intel</a>
+        <div class="nav-links">
+          <a href="/v1/guide" class="nav-link">API</a>
+          <a
+            href="https://www.npmjs.com/package/intel-overdrive-mcp"
+            class="nav-link"
+            >npm</a
+          >
+          <a
+            href="https://github.com/Looney-tic/intel-overdrive"
+            class="star-btn"
+          >
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+              <path
+                d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
+              />
+            </svg>
+            Star on GitHub
+          </a>
+        </div>
+      </nav>
+
       <!-- HERO -->
       <section class="hero">
         <div class="hero-badge">
           <span class="dot"></span>
-          <span
-            >MCP Server &middot; 909 sources &middot; updated every 15 min</span
-          >
+          <span>MCP Server &middot; 1,000+ sources &middot; live</span>
         </div>
 
         <h1>
-          Your AI agent's<br />
-          training data is <span class="dim">stale.</span><br />
-          <span class="accent">This fixes that.</span>
+          Real-time intelligence<br />
+          for your <span class="accent">AI coding agent.</span>
         </h1>
 
         <p class="hero-sub">
-          An MCP server that gives your AI coding agent real-time intelligence
-          &mdash; breaking changes, new tools, security alerts, and best
-          practices from 900+ monitored sources. Installs globally, works in
-          every project.
+          Your agent's training data is months old. Overdrive Intel monitors
+          1,000+ sources &mdash; 570+ GitHub repos, 280+ RSS feeds, 30+ vendor
+          MCP servers &mdash; so your agent stops recommending deprecated APIs,
+          finds the best tools on the first try, and warns you about breaking
+          changes before you ship.
         </p>
+
+        <div class="hero-actions">
+          <a
+            href="https://github.com/Looney-tic/intel-overdrive"
+            class="hero-star-btn"
+          >
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+              <path
+                d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
+              />
+            </svg>
+            Star on GitHub
+          </a>
+          <span style="font-size: 14px; color: var(--text-muted)"
+            >Open source &middot; Elastic License 2.0</span
+          >
+        </div>
 
         <div class="install-block">
           <div class="install-label">Install in 10 seconds</div>
@@ -583,108 +843,48 @@
             <span class="copy">Copy</span>
           </div>
           <div class="install-time">
-            Zero configuration &middot; Free tier &middot; No email required
-          </div>
-          <div class="install-time" style="margin-top: 8px">
-            Or:
-            <code style="color: var(--text); font-family: var(--mono)"
-              >npm i -g intel-overdrive-mcp</code
+            No email &middot; No API keys to manage &middot; Free tier
+            <span style="margin-left: 16px; color: var(--text-muted)"
+              >or:
+              <code style="color: var(--text-dim); font-family: var(--mono)"
+                >npm i -g intel-overdrive-mcp</code
+              ></span
             >
           </div>
         </div>
       </section>
 
-      <!-- HOW IT WORKS -->
-      <section class="features-section reveal" style="padding-top: 40px">
-        <div class="section-label">How it works</div>
-        <div class="section-title">Install once, intelligence everywhere</div>
-        <p class="section-desc" style="margin-bottom: 48px">
-          The setup script registers an MCP server with your AI coding tool.
-          From then on, your agent automatically calls it when you ask about
-          tools, breaking changes, or best practices.
-        </p>
-
-        <div
-          class="features-grid"
-          style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))"
-        >
-          <div class="feature">
-            <div
-              class="feature-icon"
+      <!-- WHAT IS MCP -->
+      <section class="mcp-explainer reveal">
+        <div class="mcp-box">
+          <h3>What is an MCP server?</h3>
+          <p>
+            Think of it as a
+            <strong style="color: var(--text)">plugin for your AI agent</strong
+            >. The
+            <a
+              href="https://modelcontextprotocol.io"
               style="
-                font-family: var(--mono);
-                font-size: 16px;
-                color: var(--green);
+                color: var(--accent);
+                text-decoration: none;
+                border-bottom: 1px solid var(--accent-dim);
               "
+              >Model Context Protocol</a
             >
-              1
+            lets your agent query external tools on its own. Instead of you
+            Googling "did this SDK change?", your agent calls
+            <code>overdrive_intel</code> and gets a quality-ranked answer in
+            seconds.
+          </p>
+          <div class="mcp-flow">
+            <div class="mcp-flow-step">You ask a question</div>
+            <span class="mcp-flow-arrow">&rarr;</span>
+            <div class="mcp-flow-step">
+              Agent calls
+              <code style="color: var(--accent)">overdrive_intel</code>
             </div>
-            <h3>Run one command</h3>
-            <p>
-              The setup script registers anonymously, installs the MCP server,
-              and configures your tool. No email, no API keys to manage.
-            </p>
-          </div>
-          <div class="feature">
-            <div
-              class="feature-icon"
-              style="
-                font-family: var(--mono);
-                font-size: 16px;
-                color: var(--green);
-              "
-            >
-              2
-            </div>
-            <h3>Agent calls automatically</h3>
-            <p>
-              When you ask about MCP servers, SDK changes, or AI tools, your
-              agent recognizes the topic and calls the
-              <code
-                style="
-                  color: var(--accent);
-                  font-family: var(--mono);
-                  font-size: 12px;
-                "
-                >overdrive_intel</code
-              >
-              tool.
-            </p>
-          </div>
-          <div class="feature">
-            <div
-              class="feature-icon"
-              style="
-                font-family: var(--mono);
-                font-size: 16px;
-                color: var(--green);
-              "
-            >
-              3
-            </div>
-            <h3>Gets fresh, ranked results</h3>
-            <p>
-              Results include star counts, quality labels, and significance
-              tiers. Your agent recommends battle-tested tools, not random
-              repos.
-            </p>
-          </div>
-          <div class="feature">
-            <div
-              class="feature-icon"
-              style="
-                font-family: var(--mono);
-                font-size: 16px;
-                color: var(--green);
-              "
-            >
-              4
-            </div>
-            <h3>Warns about breaking changes</h3>
-            <p>
-              Before you upgrade a dependency or adopt a pattern, the agent
-              checks for known breaking changes and security issues.
-            </p>
+            <span class="mcp-flow-arrow">&rarr;</span>
+            <div class="mcp-flow-step">Gets live, ranked results</div>
           </div>
         </div>
       </section>
@@ -694,8 +894,8 @@
         <div class="section-label">What your agent sees</div>
         <div class="section-title">Intelligence, not noise</div>
         <p class="section-desc">
-          Every item is classified, scored, and ranked. Your agent gets
-          actionable intel, not a raw feed.
+          Every item is auto-classified, quality-scored, and ranked. Your agent
+          gets actionable intel with star counts and significance tiers.
         </p>
 
         <!-- Breaking changes example -->
@@ -755,7 +955,6 @@
               <div class="result-meta">
                 <span>security</span>
                 <span>2026-03-23</span>
-                <span>noma.security</span>
               </div>
               <div class="result-summary">
                 Critical vulnerability in Context7 MCP server allows
@@ -834,13 +1033,57 @@
         </div>
       </section>
 
+      <!-- HOW IT WORKS -->
+      <section class="how-section reveal">
+        <div class="section-label">How it works</div>
+        <div class="section-title">Install once, intelligence everywhere</div>
+        <p class="section-desc">
+          One command registers the MCP server globally. From then on, your
+          agent calls it automatically whenever a question matches.
+        </p>
+
+        <div class="how-grid">
+          <div class="how-step">
+            <div class="how-step-num">01</div>
+            <h3>Run one command</h3>
+            <p>
+              The setup script registers anonymously, installs the MCP server,
+              and configures your tool. No account, no email.
+            </p>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">02</div>
+            <h3>Your agent calls it automatically</h3>
+            <p>
+              When you ask about tools, SDKs, or breaking changes, your agent
+              recognizes the topic and queries Overdrive Intel.
+            </p>
+            <div class="example">
+              <span class="you">You:</span> "Is there a Netlify MCP server?"<br />
+              <span class="agent">Agent:</span>
+              <code style="color: var(--accent); font-size: 11px"
+                >overdrive_intel({ query: "Netlify MCP" })</code
+              >
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">03</div>
+            <h3>Gets ranked, quality-scored results</h3>
+            <p>
+              Results include GitHub stars, quality labels, and significance
+              tiers. Your agent recommends battle-tested tools, not random
+              repos.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- FEATURES -->
       <section class="features-section reveal">
         <div class="section-label">Capabilities</div>
         <div class="section-title">Built for AI agents</div>
         <p class="section-desc">
-          One MCP tool, eight query types. Your agent knows when to call it
-          automatically.
+          One MCP tool, eight query types. Your agent knows when to call it.
         </p>
 
         <div class="features-grid">
@@ -865,8 +1108,9 @@
             <div class="feature-icon">&#128274;</div>
             <h3>Security Alerts</h3>
             <p>
-              CVEs, supply-chain attacks, MCP vulnerabilities. ContextCrush,
-              Azure CVSS 9.8 &mdash; surfaced within hours of disclosure.
+              CVEs, supply-chain attacks, MCP vulnerabilities surfaced within
+              hours of disclosure. Instant Slack notifications for critical
+              issues.
             </p>
           </div>
           <div class="feature">
@@ -886,11 +1130,12 @@
             </p>
           </div>
           <div class="feature">
-            <div class="feature-icon">&#128233;</div>
-            <h3>Slack Notifications</h3>
+            <div class="feature-icon">&#127919;</div>
+            <h3>Semantic Search</h3>
             <p>
-              Daily digests, weekly source health, instant breaking change
-              alerts. Coverage gap detection when your queries return nothing.
+              Vector similarity search across the full corpus. Find related
+              tools, compare alternatives, and surface connections your agent
+              wouldn't know about.
             </p>
           </div>
         </div>
@@ -899,11 +1144,12 @@
       <!-- SOURCES -->
       <section class="sources-section reveal">
         <div class="section-label">Coverage</div>
-        <div class="source-count">909</div>
+        <div class="source-count">1,000+</div>
         <div class="section-title">Sources monitored</div>
         <p class="section-desc" style="margin-bottom: 32px">
-          GitHub releases, RSS feeds, Reddit, Hacker News, Bluesky, npm, PyPI,
-          arXiv, VS Code Marketplace, MCP registries, and more.
+          570+ GitHub repos, 280+ RSS feeds, 30+ vendor MCP servers, Reddit,
+          Hacker News, Bluesky, npm, PyPI, arXiv, and more. Polled every 15
+          minutes. 49,000+ items classified and searchable.
         </p>
 
         <div class="sources-grid">
@@ -916,9 +1162,9 @@
           <span class="source-tag">PyPI</span>
           <span class="source-tag">arXiv</span>
           <span class="source-tag">VS Code Marketplace</span>
-          <span class="source-tag">MCP Registry</span>
+          <span class="source-tag">MCP Registries</span>
           <span class="source-tag">Awesome Lists</span>
-          <span class="source-tag">Sitemaps</span>
+          <span class="source-tag">Vendor MCP Servers</span>
           <span class="source-tag">GitHub Deep Analysis</span>
           <span class="source-tag">Email Newsletters</span>
         </div>
@@ -929,18 +1175,18 @@
         <div class="section-label">Compatibility</div>
         <div class="section-title">Works with your tools</div>
         <p class="section-desc">
-          Overdrive Intel is an
+          Any MCP-compatible AI coding tool works out of the box. Also available
+          as a
           <a
-            href="https://modelcontextprotocol.io"
+            href="/v1/guide"
             style="
               color: var(--accent);
               text-decoration: none;
               border-bottom: 1px solid var(--accent-dim);
             "
-            >MCP server</a
+            >REST API</a
           >
-          &mdash; the open standard for connecting AI agents to external tools.
-          Any MCP-compatible client works out of the box.
+          with 44 endpoints.
         </p>
 
         <div class="compat-list">
@@ -953,29 +1199,14 @@
           <div class="compat-item">Cody</div>
           <div class="compat-item">Continue</div>
         </div>
-
-        <p style="margin-top: 24px; font-size: 14px; color: var(--text-muted)">
-          Also available as a
-          <a
-            href="/v1/guide"
-            style="
-              color: var(--text-dim);
-              text-decoration: none;
-              border-bottom: 1px solid var(--border);
-            "
-            >REST API</a
-          >
-          with 44 endpoints. Use directly from scripts, CI/CD pipelines, or
-          custom integrations.
-        </p>
       </section>
 
       <!-- CTA -->
       <section class="cta-section reveal">
         <h2>Start in 10 seconds</h2>
-        <p>One command. Zero configuration. Free to get started.</p>
+        <p>One command. Zero configuration. No email required.</p>
 
-        <div style="display: flex; justify-content: center">
+        <div class="cta-actions">
           <div
             class="install-cmd"
             onclick="copyInstall(this)"
@@ -990,6 +1221,20 @@
             <span class="copy">Copy</span>
           </div>
         </div>
+        <div style="margin-top: 24px">
+          <a
+            href="https://github.com/Looney-tic/intel-overdrive"
+            class="hero-star-btn"
+            style="font-size: 14px; padding: 12px 20px"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path
+                d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
+              />
+            </svg>
+            Star on GitHub
+          </a>
+        </div>
       </section>
 
       <!-- FOOTER -->
@@ -997,9 +1242,14 @@
         <span
           >Overdrive Intel &middot; Built for developers who ship with AI</span
         >
-        <div style="display: flex; gap: 24px">
+        <div style="display: flex; gap: 24px; flex-wrap: wrap">
           <a href="/v1/guide">API Docs</a>
+          <a href="https://www.npmjs.com/package/intel-overdrive-mcp">npm</a>
           <a href="https://github.com/Looney-tic/intel-overdrive">GitHub</a>
+          <a href="https://github.com/Looney-tic/intel-overdrive/issues"
+            >Feedback</a
+          >
+          <a href="https://registry.modelcontextprotocol.io">MCP Registry</a>
         </div>
       </footer>
     </div>
