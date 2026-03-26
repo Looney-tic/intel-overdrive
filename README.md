@@ -65,16 +65,16 @@ Works with **Claude Code** · **Cursor** · **GitHub Copilot** · **Windsurf** �
 
 **1,000+ sources** polled every 15 minutes. **49,000+ items** classified and searchable.
 
-| Source type        | Count | What it covers                                             |
-| ------------------ | ----- | ---------------------------------------------------------- |
-| GitHub repos       | 570+  | Release feeds, deep repo analysis, trending projects       |
-| RSS / Atom feeds   | 280+  | Anthropic, OpenAI, Vercel, Cloudflare, framework blogs     |
-| Vendor MCP servers | 30+   | Netlify, Stripe, Supabase, AWS, Sentry, Grafana, Terraform |
-| Reddit             | 10+   | r/ClaudeAI, r/cursor, r/LocalLLaMA, r/MachineLearning      |
-| Hacker News        | 5     | AI, MCP, agent-related discussions                         |
-| Bluesky            | 6     | MCP protocol, AI coding community                          |
-| Package registries | 3     | npm, PyPI — new MCP servers, SDK releases                  |
-| Other              | 20+   | arXiv, VS Code Marketplace, MCP registries, awesome lists  |
+| Source type        | Count | What it covers                                                    |
+| ------------------ | ----- | ----------------------------------------------------------------- |
+| GitHub repos       | 22k+  | Thousands of repos via search API, 575 tracked with deep analysis |
+| RSS / Atom feeds   | 280+  | Anthropic, OpenAI, Vercel, Cloudflare, framework blogs            |
+| Vendor MCP servers | 30+   | Netlify, Stripe, Supabase, AWS, Sentry, Grafana, Terraform        |
+| Reddit             | 10+   | r/ClaudeAI, r/cursor, r/LocalLLaMA, r/MachineLearning             |
+| Hacker News        | 5     | AI, MCP, agent-related discussions                                |
+| Bluesky            | 6     | MCP protocol, AI coding community                                 |
+| Package registries | 3     | npm, PyPI — new MCP servers, SDK releases                         |
+| Other              | 20+   | arXiv, VS Code Marketplace, MCP registries, awesome lists         |
 
 Every item is auto-classified into types (tool, update, practice, security, docs) and significance levels (breaking, major, minor, informational).
 
