@@ -8,6 +8,8 @@ Intel Overdrive plugs directly into Claude Code as an MCP server. It continuousl
 
 ### See it in action
 
+> _"What are the best MCP servers I should be using right now?"_
+
 ![Intel Overdrive demo](demo.gif)
 
 **You're building a feature. Your agent finds the tool you didn't know existed:**
