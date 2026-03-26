@@ -86,6 +86,37 @@ Every item is auto-classified into types (tool, update, practice, security, docs
 
 ## How it works
 
+```mermaid
+graph LR
+    subgraph Sources["1,000+ Sources"]
+        GH["GitHub\n22k+ repos"]
+        RSS["RSS/Atom\n280+ feeds"]
+        Social["Reddit · HN\nBluesky"]
+        Reg["npm · PyPI\nMCP Registries"]
+    end
+
+    subgraph Pipeline["Overdrive Intel Pipeline"]
+        Ingest["Ingest\nevery 15 min"]
+        Classify["Classify\ntype · significance"]
+        Embed["Embed\nvector search"]
+        Score["Quality Score\n★ stars · labels"]
+    end
+
+    subgraph Output["Your Agent"]
+        MCP["overdrive_intel\nMCP tool"]
+        Agent["Claude Code"]
+    end
+
+    GH & RSS & Social & Reg --> Ingest
+    Ingest --> Classify --> Embed --> Score
+    Score --> MCP
+    MCP --> Agent
+
+    style Sources fill:#1a1a2e,stroke:#2a2a36,color:#e4e4e8
+    style Pipeline fill:#1a1a2e,stroke:#2a2a36,color:#e4e4e8
+    style Output fill:#1a1a2e,stroke:#3b82f6,color:#e4e4e8
+```
+
 1. **Install once** — the setup script registers the MCP server globally in Claude Code
 2. **Agent detects automatically** — when you ask about tools, SDKs, or new features, Claude Code recognizes the topic and queries `overdrive_intel` before searching the web
 3. **Or just ask** — "what's new?", "best MCP for X?", "any breaking changes in Y?" — your agent has the answer instantly
