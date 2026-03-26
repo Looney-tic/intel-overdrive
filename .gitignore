@@ -42,3 +42,10 @@ scripts/check_breaking.py
 scripts/audit_*.py
 scripts/overdrive-intel-hook.sh
 overdrive-intel-mcp/test.sh
+
+# Outdated/experimental (not for public repo)
+claude-plugin/
+integrations/
+bin/overdrive-intel
+install.sh
+tests/eval/
