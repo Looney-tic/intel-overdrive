@@ -1,8 +1,10 @@
 # Overdrive Intel
 
-**Give your AI coding agent real-time knowledge.**
+**Stop manually tracking the AI ecosystem. Let your agent do it.**
 
-Overdrive Intel is an [MCP server](https://modelcontextprotocol.io) that feeds live intelligence to Claude Code, Cursor, Copilot, and other AI coding agents. It monitors 1,000+ sources so your agent stops recommending deprecated APIs, finds the best tools on the first try, and warns you about breaking changes before you ship.
+New MCP servers, SDK breaking changes, security vulnerabilities, framework releases — the AI coding ecosystem moves so fast that staying current is a full-time job. Newsletters pile up, Reddit threads scroll by, release notes go unread.
+
+Overdrive Intel is an [MCP server](https://modelcontextprotocol.io) that monitors 1,000+ sources for you and feeds the knowledge directly into your AI coding agent. When you ask a question, your agent already knows what shipped last week.
 
 ```
 You: "Is there a good PostgreSQL MCP server?"
@@ -14,7 +16,7 @@ Agent calls overdrive_intel → gets live, quality-ranked results:
   3. postgres_mcp              ★ 6     · new           — lightweight, readonly modes
 ```
 
-No guessing. No hallucinating outdated packages. Your agent gets star counts, quality labels, and significance tiers — so it recommends battle-tested tools, not random repos.
+No newsletters. No manual research. Your agent surfaces the right answer with star counts, quality labels, and significance tiers — in the moment you need it.
 
 ## Install
 
