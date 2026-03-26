@@ -1,13 +1,14 @@
 {
   "name": "intel-overdrive-mcp",
-  "version": "0.9.2",
-  "description": "MCP server for Intel Overdrive — Claude Code ecosystem intelligence feed",
+  "version": "0.9.3",
+  "description": "Real-time intelligence for Claude Code — new MCP servers, tools, skills, and SDK updates from 1,000+ monitored sources. Paste the install command into Claude Code and your agent stays current automatically.",
   "type": "module",
   "bin": {
     "intel-overdrive-mcp": "./dist/index.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "tsc",
@@ -15,13 +16,18 @@
   },
   "keywords": [
     "mcp",
+    "mcp-server",
     "claude",
     "claude-code",
     "ai",
+    "ai-coding",
     "intelligence",
-    "model-context-protocol"
+    "model-context-protocol",
+    "developer-tools",
+    "tool-discovery",
+    "ai-agent"
   ],
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "engines": {
     "node": ">=18.0.0"
   },
