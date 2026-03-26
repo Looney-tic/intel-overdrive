@@ -43,7 +43,7 @@ That's it. Claude runs the command, registers anonymously, installs the MCP serv
 npm i -g intel-overdrive-mcp
 ```
 
-Also works with **Cursor** · **GitHub Copilot** · **Windsurf** · **Claude Desktop** · **Aider** · **Cody** · **Continue** · any MCP client
+Built for **Claude Code**. Also available as a [REST API](https://inteloverdrive.com/v1/guide).
 
 ## What you can ask
 
