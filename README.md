@@ -88,7 +88,7 @@ Every item is auto-classified into types (tool, update, practice, security, docs
 
 ```mermaid
 flowchart LR
-    S["1,000+ sources\nGitHub · RSS · Reddit\nHN · npm · PyPI"] --> P["Classify & score\nHaiku + Voyage AI"] --> D[("49k+ items\nPostgreSQL")] --> M["overdrive_intel\nMCP tool"] --> C["Claude Code"]
+    S["🔄 1,000+ sources\npolled every 15 min"] --> C["🧠 AI classification\ntype · significance · tags\nHaiku LLM + Voyage embeddings"] --> Q["⭐ Quality scoring\nGitHub stars · maintenance\nmaturity labels"] --> D[("📦 49k+ items\nPostgreSQL + pgvector")] --> M["⚡ overdrive_intel\nMCP tool"] --> A["💻 Claude Code"]
 ```
 
 1. **Install once** — paste the setup command into Claude Code
