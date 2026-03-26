@@ -51,5 +51,3 @@ install.sh
 tests/eval/
 
 # Demo video files (served from static, not git)
-static/demo.*
-static/demo-original.mov

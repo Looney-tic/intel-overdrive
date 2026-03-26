@@ -8,7 +8,7 @@ Intel Overdrive plugs directly into Claude Code as an MCP server. It continuousl
 
 ### See it in action
 
-<video src="https://inteloverdrive.com/dl/demo.mp4" autoplay loop muted playsinline width="600"></video>
+![Intel Overdrive demo](demo.gif)
 
 **You're building a feature. Your agent finds the tool you didn't know existed:**
 
