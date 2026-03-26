@@ -6,6 +6,10 @@ New MCP servers, Claude Code skills, agent frameworks, SDK updates — the ecosy
 
 Intel Overdrive plugs directly into Claude Code as an MCP server. It continuously monitors 1,000+ sources and indexes what's new. Your agent automatically knows about tools, features, and changes that aren't in its training data — and surfaces them exactly when they're relevant.
 
+### See it in action
+
+![Intel Overdrive demo — Claude Code calling overdrive_intel](https://inteloverdrive.com/dl/demo.gif)
+
 **You're building a feature. Your agent finds the tool you didn't know existed:**
 
 ```
