@@ -87,40 +87,51 @@ Every item is auto-classified into types (tool, update, practice, security, docs
 ## How it works
 
 ```mermaid
-graph LR
-    subgraph Sources["1,000+ Sources"]
-        GH["GitHub\n22k+ repos"]
-        RSS["RSS/Atom\n280+ feeds"]
-        Social["Reddit · HN\nBluesky"]
-        Reg["npm · PyPI\nMCP Registries"]
+flowchart TB
+    subgraph sources [" 1,000+ Sources — polled every 15 min "]
+        direction LR
+        gh(("GitHub\n22k+ repos"))
+        rss(("RSS/Atom\n280+ feeds"))
+        social(("Reddit · HN\nBluesky"))
+        vendor(("30+ Vendor\nMCP Servers"))
+        pkg(("npm · PyPI\nRegistries"))
     end
 
-    subgraph Pipeline["Overdrive Intel Pipeline"]
-        Ingest["Ingest\nevery 15 min"]
-        Classify["Classify\ntype · significance"]
-        Embed["Embed\nvector search"]
-        Score["Quality Score\n★ stars · labels"]
+    subgraph pipeline [" Intelligence Pipeline "]
+        direction LR
+        fetch["Fetch & Dedup"]
+        classify["Classify\nHaiku LLM"]
+        embed["Embed\nVoyage AI"]
+        quality["Quality Score\nGitHub API"]
+
+        fetch --> classify --> embed --> quality
     end
 
-    subgraph Output["Your Agent"]
-        MCP["overdrive_intel\nMCP tool"]
-        Agent["Claude Code"]
+    subgraph db [" 49,000+ Indexed Items "]
+        direction LR
+        pg[("PostgreSQL\npgvector")]
+        types["tool · update\npractice · security · docs"]
+        signals["★ stars · quality labels\nbreaking · major · minor"]
     end
 
-    GH & RSS & Social & Reg --> Ingest
-    Ingest --> Classify --> Embed --> Score
-    Score --> MCP
-    MCP --> Agent
+    subgraph agent [" Claude Code "]
+        direction LR
+        you["You ask a question"]
+        tool["Agent calls\noverdrive_intel"]
+        answer["Ranked results\nin one call"]
 
-    style Sources fill:#1a1a2e,stroke:#2a2a36,color:#e4e4e8
-    style Pipeline fill:#1a1a2e,stroke:#2a2a36,color:#e4e4e8
-    style Output fill:#1a1a2e,stroke:#3b82f6,color:#e4e4e8
+        you --> tool --> answer
+    end
+
+    sources --> fetch
+    quality --> pg
+    pg --> tool
 ```
 
-1. **Install once** — the setup script registers the MCP server globally in Claude Code
-2. **Agent detects automatically** — when you ask about tools, SDKs, or new features, Claude Code recognizes the topic and queries `overdrive_intel` before searching the web
-3. **Or just ask** — "what's new?", "best MCP for X?", "any breaking changes in Y?" — your agent has the answer instantly
-4. **Results are ranked** — every item is quality-scored with GitHub stars, maintenance status, and maturity labels
+1. **Install once** — paste the setup command into Claude Code
+2. **Agent detects automatically** — when you ask about tools, SDKs, or new features, Claude Code calls `overdrive_intel` before searching the web
+3. **Or just ask** — "what's new?", "best MCP for X?", "any breaking changes in Y?"
+4. **Results are ranked** — quality-scored with GitHub stars, maintenance status, and maturity labels
 
 ## API
 
