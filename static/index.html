@@ -969,10 +969,13 @@
       <!-- LIVE OUTPUT EXAMPLES -->
       <section class="live-section reveal">
         <div class="section-label">What your agent sees</div>
-        <div class="section-title">Intelligence, not noise</div>
+        <div class="section-title">
+          Your agent catches it before you debug it
+        </div>
         <p class="section-desc">
-          Every item is auto-classified, quality-scored, and ranked. Your agent
-          gets actionable intel with star counts and significance tiers.
+          You ask your agent to write OpenAI streaming code. Without this tool,
+          it uses the old API and you waste 30 minutes debugging. With it, the
+          agent already knows what changed:
         </p>
 
         <!-- Breaking changes example -->
@@ -1048,62 +1051,60 @@
             <div class="terminal-dot"></div>
             <div class="terminal-dot"></div>
             <span class="terminal-title"
-              >overdrive_intel({ type: "search", query: "PostgreSQL MCP server"
-              })</span
+              >overdrive_intel({ type: "search", query: "Anthropic Claude SDK
+              latest changes" })</span
             >
           </div>
           <div class="terminal-body">
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">1.</span>
-                <span class="result-title">timescale/pg-aiguide</span>
-                <span class="result-badge badge-tool">tool</span>
+                <span class="result-title">Anthropic Python SDK v0.86.0</span>
+                <span class="result-badge badge-major">major</span>
                 <span class="result-badge badge-established">established</span>
               </div>
               <div class="result-meta">
-                <span class="stars">&#9733; 1,640</span>
-                <span>rel: 0.82</span>
-                <span>2026-03-21</span>
+                <span class="stars">&#9733; 8.2k</span>
+                <span>update</span>
+                <span>2026-03-24</span>
               </div>
               <div class="result-summary">
-                Postgres documentation MCP with index tuning, EXPLAIN analysis,
-                and health checks. Production-ready.
+                Adds native streaming support for extended thinking. New
+                client.messages.stream() API replaces manual SSE parsing.
               </div>
             </div>
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">2.</span>
                 <span class="result-title"
-                  >alexanderzuev/supabase-mcp-server</span
+                  >Claude Code Hooks: best practices</span
                 >
-                <span class="result-badge badge-tool">tool</span>
-                <span class="result-badge badge-emerging">emerging</span>
+                <span class="result-badge badge-practice">practice</span>
               </div>
               <div class="result-meta">
-                <span class="stars">&#9733; 814</span>
-                <span>rel: 0.80</span>
-                <span>2026-03-20</span>
+                <span>practice</span>
+                <span>2026-03-22</span>
               </div>
               <div class="result-summary">
-                Supabase MCP server with full database access, auth management,
-                and edge function deployment.
+                Pre-commit, post-tool, and notification hooks. Use PreToolUse
+                for permission gating, PostToolUse for logging.
               </div>
             </div>
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">3.</span>
-                <span class="result-title">JaviMaligno/postgres_mcp</span>
-                <span class="result-badge badge-tool">tool</span>
-                <span class="result-badge badge-emerging">new</span>
+                <span class="result-title">Claude Agent SDK v0.2.0</span>
+                <span class="result-badge badge-major">major</span>
+                <span class="result-badge badge-emerging">emerging</span>
               </div>
               <div class="result-meta">
-                <span class="stars">&#9733; 6</span>
-                <span>rel: 0.78</span>
-                <span>2026-03-22</span>
+                <span class="stars">&#9733; 4.1k</span>
+                <span>update</span>
+                <span>2026-03-23</span>
               </div>
               <div class="result-summary">
-                Lightweight Postgres MCP with SQL injection protection and
-                readonly modes.
+                Multi-agent orchestration, handoff patterns, and guardrail
+                hooks. Python-first with TypeScript SDK in beta.
               </div>
             </div>
           </div>
@@ -1136,10 +1137,14 @@
               recognizes the topic and queries Overdrive Intel.
             </p>
             <div class="example">
-              <span class="you">You:</span> "Is there a Netlify MCP server?"<br />
+              <span class="you">You:</span> "Write me an OpenAI streaming
+              completion"<br />
               <span class="agent">Agent:</span>
               <code style="color: var(--accent); font-size: 11px"
-                >overdrive_intel({ query: "Netlify MCP" })</code
+                >overdrive_intel({ query: "openai sdk breaking changes" })</code
+              ><br />
+              <span style="color: var(--green); font-size: 11px"
+                >&rarr; catches the breaking change, writes correct code</span
               >
             </div>
           </div>

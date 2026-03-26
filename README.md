@@ -7,16 +7,19 @@ New MCP servers, SDK breaking changes, security vulnerabilities, framework relea
 Overdrive Intel is an [MCP server](https://modelcontextprotocol.io) that monitors 1,000+ sources for you and feeds the knowledge directly into your AI coding agent. When you ask a question, your agent already knows what shipped last week.
 
 ```
-You: "Is there a good PostgreSQL MCP server?"
+You: "Write me an OpenAI streaming chat completion"
 
-Agent calls overdrive_intel → gets live, quality-ranked results:
+Without Overdrive Intel:
+  → Agent writes code using the old API format
+  → You debug for 30 minutes before realizing the SDK changed last week
 
-  1. timescale/pg-aiguide      ★ 1,640 · established  — EXPLAIN analysis, index tuning
-  2. supabase-community/mcp    ★ 814   · emerging     — full Supabase DB + auth access
-  3. postgres_mcp              ★ 6     · new           — lightweight, readonly modes
+With Overdrive Intel:
+  → Agent automatically checks: overdrive_intel({ query: "openai sdk breaking changes" })
+  → Sees: "OpenAI Python SDK v2.25.0 — BREAKING — removed prompt_cache_key, new streaming API"
+  → Writes correct code on the first try
 ```
 
-Without this tool, your agent Googles, scrapes random pages, and burns tokens on unreliable web searches. With it, the answer comes back in one call — pre-indexed, quality-ranked, and ready to use.
+Your agent checks for breaking changes, new tools, and security issues _before_ it writes code — not after you've wasted time debugging. One API call instead of 30 seconds of Googling and scraping.
 
 ## Install
 
