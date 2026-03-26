@@ -87,45 +87,8 @@ Every item is auto-classified into types (tool, update, practice, security, docs
 ## How it works
 
 ```mermaid
-flowchart TB
-    subgraph sources [" 1,000+ Sources — polled every 15 min "]
-        direction LR
-        gh(("GitHub\n22k+ repos"))
-        rss(("RSS/Atom\n280+ feeds"))
-        social(("Reddit · HN\nBluesky"))
-        vendor(("30+ Vendor\nMCP Servers"))
-        pkg(("npm · PyPI\nRegistries"))
-    end
-
-    subgraph pipeline [" Intelligence Pipeline "]
-        direction LR
-        fetch["Fetch & Dedup"]
-        classify["Classify\nHaiku LLM"]
-        embed["Embed\nVoyage AI"]
-        quality["Quality Score\nGitHub API"]
-
-        fetch --> classify --> embed --> quality
-    end
-
-    subgraph db [" 49,000+ Indexed Items "]
-        direction LR
-        pg[("PostgreSQL\npgvector")]
-        types["tool · update\npractice · security · docs"]
-        signals["★ stars · quality labels\nbreaking · major · minor"]
-    end
-
-    subgraph agent [" Claude Code "]
-        direction LR
-        you["You ask a question"]
-        tool["Agent calls\noverdrive_intel"]
-        answer["Ranked results\nin one call"]
-
-        you --> tool --> answer
-    end
-
-    sources --> fetch
-    quality --> pg
-    pg --> tool
+flowchart LR
+    S["1,000+ sources\nGitHub · RSS · Reddit\nHN · npm · PyPI"] --> P["Classify & score\nHaiku + Voyage AI"] --> D[("49k+ items\nPostgreSQL")] --> M["overdrive_intel\nMCP tool"] --> C["Claude Code"]
 ```
 
 1. **Install once** — paste the setup command into Claude Code
