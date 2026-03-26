@@ -1,6 +1,6 @@
 # Intel Overdrive
 
-**Everything new in AI coding — delivered straight to your agent.**
+**[inteloverdrive.com](https://inteloverdrive.com)** — Everything new in AI coding, delivered straight to your agent.
 
 New MCP servers, Claude Code skills, agent frameworks, SDK updates — the ecosystem moves faster than anyone can track. Most developers piece it together from Twitter, Reddit, newsletters, and Discord. By the time you hear about a tool, you've already built the thing it replaces.
 
