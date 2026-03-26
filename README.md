@@ -16,7 +16,7 @@ Agent calls overdrive_intel → gets live, quality-ranked results:
   3. postgres_mcp              ★ 6     · new           — lightweight, readonly modes
 ```
 
-No newsletters. No manual research. Your agent surfaces the right answer with star counts, quality labels, and significance tiers — in the moment you need it.
+Without this tool, your agent Googles, scrapes random pages, and burns tokens on unreliable web searches. With it, the answer comes back in one call — pre-indexed, quality-ranked, and ready to use.
 
 ## Install
 
@@ -43,10 +43,19 @@ Works with **Claude Code** · **Cursor** · **GitHub Copilot** · **Windsurf** �
 | "What's the current best practice for Claude Code hooks?" | Synthesized patterns from 50+ community sources |
 | "Alternatives to LangChain?"                              | Semantic search across the full corpus          |
 
+## Why not just let the agent web search?
+
+|                 | Web search                                                          | Overdrive Intel                                 |
+| --------------- | ------------------------------------------------------------------- | ----------------------------------------------- |
+| **Speed**       | 10-30s of Googling, scraping, parsing                               | One API call, instant results                   |
+| **Cost**        | Multiple tool calls, burns tokens reading pages                     | Single call, pre-compressed response            |
+| **Reliability** | Scrapes may fail, results may be outdated or wrong                  | Pre-indexed, verified, quality-scored           |
+| **Quality**     | No ranking — agent can't tell a 30k-star SDK from a weekend project | Star counts, quality labels, significance tiers |
+
 ## How it works
 
 1. **You install once** — setup script registers the MCP server globally
-2. **Your agent calls it automatically** — when you ask about tools, SDKs, or breaking changes, the agent recognizes the topic and queries `overdrive_intel`
+2. **Your agent calls it automatically** — when you ask about tools, SDKs, or breaking changes, the agent recognizes the topic and queries `overdrive_intel` instead of launching a web search
 3. **Results are ranked** — every item is auto-classified and quality-scored with GitHub stars, maintenance status, and maturity labels
 
 ## Coverage
