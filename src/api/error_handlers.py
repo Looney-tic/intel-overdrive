@@ -1,5 +1,5 @@
 """
-Structured error response formatting for the Overdrive Intel API.
+Structured error response formatting for the Intel Overdrive API.
 
 All error responses use the envelope:
   {"error": {"code": "...", "message": "...", "hint": "..."}}

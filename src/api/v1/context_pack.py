@@ -69,7 +69,7 @@ def _build_header(
 
 
 def _build_footer(n_items: int, days: int) -> str:
-    return f"---\nSource: Overdrive Intel | {n_items} items from last {days} days"
+    return f"---\nSource: Intel Overdrive | {n_items} items from last {days} days"
 
 
 def _format_library_entry(entry: dict) -> str:

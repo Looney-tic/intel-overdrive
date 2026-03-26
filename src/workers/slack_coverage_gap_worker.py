@@ -125,7 +125,7 @@ async def check_coverage_gaps(ctx: dict) -> None:
                 "elements": [
                     {
                         "type": "mrkdwn",
-                        "text": "Powered by Overdrive Intel | Auto-detected from search miss feedback",
+                        "text": "Powered by Intel Overdrive | Auto-detected from search miss feedback",
                     }
                 ],
             },

@@ -31,7 +31,7 @@ def setup(
       overdrive-intel setup --url https://api.example.com --invite-code YOUR_INVITE_CODE
       overdrive-intel setup --key dti_v1_existing_key
     """
-    console.print("\n[bold]Overdrive Intel Setup[/bold]\n")
+    console.print("\n[bold]Intel Overdrive Setup[/bold]\n")
 
     # 1. API URL
     if not url:

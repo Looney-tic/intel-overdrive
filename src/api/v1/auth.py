@@ -10,6 +10,7 @@ Supports two modes:
 
 Gated behind SIGNUP_ENABLED config. Rate-limited by IP (5/hour).
 """
+import asyncio
 import re
 import uuid as _uuid
 
@@ -25,6 +26,7 @@ from src.core.config import get_settings
 from src.core.logger import get_logger
 from src.models.models import APIKey, User
 from src.services.auth_service import AuthService
+from src.services.slack_delivery import notify_signup
 from src.api.schemas import RegisterRequest, RegisterResponse
 
 logger = get_logger(__name__)
@@ -112,6 +114,11 @@ async def register(
             tier="free-anon",
         )
 
+        # Slack notification (fire-and-forget)
+        webhook_url = settings.SLACK_WEBHOOK_URL
+        if webhook_url:
+            asyncio.create_task(notify_signup(webhook_url, str(user.id), "free-anon"))
+
         response_obj = RegisterResponse(
             api_key=raw_key,
             user_id=str(user.id),
@@ -165,6 +172,11 @@ async def register(
         email_masked=email[:3] + "***" if len(email) > 3 else "***",
         tier="free",
     )
+
+    # Slack notification (fire-and-forget)
+    webhook_url = settings.SLACK_WEBHOOK_URL
+    if webhook_url:
+        asyncio.create_task(notify_signup(webhook_url, str(user.id), "free"))
 
     response_obj = RegisterResponse(
         api_key=raw_key,

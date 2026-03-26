@@ -633,12 +633,12 @@ async def get_feed(
             response_dict["topic_sources_monitored"] = topic_count
             if topic_count > 0:
                 response_dict["coverage_note"] = (
-                    f"Overdrive Intel monitors {topic_count} source(s) related to "
+                    f"Intel Overdrive monitors {topic_count} source(s) related to "
                     f"'{topic_term}' -- no matching items in the last {days} days."
                 )
             else:
                 response_dict["coverage_note"] = (
-                    f"'{topic_term}' may not be in Overdrive Intel's coverage. "
+                    f"'{topic_term}' may not be in Intel Overdrive's coverage. "
                     "Check /v1/status for monitored sources."
                 )
 

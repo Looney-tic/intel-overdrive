@@ -41,7 +41,7 @@ _redoc_url = None if _is_prod else "/redoc"
 _openapi_url = None if _is_prod else "/openapi.json"
 
 app = FastAPI(
-    title="Overdrive Intel API",
+    title="Intel Overdrive API",
     version="0.1.0",
     lifespan=lifespan,
     docs_url=_docs_url,

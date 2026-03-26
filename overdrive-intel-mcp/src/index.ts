@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Overdrive Intel MCP Server
+ * Intel Overdrive MCP Server
  *
  * Single tool: `overdrive_intel` — query the AI coding ecosystem intelligence API.
  * The agent controls routing via the `type` parameter.

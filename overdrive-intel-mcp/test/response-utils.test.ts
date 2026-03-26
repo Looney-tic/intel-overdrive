@@ -348,7 +348,7 @@ describe("formatAsMarkdown", () => {
       item_ids: ["id-1"],
     };
     const md = formatAsMarkdown(output, "search");
-    assert.match(md, /# Overdrive Intel: "MCP auth"/);
+    assert.match(md, /# Intel Overdrive: "MCP auth"/);
     assert.match(md, /\(search, 1 results\)/);
     assert.match(md, /Result quality: HIGH/);
     assert.match(md, /\*\*TL;DR:\*\* Found stuff/);

@@ -71,7 +71,7 @@ FAKEEOF
 
   rm -rf "$FAKE_BIN"
 
-  if echo "$OUTPUT" | grep -q "Overdrive Intel"; then
+  if echo "$OUTPUT" | grep -q "Intel Overdrive"; then
     fail "hook injected context for non-AI project"
   else
     pass "hook is silent for non-AI project"
@@ -101,7 +101,7 @@ FAKEEOF
 
   rm -rf "$FAKE_BIN"
 
-  if echo "$OUTPUT" | grep -q "Overdrive Intel Available"; then
+  if echo "$OUTPUT" | grep -q "Intel Overdrive Available"; then
     pass "hook outputs context for AI/MCP project"
   else
     fail "hook did not output expected context for AI/MCP project. Output: $OUTPUT"

@@ -1,4 +1,4 @@
-"""Overdrive Intel CLI — root Typer app with global options."""
+"""Intel Overdrive CLI — root Typer app with global options."""
 
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ def version_callback(value: bool) -> None:
 
 app = typer.Typer(
     name="overdrive-intel",
-    help="Overdrive Intel CLI — Claude Code ecosystem intelligence",
+    help="Intel Overdrive CLI — Claude Code ecosystem intelligence",
     no_args_is_help=True,
 )
 
@@ -53,7 +53,7 @@ def main(
         help="Show version and exit",
     ),
 ) -> None:
-    """Overdrive Intel CLI — Claude Code ecosystem intelligence."""
+    """Intel Overdrive CLI — Claude Code ecosystem intelligence."""
     state.json_mode = json or not sys.stdout.isatty()
     state.api_url = api_url or get_api_url()
 

@@ -1,11 +1,11 @@
-name: "Overdrive Intel Ecosystem Check"
+name: "Intel Overdrive Ecosystem Check"
 description: "Check for breaking changes in the AI coding ecosystem affecting your dependencies"
 branding:
   icon: "activity"
   color: "blue"
 inputs:
   api-key:
-    description: "Overdrive Intel API key (store as GitHub secret)"
+    description: "Intel Overdrive API key (store as GitHub secret)"
     required: true
   days:
     description: "Lookback window in days"

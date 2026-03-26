@@ -43,7 +43,7 @@ def _detect_key_tier() -> str:
 def login(
     key: str = typer.Option(None, "--key", help="API key (skips prompt)"),
 ) -> None:
-    """Authenticate with the Overdrive Intel API.
+    """Authenticate with the Intel Overdrive API.
 
     If you already have a key: overdrive-intel auth login --key dti_v1_...
     If you need a key: overdrive-intel auth register

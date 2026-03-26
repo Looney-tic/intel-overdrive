@@ -66,7 +66,7 @@ def test_format_digest_blocks_structure():
 
     # Last block is footer (context)
     assert blocks[-1]["type"] == "context"
-    assert "Powered by Overdrive Intel" in blocks[-1]["elements"][0]["text"]
+    assert "Powered by Intel Overdrive" in blocks[-1]["elements"][0]["text"]
 
 
 def test_format_digest_blocks_includes_items():

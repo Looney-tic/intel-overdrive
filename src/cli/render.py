@@ -43,7 +43,7 @@ def print_warning(msg: str) -> None:
 
 def render_feed_table(items: list[dict[str, Any]]) -> None:
     """Render feed items as a Rich table to stdout."""
-    table = Table(title="Overdrive Intel Feed", show_lines=False)
+    table = Table(title="Intel Overdrive Feed", show_lines=False)
     table.add_column("Title", style="cyan", no_wrap=False, ratio=4)
     table.add_column("Type", style="magenta", no_wrap=True)
     table.add_column("Tags", style="green", no_wrap=True)

@@ -344,7 +344,7 @@ export function formatAsMarkdown(
         const section = value as Record<string, unknown>;
         if (typeof section.compressed_briefing === "string") {
           const queryLabel = query ? `: "${query}"` : "";
-          let md = `# Overdrive Intel Briefing${queryLabel}\n\n`;
+          let md = `# Intel Overdrive Briefing${queryLabel}\n\n`;
           md += `${section.compressed_briefing}\n`;
 
           // Add key items if present
@@ -398,7 +398,7 @@ export function formatAsMarkdown(
   }
 
   const totalItems = sections.reduce((sum, s) => sum + s.items.length, 0);
-  let md = `# Overdrive Intel: "${query}" (${type}, ${totalItems} results)\n`;
+  let md = `# Intel Overdrive: "${query}" (${type}, ${totalItems} results)\n`;
   if (resultQuality) md += `Result quality: ${resultQuality}\n`;
   md += "\n";
   if (tldr) md += `**TL;DR:** ${tldr}\n\n`;

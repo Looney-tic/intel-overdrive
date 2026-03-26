@@ -1,10 +1,10 @@
-# Overdrive Intel
+# Intel Overdrive
 
 ## Prime Directive
 
 The main purpose of this MCP server is to give Claude Code (and other AI coding agents) **fast, efficient access to the latest developments** — new tools, MCP servers, skills, agents, frameworks, SDK updates, breaking changes — that are **not in the agent's training data**.
 
-Users currently get this information from social channels (Twitter, Reddit, Discord, Bluesky) and newsletters, which is basically a day job at the speed things move. Overdrive Intel replaces that by monitoring 1,000+ sources and feeding the knowledge directly into the agent. The agent either:
+Users currently get this information from social channels (Twitter, Reddit, Discord, Bluesky) and newsletters, which is basically a day job at the speed things move. Intel Overdrive replaces that by monitoring 1,000+ sources and feeding the knowledge directly into the agent. The agent either:
 
 1. **Detects automatically** — when the user asks about tools, SDKs, or features, the agent calls `overdrive_intel` before falling back to (slow, expensive, unreliable) web search
 2. **On-demand** — the user asks "what's new?", "what MCP servers exist for X?", "best agent framework?" and gets instant, quality-ranked results

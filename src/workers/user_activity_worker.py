@@ -158,7 +158,7 @@ async def post_user_activity_digest(ctx: dict) -> None:
                 "elements": [
                     {
                         "type": "mrkdwn",
-                        "text": "Overdrive Intel Admin | `overdrive-intel admin stats` for details",
+                        "text": "Intel Overdrive Admin | `overdrive-intel admin stats` for details",
                     }
                 ],
             }

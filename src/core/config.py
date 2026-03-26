@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
     # Core
-    APP_NAME: str = "Overdrive Intel"
+    APP_NAME: str = "Intel Overdrive"
     ENVIRONMENT: str = "development"
     LOG_LEVEL: str = "INFO"
 

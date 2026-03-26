@@ -1,5 +1,5 @@
 """
-CLI script to create the first (or any) API key for Overdrive Intel.
+CLI script to create the first (or any) API key for Intel Overdrive.
 
 Creates a User (if the email doesn't exist) and a new API key, then prints
 the raw key to stdout. The raw key is NEVER logged — it is shown only once.
@@ -79,7 +79,7 @@ async def create_api_key(email: str, name: str | None = None) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Create an Overdrive Intel API key.",
+        description="Create an Intel Overdrive API key.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )

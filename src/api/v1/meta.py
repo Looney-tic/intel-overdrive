@@ -182,7 +182,7 @@ async def api_guide(request: Request):
 
     return JSONResponse(
         content={
-            "name": "Overdrive Intel API",
+            "name": "Intel Overdrive API",
             "description": "Curated intelligence feed for the AI coding ecosystem — tools, skills, updates, practices, and docs. Auto-classified with significance tiers (breaking/major/minor/informational).",
             "base_url": base_url,
             "auth": {

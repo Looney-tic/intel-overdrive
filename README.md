@@ -1,19 +1,19 @@
-# Overdrive Intel
+# Intel Overdrive
 
 **Everything new in AI coding — delivered straight to your agent.**
 
 New MCP servers, Claude Code skills, agent frameworks, SDK updates — the ecosystem moves faster than anyone can track. Most developers piece it together from Twitter, Reddit, newsletters, and Discord. By the time you hear about a tool, you've already built the thing it replaces.
 
-Overdrive Intel plugs directly into Claude Code as an MCP server. It continuously monitors 1,000+ sources and indexes what's new. Your agent automatically knows about tools, features, and changes that aren't in its training data — and surfaces them exactly when they're relevant.
+Intel Overdrive plugs directly into Claude Code as an MCP server. It continuously monitors 1,000+ sources and indexes what's new. Your agent automatically knows about tools, features, and changes that aren't in its training data — and surfaces them exactly when they're relevant.
 
 **You're building a feature. Your agent finds the tool you didn't know existed:**
 
 ```
 You: "I need to add Stripe payments to this app"
 
-Without Overdrive Intel → agent writes raw API integration from scratch
+Without Intel Overdrive → agent writes raw API integration from scratch
 
-With Overdrive Intel → agent calls overdrive_intel first:
+With Intel Overdrive → agent calls overdrive_intel first:
   ⚡ Stripe MCP Server (stripe/ai) — ★ 3.2k · established
     "Official Stripe MCP. Create payment intents, manage subscriptions,
      and query transactions directly from Claude Code."
@@ -74,7 +74,7 @@ Your agent also calls it **automatically** — when you ask it to write code usi
 
 ## Why not just let the agent search the web?
 
-|                 | Agent web search                                              | Overdrive Intel                                 |
+|                 | Agent web search                                              | Intel Overdrive                                 |
 | --------------- | ------------------------------------------------------------- | ----------------------------------------------- |
 | **Speed**       | 10-30s of Googling, scraping, parsing                         | One call, instant                               |
 | **Cost**        | Multiple tool calls, burns tokens reading pages               | Single call, pre-compressed                     |
@@ -130,7 +130,7 @@ I got frustrated. Every morning I was scrolling Twitter, checking Reddit, skimmi
 
 Then I realized something worse: when I asked Claude Code about recent developments or current best practices, it just started Googling for me. Scraping random pages, burning tokens, returning outdated results. My AI coding agent — the thing that's supposed to make me more productive — couldn't tell me what shipped last week.
 
-So I built Overdrive Intel — with Claude Code. A pipeline that monitors 1,000+ sources, classifies everything with AI, scores it for quality, and feeds it directly into Claude Code as an MCP tool. Now when I ask "what's the best MCP server for databases?" or "did anything break in the Anthropic SDK?", my agent already knows. One call, instant answer, quality-ranked.
+So I built Intel Overdrive. A pipeline that monitors 1,000+ sources, classifies everything with AI, scores it for quality, and feeds it directly into Claude Code as an MCP tool. Now when I ask "what's the best MCP server for databases?" or "did anything break in the Anthropic SDK?", my agent already knows. One call, instant answer, quality-ranked.
 
 It changed how I work. I stopped manually tracking the ecosystem and started just building. Now I'm sharing it with everyone.
 

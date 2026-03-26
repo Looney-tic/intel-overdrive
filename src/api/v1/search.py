@@ -696,7 +696,7 @@ async def search_intel_items(
         note = (
             "No high-confidence results found for this query. "
             "Try different keywords or check if this topic is within "
-            "Overdrive Intel's coverage (AI coding tools & practices)."
+            "Intel Overdrive's coverage (AI coding tools & practices)."
         )
         search_response = SearchResponse(
             items=[], total=0, offset=offset, limit=limit, warning=note
@@ -720,7 +720,7 @@ async def search_intel_items(
         avg_relevance = sum((item.relevance_score or 0) for item in items) / len(items)
         if avg_relevance < 0.3:
             warning = (
-                "These results may be outside Overdrive Intel's coverage area "
+                "These results may be outside Intel Overdrive's coverage area "
                 "(AI coding tools & practices). Results shown are best-effort matches."
             )
 

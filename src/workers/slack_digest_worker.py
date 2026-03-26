@@ -257,7 +257,7 @@ def _format_enhanced_blocks(data: dict) -> list[dict]:
             "elements": [
                 {
                     "type": "mrkdwn",
-                    "text": "Powered by Overdrive Intel | View more: `overdrive-intel feed --days 1`",
+                    "text": "Powered by Intel Overdrive | View more: `overdrive-intel feed --days 1`",
                 }
             ],
         }
@@ -324,7 +324,7 @@ def _format_digest_blocks(digest: dict) -> list[dict]:
             "elements": [
                 {
                     "type": "mrkdwn",
-                    "text": "Powered by Overdrive Intel | View more: `overdrive-intel feed --days 1`",
+                    "text": "Powered by Intel Overdrive | View more: `overdrive-intel feed --days 1`",
                 }
             ],
         }

@@ -209,7 +209,7 @@ async def post_weekly_source_health(ctx: dict) -> None:
                 "elements": [
                     {
                         "type": "mrkdwn",
-                        "text": "Powered by Overdrive Intel | Weekly source health report",
+                        "text": "Powered by Intel Overdrive | Weekly source health report",
                     }
                 ],
             }
