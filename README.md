@@ -30,11 +30,13 @@ No newsletters. No scrolling Twitter. Your agent already knows.
 
 ## Install
 
+Paste this into your Claude Code conversation:
+
 ```bash
 bash <(curl -s https://inteloverdrive.com/dl/setup.sh)
 ```
 
-One command. Registers anonymously, installs the MCP server, configures Claude Code. No email, no account, no configuration.
+That's it. Claude runs the command, registers anonymously, installs the MCP server, and configures itself. No email, no account, no configuration.
 
 ```bash
 # or via npm
