@@ -45,6 +45,11 @@ npm i -g intel-overdrive-mcp
 
 Built for **Claude Code**. Also available as a [REST API](https://inteloverdrive.com/v1/guide).
 
+```mermaid
+flowchart LR
+    S["🔄 1,000+ sources\npolled every 15 min"] --> C["🧠 AI classification\ntype · significance · tags\nHaiku LLM + Voyage embeddings"] --> Q["⭐ Quality scoring\nGitHub stars · maintenance\nmaturity labels"] --> D[("📦 49k+ items\nPostgreSQL + pgvector")] --> M["⚡ overdrive_intel\nMCP tool"] --> A["💻 Claude Code"]
+```
+
 ## What you can ask
 
 | Question                                          | What your agent finds                             |
@@ -85,11 +90,6 @@ Your agent also calls it **automatically** — when you ask it to write code usi
 Every item is auto-classified into types (tool, update, practice, security, docs) and significance levels (breaking, major, minor, informational).
 
 ## How it works
-
-```mermaid
-flowchart LR
-    S["🔄 1,000+ sources\npolled every 15 min"] --> C["🧠 AI classification\ntype · significance · tags\nHaiku LLM + Voyage embeddings"] --> Q["⭐ Quality scoring\nGitHub stars · maintenance\nmaturity labels"] --> D[("📦 49k+ items\nPostgreSQL + pgvector")] --> M["⚡ overdrive_intel\nMCP tool"] --> A["💻 Claude Code"]
-```
 
 1. **Install once** — paste the setup command into Claude Code
 2. **Agent detects automatically** — when you ask about tools, SDKs, or new features, Claude Code calls `overdrive_intel` before searching the web
