@@ -23,7 +23,22 @@ build/
 reviews/
 research/
 deploy/
+docs/ops/
 test-trigger-rate.sh
 trigger-test-results.md
 CONTEXT-SEED.md
 .npmrc
+
+# Internal scripts (seeds, backfills, one-time ops)
+scripts/seed_phase*.py
+scripts/seed_expanded_sources.py
+scripts/seed_rag_sources.py
+scripts/seed_vendor_mcp_sources.py
+scripts/backfill_*.py
+scripts/regate_*.py
+scripts/reprocess_*.py
+scripts/requeue_*.py
+scripts/check_breaking.py
+scripts/audit_*.py
+scripts/overdrive-intel-hook.sh
+overdrive-intel-mcp/test.sh
