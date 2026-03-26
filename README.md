@@ -130,7 +130,7 @@ I got frustrated. Every morning I was scrolling Twitter, checking Reddit, skimmi
 
 Then I realized something worse: when I asked Claude Code about recent developments or current best practices, it just started Googling for me. Scraping random pages, burning tokens, returning outdated results. My AI coding agent — the thing that's supposed to make me more productive — couldn't tell me what shipped last week.
 
-So I built Overdrive Intel. A pipeline that monitors 1,000+ sources, classifies everything with AI, scores it for quality, and feeds it directly into Claude Code as an MCP tool. Now when I ask "what's the best MCP server for databases?" or "did anything break in the Anthropic SDK?", my agent already knows. One call, instant answer, quality-ranked.
+So I built Overdrive Intel — with Claude Code. A pipeline that monitors 1,000+ sources, classifies everything with AI, scores it for quality, and feeds it directly into Claude Code as an MCP tool. Now when I ask "what's the best MCP server for databases?" or "did anything break in the Anthropic SDK?", my agent already knows. One call, instant answer, quality-ranked.
 
 It changed how I work. I stopped manually tracking the ecosystem and started just building. Now I'm sharing it with everyone.
 
