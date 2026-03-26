@@ -6,27 +6,36 @@ New MCP servers, Claude Code skills, agent frameworks, SDK updates — the ecosy
 
 Overdrive Intel plugs directly into Claude Code as an MCP server. It continuously monitors 1,000+ sources and indexes what's new. Your agent automatically knows about tools, features, and changes that aren't in its training data — and surfaces them exactly when they're relevant.
 
-```
-You: "What's the best MCP server for working with Postgres?"
-
-Agent calls overdrive_intel → instant, quality-ranked results:
-
-  1. timescale/pg-aiguide      ★ 1,640 · established  — EXPLAIN analysis, index tuning
-  2. supabase-community/mcp    ★ 814   · emerging     — full Supabase DB + auth access
-  3. postgres_mcp              ★ 6     · new           — lightweight, readonly modes
-```
+**You're building a feature. Your agent finds the tool you didn't know existed:**
 
 ```
-You: "Are there any new Claude Code features I should know about?"
+You: "I need to add Stripe payments to this app"
 
-Agent calls overdrive_intel → latest updates:
+Without Overdrive Intel → agent writes raw API integration from scratch
 
-  → Claude Code Hooks: pre-commit, post-tool, notification hooks (2 days ago)
-  → Agent SDK v0.2.0: multi-agent orchestration, handoff patterns (4 days ago)
-  → New /co:plan-phase skill for implementation planning (1 week ago)
+With Overdrive Intel → agent calls overdrive_intel first:
+  ⚡ Stripe MCP Server (stripe/ai) — ★ 3.2k · established
+    "Official Stripe MCP. Create payment intents, manage subscriptions,
+     and query transactions directly from Claude Code."
+  → Agent uses the MCP server instead of writing 200 lines of boilerplate
 ```
 
-No newsletters. No scrolling Twitter. Your agent already knows.
+**You haven't checked the news in two weeks. One question catches you up:**
+
+```
+You: "What did I miss? Anything important in AI coding lately?"
+
+Agent calls overdrive_intel({ type: "feed", days: 14 }):
+
+  🔴 BREAKING  Anthropic SDK v0.86 — streaming API changed, update client code
+  🔴 BREAKING  OpenAI dropped prompt_cache_key — remove before upgrading
+  🟡 MAJOR     Claude Agent SDK v0.2 — multi-agent orchestration + handoffs
+  🟡 MAJOR     Netlify, Stripe, Grafana ship official MCP servers
+  🔵 NEW       29 vendor MCP servers added to ecosystem (AWS, Sentry, Terraform...)
+  🔵 NEW       ContextCrush CVE in Context7 — patch or disable immediately
+```
+
+No newsletters. No Twitter. No "I wish I'd known about that last week."
 
 ## Install
 
