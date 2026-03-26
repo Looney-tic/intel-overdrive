@@ -1,25 +1,32 @@
 # Overdrive Intel
 
-**Stop manually tracking the AI ecosystem. Let your agent do it.**
+**Everything new in AI coding — delivered straight to your agent.**
 
-New MCP servers, SDK breaking changes, security vulnerabilities, framework releases — the AI coding ecosystem moves so fast that staying current is a full-time job. Newsletters pile up, Reddit threads scroll by, release notes go unread.
+New MCP servers, Claude Code skills, agent frameworks, SDK updates — the ecosystem moves faster than anyone can track. Most developers piece it together from Twitter, Reddit, newsletters, and Discord. By the time you hear about a tool, you've already built the thing it replaces.
 
-Overdrive Intel is an [MCP server](https://modelcontextprotocol.io) that monitors 1,000+ sources for you and feeds the knowledge directly into your AI coding agent. When you ask a question, your agent already knows what shipped last week.
+Overdrive Intel plugs directly into Claude Code as an MCP server. It continuously monitors 1,000+ sources and indexes what's new. Your agent automatically knows about tools, features, and changes that aren't in its training data — and surfaces them exactly when they're relevant.
 
 ```
-You: "Write me an OpenAI streaming chat completion"
+You: "What's the best MCP server for working with Postgres?"
 
-Without Overdrive Intel:
-  → Agent writes code using the old API format
-  → You debug for 30 minutes before realizing the SDK changed last week
+Agent calls overdrive_intel → instant, quality-ranked results:
 
-With Overdrive Intel:
-  → Agent automatically checks: overdrive_intel({ query: "openai sdk breaking changes" })
-  → Sees: "OpenAI Python SDK v2.25.0 — BREAKING — removed prompt_cache_key, new streaming API"
-  → Writes correct code on the first try
+  1. timescale/pg-aiguide      ★ 1,640 · established  — EXPLAIN analysis, index tuning
+  2. supabase-community/mcp    ★ 814   · emerging     — full Supabase DB + auth access
+  3. postgres_mcp              ★ 6     · new           — lightweight, readonly modes
 ```
 
-Your agent checks for breaking changes, new tools, and security issues _before_ it writes code — not after you've wasted time debugging. One API call instead of 30 seconds of Googling and scraping.
+```
+You: "Are there any new Claude Code features I should know about?"
+
+Agent calls overdrive_intel → latest updates:
+
+  → Claude Code Hooks: pre-commit, post-tool, notification hooks (2 days ago)
+  → Agent SDK v0.2.0: multi-agent orchestration, handoff patterns (4 days ago)
+  → New /co:plan-phase skill for implementation planning (1 week ago)
+```
+
+No newsletters. No scrolling Twitter. Your agent already knows.
 
 ## Install
 
@@ -27,39 +34,36 @@ Your agent checks for breaking changes, new tools, and security issues _before_ 
 bash <(curl -s https://inteloverdrive.com/dl/setup.sh)
 ```
 
-One command. Registers anonymously, installs the MCP server, configures your tool. No email, no account, no configuration files.
+One command. Registers anonymously, installs the MCP server, configures Claude Code. No email, no account, no configuration.
 
 ```bash
 # or via npm
 npm i -g intel-overdrive-mcp
 ```
 
-Works with **Claude Code** · **Cursor** · **GitHub Copilot** · **Windsurf** · **Claude Desktop** · **Aider** · **Cody** · **Continue** · any MCP client
+Also works with **Cursor** · **GitHub Copilot** · **Windsurf** · **Claude Desktop** · **Aider** · **Cody** · **Continue** · any MCP client
 
-## What it catches
+## What you can ask
 
-| Your agent asks about...                                  | Overdrive Intel returns                         |
-| --------------------------------------------------------- | ----------------------------------------------- |
-| "Any breaking changes in the OpenAI SDK?"                 | Specific version, what broke, migration steps   |
-| "Best MCP server for Postgres?"                           | Quality-ranked options with star counts         |
-| "Is Context7 safe to use?"                                | CVE details, disclosure timeline, patch status  |
-| "What's the current best practice for Claude Code hooks?" | Synthesized patterns from 50+ community sources |
-| "Alternatives to LangChain?"                              | Semantic search across the full corpus          |
+| Question                                          | What your agent finds                             |
+| ------------------------------------------------- | ------------------------------------------------- |
+| "What MCP servers exist for databases?"           | Quality-ranked list with stars, maturity labels   |
+| "Any new agent frameworks worth trying?"          | Latest frameworks, compared by community traction |
+| "Did anything break in the OpenAI SDK?"           | Specific version, what broke, how to migrate      |
+| "What's the best practice for Claude Code hooks?" | Synthesized patterns from community sources       |
+| "Are there security issues with Context7?"        | CVE details, patch status, disclosure timeline    |
+| "What's new this week?"                           | Curated feed of the most significant updates      |
 
-## Why not just let the agent web search?
+Your agent also calls it **automatically** — when you ask it to write code using a library, it checks for breaking changes before writing outdated patterns.
 
-|                 | Web search                                                          | Overdrive Intel                                 |
-| --------------- | ------------------------------------------------------------------- | ----------------------------------------------- |
-| **Speed**       | 10-30s of Googling, scraping, parsing                               | One API call, instant results                   |
-| **Cost**        | Multiple tool calls, burns tokens reading pages                     | Single call, pre-compressed response            |
-| **Reliability** | Scrapes may fail, results may be outdated or wrong                  | Pre-indexed, verified, quality-scored           |
-| **Quality**     | No ranking — agent can't tell a 30k-star SDK from a weekend project | Star counts, quality labels, significance tiers |
+## Why not just let the agent search the web?
 
-## How it works
-
-1. **You install once** — setup script registers the MCP server globally
-2. **Your agent calls it automatically** — when you ask about tools, SDKs, or breaking changes, the agent recognizes the topic and queries `overdrive_intel` instead of launching a web search
-3. **Results are ranked** — every item is auto-classified and quality-scored with GitHub stars, maintenance status, and maturity labels
+|                 | Agent web search                                              | Overdrive Intel                                 |
+| --------------- | ------------------------------------------------------------- | ----------------------------------------------- |
+| **Speed**       | 10-30s of Googling, scraping, parsing                         | One call, instant                               |
+| **Cost**        | Multiple tool calls, burns tokens reading pages               | Single call, pre-compressed                     |
+| **Reliability** | Scrapes may fail, results outdated or wrong                   | Pre-indexed, verified, quality-scored           |
+| **Quality**     | No ranking — can't tell a 30k-star SDK from a weekend project | Star counts, quality labels, significance tiers |
 
 ## Coverage
 
@@ -77,6 +81,13 @@ Works with **Claude Code** · **Cursor** · **GitHub Copilot** · **Windsurf** �
 | Other              | 20+   | arXiv, VS Code Marketplace, MCP registries, awesome lists         |
 
 Every item is auto-classified into types (tool, update, practice, security, docs) and significance levels (breaking, major, minor, informational).
+
+## How it works
+
+1. **Install once** — the setup script registers the MCP server globally in Claude Code
+2. **Agent detects automatically** — when you ask about tools, SDKs, or new features, Claude Code recognizes the topic and queries `overdrive_intel` before searching the web
+3. **Or just ask** — "what's new?", "best MCP for X?", "any breaking changes in Y?" — your agent has the answer instantly
+4. **Results are ranked** — every item is quality-scored with GitHub stars, maintenance status, and maturity labels
 
 ## API
 
