@@ -2,16 +2,16 @@
 co_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_plan: 35-01 (complete)
-status: executing
-stopped_at: Completed 35-02-PLAN.md
-last_updated: "2026-03-27T12:38:42.564Z"
+current_plan: Not started
+status: completed
+stopped_at: Completed 36-01-PLAN.md
+last_updated: "2026-03-27T15:17:34.352Z"
 last_activity: 2026-03-27
 progress:
-  total_phases: 34
+  total_phases: 35
   completed_phases: 32
-  total_plans: 143
-  completed_plans: 142
+  total_plans: 145
+  completed_plans: 143
   percent: 82
 ---
 
@@ -27,9 +27,9 @@ See: .planning/PROJECT.md (updated 2026-03-15)
 ## Current Position
 
 **Phase:** 35 (Unified CLI + Skills sh Distribution) - IN PROGRESS
-**Current Plan:** 35-01 (complete)
+**Current Plan:** Not started
 **Total Plans in Phase:** TBD
-**Status:** In progress
+**Status:** Milestone complete
 **Last Activity:** 2026-03-27
 
 Progress: [████████░░] 82%
@@ -166,6 +166,7 @@ _Updated after each plan completion_
 | Phase 34-search-ranking-quality-fixes P02 | 6min | 1 tasks | 3 files |
 | Phase 35-unified-cli-skills-sh-distribution P03 | 18 | 2 tasks | 7 files |
 | Phase 35 P02 | 4 | 2 tasks | 5 files |
+| Phase 36-cli-completeness-result-quality P01 | 12 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -423,6 +424,8 @@ Recent decisions affecting current work:
 - [Phase 35]: CLI modules use dynamic import() to avoid loading CLI code in MCP mode
 - [Phase 35]: Unknown CLI commands exit(1) instead of hanging in MCP stdio mode
 - [Phase 35]: setup.sh uses npm install -g overdrive-intel@latest (DIST-FIX-01) and no -e env flags (L-2 fix)
+- [Phase 36-01]: Used sort=score for feed windows >7 days to break ranking monotony
+- [Phase 36-01]: Smart query routing: 7 keywords trigger library endpoint with fallback to /v1/search
 
 ### Pending Todos
 
@@ -456,6 +459,7 @@ Recent decisions affecting current work:
 - [Phase 33-implicit-feedback-loop]: 33-01: Auto-feedback query metadata stored as JSON in existing notes field (no migration needed); source tier adjustment uses raw SQL for efficient aggregate signal ratio query
 - Phase 34 added: Search & Ranking Quality Fixes — fix 5 pipeline issues from eval testing: breaking type expansion, action-items query passthrough, feed source-type diversity, RRF quality weight, source-scoped queries
 - Phase 35 added: Unified CLI + Skills.sh Distribution — create `overdrive-intel` npm package as both CLI tool (search, feed, breaking for humans) and MCP server (stdio for agents), with `overdrive-intel setup` provisioning. Create agent-skills repo for skills.sh distribution as discovery layer. Fix setup.sh stale tgz, version sync, env var naming.
+- Phase 36 added: CLI Completeness + Result Quality — add 5 missing CLI commands (briefing, library, similar, action-items, status), feed filtering flags, fix feed ranking monotony, add dates/quality to output, route best-practices to library endpoint, fix SKILL.md false promises. Zero LLM cost — all SQL/vector queries.
 
 ### Quick Tasks Completed
 
@@ -476,6 +480,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-27T12:38:36.223Z
-Stopped at: Completed 35-02-PLAN.md
+Last session: 2026-03-27T15:17:34.347Z
+Stopped at: Completed 36-01-PLAN.md
 Resume file: None

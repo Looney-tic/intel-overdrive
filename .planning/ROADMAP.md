@@ -850,7 +850,7 @@ Plans:
 **Goal:** Close the gap between API (8 endpoint types) and CLI (3 commands). Add 5 missing commands, fix feed ranking monotony, add dates to all output, implement smart best-practice routing, and update all SKILL.md files to reflect the complete command set.
 **Requirements**: CLI-01, CLI-02, CLI-03, CLI-04, CLI-05, CLI-06, QUAL-01, QUAL-02, QUAL-03, SKILL-01, SKILL-02
 **Depends on:** Phase 35
-**Plans:** 2 plans in 2 waves
+**Plans:** 1/2 plans executed
 
 Plans:
 - [ ] 36-01 (Wave 1): CLI commands + quality fixes — add briefing/library/similar/action-items/status commands, enhance formatting with dates, smart best-practice routing, feed ranking fix, --tag flag (CLI-01, CLI-02, CLI-03, CLI-04, CLI-05, CLI-06, QUAL-01, QUAL-02, QUAL-03)
