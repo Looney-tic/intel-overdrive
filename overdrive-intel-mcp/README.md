@@ -19,7 +19,7 @@ npx intel-overdrive setup
 Registers your API key, installs the CLI, and adds the skill. Works immediately — no restart needed.
 
 > [!TIP]
-> You can also install via [skills.sh](https://skills.sh): `npx skills add Looney-tic/agent-skills --skill intel-overdrive -g -y` — setup auto-triggers on first use.
+> You can also install via [skills.sh](https://skills.sh/Looney-tic/agent-skills): `npx skills add Looney-tic/agent-skills --skill intel-overdrive -g -y` — setup auto-triggers on first use.
 
 ## What it does
 

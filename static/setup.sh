@@ -130,16 +130,8 @@ else
   echo "    npm install -g intel-overdrive@latest"
 fi
 
-if [ "$NPM_OK" = true ]; then
-  if command -v claude &>/dev/null; then
-    claude mcp remove intel-overdrive -s user 2>/dev/null || true
-    claude mcp add -s user -t stdio \
-      intel-overdrive -- intel-overdrive 2>/dev/null && CLAUDE_OK=true || CLAUDE_OK=false
-  fi
-  MCP_OK=true
-else
-  MCP_OK=false
-fi
+# Clean up old skill directory name
+rm -rf ~/.claude/skills/overdrive-intel 2>/dev/null
 
 # Install SKILL.md
 if [ "$NPM_OK" = true ]; then
