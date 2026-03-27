@@ -1,11 +1,12 @@
 """GET /v1/action-items — top items requiring attention, ranked by significance and recency."""
 
-from fastapi import APIRouter, Depends
+from typing import Optional
+
+from fastapi import APIRouter, Depends, Query
 from fastapi.responses import JSONResponse
 from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 from starlette.requests import Request
-from typing import List
 
 from src.api.deps import get_session, require_api_key
 from src.api.limiter import limiter
@@ -20,6 +21,12 @@ action_items_router = APIRouter(tags=["action-items"])
 @limiter.limit("60/minute")
 async def get_action_items(
     request: Request,
+    q: Optional[str] = Query(
+        None,
+        min_length=1,
+        max_length=200,
+        description="Filter action items by search query",
+    ),
     session: AsyncSession = Depends(get_session),
     api_key: APIKey = Depends(require_api_key),
 ) -> JSONResponse:
@@ -49,6 +56,14 @@ async def get_action_items(
   )"""
         stack_params["stack_arr"] = combined
 
+    # Optional fulltext query filter
+    query_filter = ""
+    query_params: dict = {}
+    if q:
+        query_filter = """
+  AND i.search_vector @@ websearch_to_tsquery('english', :q_param)"""
+        query_params["q_param"] = q
+
     # 2. Query: breaking/major items in last 7 days, not read/acted_on/dismissed
     sql = text(
         f"""
@@ -68,7 +83,7 @@ async def get_action_items(
               WHERE sig.item_id = i.id
                 AND sig.api_key_id = :key_id
                 AND sig.action IN ('read', 'acted_on', 'dismiss')
-          ){stack_filter}
+          ){stack_filter}{query_filter}
         ORDER BY
           CASE i.significance
             WHEN 'breaking' THEN 0
@@ -80,7 +95,7 @@ async def get_action_items(
         """
     )
 
-    params = {"key_id": api_key.id, **stack_params}
+    params = {"key_id": api_key.id, **stack_params, **query_params}
     result = await session.execute(sql, params)
     rows = result.mappings().all()
 

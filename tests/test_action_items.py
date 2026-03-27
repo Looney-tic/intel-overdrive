@@ -341,3 +341,105 @@ async def test_action_items_with_profile_tag_filter(
 
     # breaking2 has ["claude", "api"] — should NOT appear with mcp-only profile
     assert str(fixture["breaking2"].id) not in returned_ids
+
+
+# --- 34-01: Query filter tests (RANK-02) ---
+
+
+@pytest.mark.asyncio
+async def test_action_items_query_filter(
+    client, api_key_header, session, action_items_source
+):
+    """RANK-02: q parameter filters action items by fulltext search."""
+    now = datetime.now(timezone.utc)
+
+    # Create 3 breaking items with distinct content
+    security_item = IntelItem(
+        id=uuid.uuid4(),
+        source_id=action_items_source.id,
+        external_id="ext-query-security",
+        url="https://example.com/query-security",
+        title="Critical Security Vulnerability Found",
+        content="A critical security vulnerability was discovered in the authentication module requiring immediate patching and remediation.",
+        primary_type="update",
+        tags=["security"],
+        significance="breaking",
+        status="processed",
+        relevance_score=0.9,
+        quality_score=0.9,
+        confidence_score=0.9,
+        created_at=now - timedelta(hours=1),
+    )
+
+    database_item = IntelItem(
+        id=uuid.uuid4(),
+        source_id=action_items_source.id,
+        external_id="ext-query-database",
+        url="https://example.com/query-database",
+        title="Database Migration Breaking Change",
+        content="The database migration schema introduced a breaking change that requires manual intervention for all production deployments.",
+        primary_type="update",
+        tags=["database"],
+        significance="breaking",
+        status="processed",
+        relevance_score=0.9,
+        quality_score=0.9,
+        confidence_score=0.9,
+        created_at=now - timedelta(hours=2),
+    )
+
+    api_item = IntelItem(
+        id=uuid.uuid4(),
+        source_id=action_items_source.id,
+        external_id="ext-query-api",
+        url="https://example.com/query-api",
+        title="API Endpoint Deprecation Notice",
+        content="Several API endpoints are being deprecated in the next major release. Applications using these endpoints must migrate to the new versions.",
+        primary_type="update",
+        tags=["api"],
+        significance="breaking",
+        status="processed",
+        relevance_score=0.9,
+        quality_score=0.9,
+        confidence_score=0.9,
+        created_at=now - timedelta(hours=3),
+    )
+
+    session.add(security_item)
+    session.add(database_item)
+    session.add(api_item)
+    await session.commit()
+
+    # Filter by "security vulnerability"
+    response = await client.get(
+        "/v1/action-items?q=security+vulnerability",
+        headers=api_key_header["headers"],
+    )
+    assert response.status_code == 200
+    data = response.json()
+
+    returned_ids = {item["id"] for item in data["action_items"]}
+    assert str(security_item.id) in returned_ids, "Security item should match query"
+    assert (
+        str(database_item.id) not in returned_ids
+    ), "Database item should not match 'security vulnerability'"
+    assert (
+        str(api_item.id) not in returned_ids
+    ), "API item should not match 'security vulnerability'"
+
+
+@pytest.mark.asyncio
+async def test_action_items_without_query_returns_all(
+    client, api_key_header, action_items_fixture
+):
+    """RANK-02: Without q parameter, action-items returns all breaking/major items (existing behavior)."""
+    response = await client.get("/v1/action-items", headers=api_key_header["headers"])
+    assert response.status_code == 200
+    data = response.json()
+
+    # Should return breaking and major items (same as before q was added)
+    fixture = action_items_fixture
+    returned_ids = {item["id"] for item in data["action_items"]}
+    assert str(fixture["breaking1"].id) in returned_ids
+    assert str(fixture["breaking2"].id) in returned_ids
+    assert str(fixture["major1"].id) in returned_ids

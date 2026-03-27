@@ -8,7 +8,10 @@ from sqlalchemy.dialects.postgresql import JSONB, ARRAY
 from sqlalchemy import String
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.models.models import IntelItem, APIKey, User
+from collections import defaultdict
+from itertools import chain, zip_longest
+
+from src.models.models import IntelItem, APIKey, User, Source
 from src.api.deps import get_session, require_api_key
 from src.api.schemas import FeedResponse, IntelItemResponse
 from src.api.limiter import limiter
@@ -27,6 +30,9 @@ from src.core.logger import get_logger
 logger = get_logger(__name__)
 
 feed_router = APIRouter(tags=["feed"])
+
+# Maximum items per source type in feed results (diversity cap)
+MAX_PER_SOURCE_TYPE = 5
 
 # Tag groups — semantically related tag clusters for browsing by category.
 # Also used by GET /v1/tag-groups in meta.py (imported from here).
@@ -203,6 +209,50 @@ PERSONA_PRESETS = {
 def _collapse_clusters(items: list) -> list:
     """Collapse cluster duplicates — delegates to shared search_utils.collapse_clusters."""
     return collapse_clusters(items, rank_key="relevance_score")
+
+
+async def _apply_source_type_diversity(
+    items: list,
+    session: AsyncSession,
+    max_per_type: int = MAX_PER_SOURCE_TYPE,
+) -> list:
+    """Cap items per source_type and interleave types for diverse feed results.
+
+    1. Batch-fetch source types for items in the result set (one small query).
+    2. Group items by source_type, cap each group to max_per_type.
+    3. Round-robin interleave groups to produce a diverse ordering.
+    """
+    if not items:
+        return items
+
+    # Collect unique source_ids from items
+    source_ids = list({item.source_id for item in items if item.source_id})
+    if not source_ids:
+        return items
+
+    # Batch-fetch source_id -> type mapping
+    src_query = select(Source.id, Source.type).where(Source.id.in_(source_ids))
+    src_result = await session.execute(src_query)
+    source_type_map = {row.id: row.type for row in src_result}
+
+    # Group items by source_type, preserving order within each group
+    groups: dict[str, list] = defaultdict(list)
+    for item in items:
+        stype = source_type_map.get(item.source_id, "unknown")
+        groups[stype].append(item)
+
+    # Cap each group to max_per_type
+    capped_groups = [group[:max_per_type] for group in groups.values()]
+
+    # Round-robin interleave across types
+    interleaved = [
+        item
+        for slot in zip_longest(*capped_groups)
+        for item in slot
+        if item is not None
+    ]
+
+    return interleaved
 
 
 @feed_router.get("/feed", response_model=FeedResponse)
@@ -533,6 +583,11 @@ async def get_feed(
     # P1-15: Collapse cluster duplicates — group by cluster_id, keep best representative.
     # Items with NULL cluster_id are treated as unique (not grouped).
     items = _collapse_clusters(items)
+
+    # P34-01: Source-type diversity caps — prevent any single source_type from
+    # dominating the feed (e.g., max 5 bluesky posts). Applied after cluster
+    # collapse so clusters are already resolved, and before star-milestone dedup.
+    items = await _apply_source_type_diversity(items, session)
 
     # Deduplicate star milestone events — keep only the latest per base URL.
     # github-deep star milestones create separate items for the same repo

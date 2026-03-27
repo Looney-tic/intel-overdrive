@@ -1149,3 +1149,98 @@ async def test_feed_source_filter(client, api_key_header, session, source_factor
     assert (
         str(item_b.id) not in returned_ids
     ), "Source B item should be excluded from feed"
+
+
+# ---------------------------------------------------------------------------
+# Source-type diversity cap tests (Phase 34, RANK-03)
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_feed_source_type_diversity(
+    client, api_key_header, session, source_factory
+):
+    """RANK-03: Feed caps items per source_type so one type doesn't dominate."""
+    # Create 3 bluesky sources and 1 rss source
+    bs_source1 = await source_factory(
+        id="test:diversity-bs1", name="Bluesky 1", type="bluesky"
+    )
+    bs_source2 = await source_factory(
+        id="test:diversity-bs2", name="Bluesky 2", type="bluesky"
+    )
+    bs_source3 = await source_factory(
+        id="test:diversity-bs3", name="Bluesky 3", type="bluesky"
+    )
+    rss_source = await source_factory(
+        id="test:diversity-rss", name="RSS Feed", type="rss"
+    )
+
+    now = datetime.now(timezone.utc)
+    all_items = []
+
+    # Insert 8 bluesky items across the 3 sources (exceeds MAX_PER_SOURCE_TYPE=5)
+    for i in range(8):
+        bs_src = [bs_source1, bs_source2, bs_source3][i % 3]
+        item = IntelItem(
+            id=uuid.uuid4(),
+            source_id=bs_src.id,
+            external_id=f"ext-diversity-bs-{i}",
+            url=f"https://example.com/diversity-bs-{i}-{uuid.uuid4()}",
+            title=f"Bluesky Item {i}",
+            content="Bluesky post content for diversity cap test. Enough text to pass minimum content length quality gates for proper indexing.",
+            primary_type="update",
+            tags=["diversity-cap-test"],
+            status="processed",
+            relevance_score=0.8,
+            quality_score=0.8,
+            confidence_score=0.9,
+            created_at=now - timedelta(minutes=i),
+        )
+        session.add(item)
+        all_items.append(("bluesky", item))
+
+    # Insert 3 rss items
+    for i in range(3):
+        item = IntelItem(
+            id=uuid.uuid4(),
+            source_id=rss_source.id,
+            external_id=f"ext-diversity-rss-{i}",
+            url=f"https://example.com/diversity-rss-{i}-{uuid.uuid4()}",
+            title=f"RSS Item {i}",
+            content="RSS content for diversity cap test. Enough text to pass minimum content length quality gates for proper indexing.",
+            primary_type="update",
+            tags=["diversity-cap-test"],
+            status="processed",
+            relevance_score=0.8,
+            quality_score=0.8,
+            confidence_score=0.9,
+            created_at=now - timedelta(minutes=i),
+        )
+        session.add(item)
+        all_items.append(("rss", item))
+
+    await session.commit()
+
+    response = await client.get(
+        "/v1/feed?tag=diversity-cap-test&days=7&limit=20",
+        headers=api_key_header["headers"],
+    )
+    assert response.status_code == 200
+    data = response.json()
+    items = data["items"]
+
+    # Count bluesky items in results
+    bluesky_item_ids = {str(it.id) for stype, it in all_items if stype == "bluesky"}
+    rss_item_ids = {str(it.id) for stype, it in all_items if stype == "rss"}
+
+    returned_bluesky = [item for item in items if item["id"] in bluesky_item_ids]
+    returned_rss = [item for item in items if item["id"] in rss_item_ids]
+
+    # Diversity cap: at most 5 bluesky items
+    assert len(returned_bluesky) <= 5, (
+        f"Expected at most 5 bluesky items (MAX_PER_SOURCE_TYPE), "
+        f"got {len(returned_bluesky)}"
+    )
+
+    # RSS items should be present
+    assert len(returned_rss) >= 1, "RSS items should appear in diversified feed"
