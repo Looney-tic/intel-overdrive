@@ -844,3 +844,14 @@ Plans:
 - [x] 35-01 (Wave 1): Package rename + shared config + DIST-FIX issues — rename to overdrive-intel, extract config.ts, fix version/env/errors, update server.json (DIST-CLI-01, DIST-CLI-04, DIST-FIX-02, DIST-FIX-03, DIST-FIX-04)
 - [ ] 35-02 (Wave 2): CLI commands + setup flow — overdrive-intel setup/search/feed/breaking, update setup.sh for npm registry install (DIST-CLI-02, DIST-CLI-03, DIST-FIX-01)
 - [ ] 35-03 (Wave 1): Agent-skills repo + SKILL.md rewrite — agent-neutral SKILL.md files for skills.sh (DIST-SKILLS-01, DIST-SKILLS-02)
+
+### Phase 36: CLI Completeness + Result Quality
+
+**Goal:** Close the gap between API (8 endpoint types) and CLI (3 commands). Add 5 missing commands, fix feed ranking monotony, add dates to all output, implement smart best-practice routing, and update all SKILL.md files to reflect the complete command set.
+**Requirements**: CLI-01, CLI-02, CLI-03, CLI-04, CLI-05, CLI-06, QUAL-01, QUAL-02, QUAL-03, SKILL-01, SKILL-02
+**Depends on:** Phase 35
+**Plans:** 2 plans in 2 waves
+
+Plans:
+- [ ] 36-01 (Wave 1): CLI commands + quality fixes — add briefing/library/similar/action-items/status commands, enhance formatting with dates, smart best-practice routing, feed ranking fix, --tag flag (CLI-01, CLI-02, CLI-03, CLI-04, CLI-05, CLI-06, QUAL-01, QUAL-02, QUAL-03)
+- [ ] 36-02 (Wave 2): SKILL.md updates — fix false --type briefing promise, update all skill files with complete 8-command table (SKILL-01, SKILL-02)
