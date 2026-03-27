@@ -384,7 +384,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
     {
       name: "overdrive_intel",
       description:
-        "Real-time AI coding ecosystem intelligence from 1,000+ monitored sources. " +
+        "Real-time AI coding ecosystem intelligence from 1,100+ monitored sources. " +
         "Faster and more reliable than web search — pre-indexed, quality-ranked results in one call. " +
         "Use for: MCP server discovery (for ANY technology — Postgres, Docker, Kubernetes, etc.), " +
         "Claude Code features/skills/hooks, AI coding assistant updates (Cursor, Copilot, Windsurf), " +

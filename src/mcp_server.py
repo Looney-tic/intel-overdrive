@@ -5,7 +5,7 @@ Exposes the intelligence feed as native MCP tools for Claude Code and Claude Des
 This is the Python/self-hosted variant with 6 separate tools (intel_feed, intel_search,
 intel_status, intel_context_pack, intel_action_items, intel_library).
 
-The npm package (intel-overdrive-mcp) exposes a single unified `overdrive_intel` tool
+The npm package (intel-overdrive) exposes a single unified `overdrive_intel` tool
 with a `type` parameter for routing. Use the npm variant for public distribution;
 use this Python variant for self-hosted/development setups.
 

@@ -1,10 +1,14 @@
 # Intel Overdrive
 
-**Your agent's training data is months old.** Intel Overdrive gives it live intelligence — breaking changes, new tools, security alerts, and best practices from 1,100+ monitored sources.
+[![npm version](https://img.shields.io/npm/v/intel-overdrive.svg)](https://www.npmjs.com/package/intel-overdrive)
+[![Node version](https://img.shields.io/node/v/intel-overdrive.svg)](https://nodejs.org)
+[![License](https://img.shields.io/badge/license-ELv2-blue.svg)](LICENSE)
 
-> Where Context7 gives you docs, Intel Overdrive tells you what changed since your agent was trained.
+> Live AI ecosystem intelligence for your coding agent — breaking changes, new tools, and security alerts from 1,100+ sources, before they hit training data.
 
-## Quick Start
+![demo](https://inteloverdrive.com/dl/demo.gif)
+
+## Quick start
 
 Paste into Claude Code:
 
@@ -12,32 +16,32 @@ Paste into Claude Code:
 npx intel-overdrive setup
 ```
 
-That's it. Registers your API key, installs the CLI, and installs the skill. Works immediately — no restart needed.
+Registers your API key, installs the CLI, and adds the skill. Works immediately — no restart needed.
 
-### Or install the skill first
+> [!TIP]
+> You can also install via [skills.sh](https://skills.sh): `npx skills add Looney-tic/agent-skills --skill intel-overdrive -g -y` — setup auto-triggers on first use.
 
-```
-npx skills add Looney-tic/agent-skills --skill intel-overdrive -g -y
-```
+## What it does
 
-The skill auto-triggers setup on first use.
+Your agent's training data is months old. Intel Overdrive monitors 1,100+ sources (22k+ GitHub repos, 280+ RSS feeds, npm, PyPI, Reddit, HN, arXiv) and makes the latest developments queryable in a single call.
 
-## What happens next
-
-Your agent automatically queries Intel Overdrive when you ask about AI tools, MCP servers, SDKs, or frameworks:
+**Your agent queries automatically** when you ask about AI tools, MCP servers, SDKs, or frameworks:
 
 ```
 You: "What MCP servers exist for database access?"
-Agent: [calls intel-overdrive search "MCP database"] → ranked results with star counts
+      → intel-overdrive search "MCP database"
+      → ranked results with star counts, quality labels
 
 You: "Any breaking changes in the Anthropic SDK?"
-Agent: [calls intel-overdrive breaking] → breaking changes from the last 7 days
+      → intel-overdrive breaking
+      → breaking changes from the last 7 days
 
 You: "What's new this week?"
-Agent: [calls intel-overdrive feed] → curated feed of recent updates
+      → intel-overdrive feed
+      → curated feed sorted by significance
 ```
 
-You can also use the CLI directly from your terminal:
+Use the CLI directly from your terminal too:
 
 ```bash
 intel-overdrive search "MCP servers for auth"
@@ -47,34 +51,41 @@ intel-overdrive breaking
 
 ## How it works
 
-1. **Skill** tells your agent when to query (installed to `~/.claude/skills/`)
-2. **CLI** does the querying via Bash — fast, authenticated, no MCP server needed
-3. **1,100+ sources** monitored: 22k+ GitHub repos, 280+ RSS feeds, npm, PyPI, Reddit, HN, arXiv
+Intel Overdrive installs two things:
 
-The agent uses `intel-overdrive search "query"` via Bash. No MCP server process, no restart, no configuration.
+1. **Skill** — tells your agent when and how to query (`~/.claude/skills/intel-overdrive/`)
+2. **CLI** — does the actual querying via Bash, fast and authenticated
 
-Want the MCP tool in your tool list? Optional:
+No background process. No MCP server. No restart. The agent runs `intel-overdrive search "query"` via Bash whenever the skill triggers.
 
-```bash
-intel-overdrive mcp-enable
-```
+> [!NOTE]
+> Want the structured MCP tool in your tool list? Run `intel-overdrive mcp-enable` — this is optional and requires a Claude Code restart.
 
-## What it covers
+## Coverage
 
-- **AI Coding Assistants** — Claude Code, Cursor, Copilot, Windsurf, Codex, Aider
-- **LLM APIs & SDKs** — Anthropic, OpenAI, Gemini, Mistral, Cohere
-- **Agent Frameworks** — LangChain, CrewAI, AutoGen, Pydantic AI, smolagents
-- **MCP Ecosystem** — servers, protocol updates, best practices, security
-- **Breaking Changes** — SDK deprecations, migration guides, security advisories
-- **Package Registries** — npm, PyPI, VS Code Marketplace
+| Domain               | What's tracked                                             |
+| -------------------- | ---------------------------------------------------------- |
+| AI coding assistants | Claude Code, Cursor, Copilot, Windsurf, Codex, Aider, Cody |
+| LLM APIs and SDKs    | Anthropic, OpenAI, Gemini, Mistral, Cohere                 |
+| Agent frameworks     | LangChain, CrewAI, AutoGen, Pydantic AI, smolagents        |
+| MCP ecosystem        | Servers, protocol updates, best practices, security        |
+| Breaking changes     | SDK deprecations, migration guides, security advisories    |
+| Package registries   | npm, PyPI, VS Code Marketplace                             |
+
+## CLI reference
+
+| Command                               | Description                                       |
+| ------------------------------------- | ------------------------------------------------- |
+| `intel-overdrive setup`               | Register API key, install CLI globally, add skill |
+| `intel-overdrive search "query"`      | Search for tools, docs, best practices            |
+| `intel-overdrive feed [--days N]`     | Recent updates sorted by significance             |
+| `intel-overdrive breaking [--days N]` | Breaking changes and deprecations                 |
+| `intel-overdrive mcp-enable`          | Optional: register as MCP server in Claude Code   |
+| `intel-overdrive --version`           | Show version                                      |
 
 ## Links
 
-- [Website](https://inteloverdrive.com)
-- [GitHub](https://github.com/Looney-tic/intel-overdrive)
-- [Skills on skills.sh](https://skills.sh/Looney-tic/agent-skills)
-- [API docs](https://inteloverdrive.com/v1/guide)
-
-## License
-
-[Elastic License 2.0](https://github.com/Looney-tic/intel-overdrive/blob/main/LICENSE)
+- [Website](https://inteloverdrive.com) — live demo and install
+- [Skills on skills.sh](https://skills.sh/Looney-tic/agent-skills) — install via skills ecosystem
+- [GitHub](https://github.com/Looney-tic/intel-overdrive) — source code
+- [API docs](https://inteloverdrive.com/v1/guide) — REST API reference

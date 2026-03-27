@@ -1,10 +1,14 @@
 # Intel Overdrive
 
+[![npm version](https://img.shields.io/npm/v/intel-overdrive.svg)](https://www.npmjs.com/package/intel-overdrive)
+[![Node version](https://img.shields.io/node/v/intel-overdrive.svg)](https://nodejs.org)
+[![License](https://img.shields.io/badge/license-ELv2-blue.svg)](LICENSE)
+
 **[inteloverdrive.com](https://inteloverdrive.com)** — Everything new in AI coding, delivered straight to your agent.
 
 New MCP servers, Claude Code skills, agent frameworks, SDK updates — the ecosystem moves faster than anyone can track. Most developers piece it together from Twitter, Reddit, newsletters, and Discord. By the time you hear about a tool, you've already built the thing it replaces.
 
-Intel Overdrive plugs directly into Claude Code as an MCP server. It continuously monitors 1,000+ sources and indexes what's new. Your agent automatically knows about tools, features, and changes that aren't in its training data — and surfaces them exactly when they're relevant.
+Intel Overdrive monitors 1,100+ sources and feeds the knowledge directly into your AI coding agent. Your agent automatically knows about tools, features, and changes that aren't in its training data — and surfaces them exactly when they're relevant.
 
 ### See it in action
 
@@ -19,8 +23,8 @@ You: "I need to add Stripe payments to this app"
 
 Without Intel Overdrive → agent writes raw API integration from scratch
 
-With Intel Overdrive → agent calls intel_overdrive first:
-  ⚡ Stripe MCP Server (stripe/ai) — ★ 3.2k · established
+With Intel Overdrive → agent runs intel-overdrive search first:
+  Stripe MCP Server (stripe/ai) — 3.2k stars · established
     "Official Stripe MCP. Create payment intents, manage subscriptions,
      and query transactions directly from Claude Code."
   → Agent uses the MCP server instead of writing 200 lines of boilerplate
@@ -31,39 +35,47 @@ With Intel Overdrive → agent calls intel_overdrive first:
 ```
 You: "What did I miss? Anything important in AI coding lately?"
 
-Agent calls intel_overdrive({ type: "feed", days: 14 }):
+Agent runs intel-overdrive feed --days 14:
 
-  🔴 BREAKING  Anthropic SDK v0.86 — streaming API changed, update client code
-  🔴 BREAKING  OpenAI dropped prompt_cache_key — remove before upgrading
-  🟡 MAJOR     Claude Agent SDK v0.2 — multi-agent orchestration + handoffs
-  🟡 MAJOR     Netlify, Stripe, Grafana ship official MCP servers
-  🔵 NEW       29 vendor MCP servers added to ecosystem (AWS, Sentry, Terraform...)
-  🔵 NEW       ContextCrush CVE in Context7 — patch or disable immediately
+  BREAKING  Anthropic SDK v0.86 — streaming API changed, update client code
+  BREAKING  OpenAI dropped prompt_cache_key — remove before upgrading
+  MAJOR     Claude Agent SDK v0.2 — multi-agent orchestration + handoffs
+  MAJOR     Netlify, Stripe, Grafana ship official MCP servers
+  NEW       29 vendor MCP servers added to ecosystem (AWS, Sentry, Terraform...)
+  NEW       ContextCrush CVE in Context7 — patch or disable immediately
 ```
 
 No newsletters. No Twitter. No "I wish I'd known about that last week."
 
 ## Install
 
-Paste this into your Claude Code conversation:
+Paste into Claude Code:
 
-```bash
-bash <(curl -s https://inteloverdrive.com/dl/setup.sh)
+```
+npx intel-overdrive setup
 ```
 
-That's it. Claude runs the command, registers anonymously, installs the MCP server, and configures itself. No email, no account, no configuration.
+That's it. Registers anonymously, installs the CLI, and adds the skill. No email, no account, no restart needed. Works immediately.
 
-```bash
-# or via npm
-npm i -g intel-overdrive-mcp
-```
-
-Built for **Claude Code**. Also available as a [REST API](https://inteloverdrive.com/v1/guide).
+> [!TIP]
+> Also available via [skills.sh](https://skills.sh/Looney-tic/agent-skills): `npx skills add Looney-tic/agent-skills --skill intel-overdrive -g -y` — setup auto-triggers on first use.
 
 ```mermaid
 flowchart LR
-    S["🔄 1,000+ sources\npolled every 15 min"] --> C["🧠 AI classification\ntype · significance · tags\nHaiku LLM + Voyage embeddings"] --> Q["⭐ Quality scoring\nGitHub stars · maintenance\nmaturity labels"] --> D[("📦 49k+ items\nPostgreSQL + pgvector")] --> M["⚡ intel_overdrive\nMCP tool"] --> A["💻 Claude Code"]
+    S["1,100+ sources\npolled every 15 min"] --> C["AI classification\ntype · significance · tags\nHaiku LLM + Voyage embeddings"] --> Q["Quality scoring\nGitHub stars · maintenance\nmaturity labels"] --> D[("49k+ items\nPostgreSQL + pgvector")] --> M["intel-overdrive CLI\n+ skill"] --> A["Your AI agent"]
 ```
+
+## How it works
+
+1. **Install once** — `npx intel-overdrive setup` installs the CLI and skill
+2. **Agent detects automatically** — when you ask about tools, SDKs, or new features, the skill triggers and the agent runs `intel-overdrive search` via Bash
+3. **Or just ask** — "what's new?", "best MCP for X?", "any breaking changes in Y?"
+4. **Results are ranked** — quality-scored with GitHub stars, maintenance status, and maturity labels
+
+No background process. No MCP server. No restart. The agent runs `intel-overdrive search "query"` via Bash whenever the skill triggers.
+
+> [!NOTE]
+> Want the structured MCP tool in your tool list? Run `intel-overdrive mcp-enable` — optional, requires a Claude Code restart.
 
 ## What you can ask
 
@@ -89,7 +101,7 @@ Your agent also calls it **automatically** — when you ask it to write code usi
 
 ## Coverage
 
-**1,000+ sources** polled every 15 minutes. **49,000+ items** classified and searchable.
+**1,100+ sources** polled every 15 minutes. **49,000+ items** classified and searchable.
 
 | Source type        | Count | What it covers                                                    |
 | ------------------ | ----- | ----------------------------------------------------------------- |
@@ -104,12 +116,16 @@ Your agent also calls it **automatically** — when you ask it to write code usi
 
 Every item is auto-classified into types (tool, update, practice, security, docs) and significance levels (breaking, major, minor, informational).
 
-## How it works
+## CLI reference
 
-1. **Install once** — paste the setup command into Claude Code
-2. **Agent detects automatically** — when you ask about tools, SDKs, or new features, Claude Code calls `intel_overdrive` before searching the web
-3. **Or just ask** — "what's new?", "best MCP for X?", "any breaking changes in Y?"
-4. **Results are ranked** — quality-scored with GitHub stars, maintenance status, and maturity labels
+| Command                               | Description                                       |
+| ------------------------------------- | ------------------------------------------------- |
+| `intel-overdrive setup`               | Register API key, install CLI globally, add skill |
+| `intel-overdrive search "query"`      | Search for tools, docs, best practices            |
+| `intel-overdrive feed [--days N]`     | Recent updates sorted by significance             |
+| `intel-overdrive breaking [--days N]` | Breaking changes and deprecations                 |
+| `intel-overdrive mcp-enable`          | Optional: register as MCP server in Claude Code   |
+| `intel-overdrive --version`           | Show version                                      |
 
 ## API
 
@@ -136,7 +152,7 @@ I got frustrated. Every morning I was scrolling Twitter, checking Reddit, skimmi
 
 Then I realized something worse: when I asked Claude Code about recent developments or current best practices, it just started Googling for me. Scraping random pages, burning tokens, returning outdated results. My AI coding agent — the thing that's supposed to make me more productive — couldn't tell me what shipped last week.
 
-So I built Intel Overdrive. A pipeline that monitors 1,000+ sources, classifies everything with AI, scores it for quality, and feeds it directly into Claude Code as an MCP tool. Now when I ask "what's the best MCP server for databases?" or "did anything break in the Anthropic SDK?", my agent already knows. One call, instant answer, quality-ranked.
+So I built Intel Overdrive. A pipeline that monitors 1,100+ sources, classifies everything with AI, scores it for quality, and makes it queryable from your agent with a single call. Now when I ask "what's the best MCP server for databases?" or "did anything break in the Anthropic SDK?", my agent already knows. One call, instant answer, quality-ranked.
 
 It changed how I work. I stopped manually tracking the ecosystem and started just building. Now I'm sharing it with everyone.
 
