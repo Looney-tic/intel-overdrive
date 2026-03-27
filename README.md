@@ -16,6 +16,26 @@ npx intel-overdrive setup
 
 No email, no account, no restart. Works immediately.
 
+Then try it:
+
+```bash
+$ intel-overdrive search "MCP servers for auth"
+
+Search results for: "MCP servers for auth"
+
+1. Identity & Authentication MCP Servers — Okta, Auth0, Keycloak, Entra ID
+   Comparison of authentication MCP servers with setup guides and trade-offs...
+   https://github.com/anthropics/awesome-mcp-servers
+
+2. mcp-remote
+   Bridges stdio-only MCP clients to remote OAuth-authenticated servers...
+   https://www.npmjs.com/package/mcp-remote
+
+3. supabase-mcp
+   Official Supabase MCP server with auth, database, and storage access...
+   https://github.com/supabase/mcp
+```
+
 > [!TIP]
 > Also available via [skills.sh](https://skills.sh/Looney-tic/agent-skills): `npx skills add Looney-tic/agent-skills --skill intel-overdrive -g -y`
 
