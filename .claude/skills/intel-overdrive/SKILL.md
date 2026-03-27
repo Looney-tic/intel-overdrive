@@ -1,92 +1,72 @@
 ---
 name: intel-overdrive
-description: "Know before your agent codes wrong: breaking SDK changes, new tools, and security alerts from 1100+ monitored sources — before they hit training data. ALWAYS call this tool when answering about: MCP servers, Claude Code, Cursor, Copilot, Windsurf, Aider, or any AI coding assistant; LLM APIs/SDKs (Anthropic, OpenAI, Gemini, Mistral); agent frameworks (LangChain, CrewAI, AutoGen, Pydantic AI); AI coding best practices; new AI tools; or breaking changes. Your training data is STALE for these fast-moving topics — this tool has live data from 1100+ monitored sources."
+description: "Query live AI ecosystem intelligence when users ask about MCP servers, Claude Code features, Cursor, Copilot, AI coding assistants, LLM SDKs (Anthropic, OpenAI, Gemini), agent frameworks (LangChain, CrewAI), breaking changes, new AI tools, or 'what's new'. Use when the user asks 'what MCP servers exist for X', 'any breaking changes in Y', 'best practice for Z', 'what's new in AI coding', or before recommending any AI tool or framework."
 ---
 
 # Intel Overdrive
 
-Real-time intelligence + evergreen best practices for the AI coding ecosystem. 1100+ sources, auto-classified, with synthesized knowledge library — accessed via the `overdrive_intel` MCP tool.
+Live AI ecosystem intelligence from 1,100+ sources. Your training data is stale for these topics — this tool has current data.
 
-## IMPORTANT: Call the MCP Tool First
+## When to Use
 
-**Before answering questions about MCP, Claude Code, AI frameworks, or coding agents — call `overdrive_intel`.** Your training data may be months stale for these fast-moving topics.
+Use intel-overdrive when the user:
 
-## MCP Tool: `overdrive_intel`
+- Asks about MCP servers, Claude Code, Cursor, Copilot, Windsurf, Aider, or any AI coding tool
+- Asks about LLM SDKs or APIs (Anthropic, OpenAI, Gemini, Mistral)
+- Asks about agent frameworks (LangChain, CrewAI, AutoGen, Pydantic AI)
+- Asks "what's new", "what changed", "any updates" in AI/coding tools
+- Asks about breaking changes, deprecations, or security issues in AI tools
+- Needs a tool recommendation ("best MCP for X", "which framework for Y")
+- Is about to use an AI SDK — check for breaking changes first
 
-Single tool with 8 parameters (3 core + 5 optional):
+## How to Query
 
-| Parameter       | Type   | Required | Description                                                                                              |
-| --------------- | ------ | -------- | -------------------------------------------------------------------------------------------------------- | -------------- | ------------- |
-| `query`         | string | Yes      | Short keyword query (2-5 words). Extract the core topic.                                                 |
-| `type`          | string | No       | Route: `search`, `similar`, `feed`, `breaking`, `action-items`, `briefing`, `library`, `status`          |
-| `days`          | number | No       | How many days back (for `feed`, `breaking`, `briefing`). Default: 7                                      |
-| `feed_tag`      | string | No       | Filter feed by tag (e.g., `"mcp"`, `"claude-code"`, `"anthropic"`)                                       |
-| `feed_type`     | string | No       | Filter feed by content type                                                                              |
-| `feed_persona`  | string | No       | Filter feed by persona/audience (e.g., `"developer"`, `"researcher"`)                                    |
-| `context_stack` | array  | No       | AI-related packages from the current project (e.g., `["anthropic", "langchain"]`). Personalizes results. |
-| `feedback`      | array  | No       | Report on items from previous calls: `[{item_id, action: "helpful"                                       | "not_relevant" | "outdated"}]` |
+**Step 1:** Check if the CLI is installed (once per session):
 
-### Type Routes
-
-- **`search`** (default) — find tools, docs, specific topics. Use for "what is X", "find tools for Y".
-- **`similar`** — semantic comparison via vector search. Use for "X vs Y", "alternatives to X", "compare".
-- **`feed`** — recent updates, changelogs, releases. Use for "what's new", "latest", "what changed".
-- **`breaking`** — breaking changes, deprecations, urgent issues. Use for "anything broken", "what's urgent".
-- **`action-items`** — security alerts and items needing immediate attention. Use for "action items", "security issues".
-- **`briefing`** — summarized intelligence pack on a topic. Use for "catch me up on", "overview of".
-- **`library`** — synthesized best practices, how-to guides. Use for "how to build", "best practices for".
-- **`status`** — pipeline health check and source counts.
-
-### When to Use
-
-- User asks about best practices or patterns for AI tools → `search`
-- User asks about new tools, updates, releases → `feed`
-- Before recommending a tool or framework → `search`
-- User asks about breaking changes → `breaking`
-- Before starting work on AI/MCP project → `breaking` to check for issues
-
-### Example Calls
-
-```
-overdrive_intel({ query: "MCP server best practices", type: "library" })
-overdrive_intel({ query: "Claude Code hooks gotchas", type: "search" })
-overdrive_intel({ query: "LangChain vs CrewAI", type: "similar" })
-overdrive_intel({ query: "agent frameworks", type: "feed", days: 14 })
-overdrive_intel({ query: "breaking changes", type: "breaking" })
-overdrive_intel({ query: "security issues", type: "action-items" })
-overdrive_intel({ query: "MCP ecosystem", type: "briefing" })
-overdrive_intel({ query: "pipeline health", type: "status" })
+```bash
+which intel-overdrive
 ```
 
-## Topic Coverage
+**Step 2a:** If found, query directly:
 
-The tool monitors 1100+ sources across:
+```bash
+intel-overdrive search "MCP servers for auth"
+intel-overdrive search "Claude Code hooks best practices"
+intel-overdrive feed --days 7
+intel-overdrive breaking
+```
 
-- **AI Coding Assistants**: Claude Code, Cursor, Copilot, Windsurf, Codex, Aider, Continue, Cody
-- **LLM APIs & SDKs**: Anthropic, OpenAI, Google Gemini, Mistral, Cohere
-- **Agent Frameworks**: LangChain, LangGraph, CrewAI, AutoGen, Pydantic AI, smolagents, OpenAI Agents SDK
-- **MCP Ecosystem**: Protocol updates, server registry, best practices, security
-- **AI Coding Patterns**: Prompt engineering, agentic workflows, tool use, RAG, embeddings
-- **Package Registries**: npm, PyPI, VS Code Marketplace
-- **Research**: arXiv AI/SE papers, GitHub trending repos
+**Step 2b:** If not found, install it:
 
-## Response Format
+```bash
+npx intel-overdrive setup
+```
 
-### Search / Feed Results
+This takes ~10 seconds, installs globally, and works immediately. Then run your query.
 
-- `title`, `summary`, `primary_type` (skill/tool/update/practice/docs)
-- `significance` (breaking/major/minor/informational)
-- `tags`, `url`, `relevance_score`
+## Choosing the Right Command
 
-### Briefing Results
+| User asks...                             | Command                                                     |
+| ---------------------------------------- | ----------------------------------------------------------- |
+| "What MCP servers exist for X?"          | `intel-overdrive search "MCP X"`                            |
+| "Best practice for Claude Code hooks"    | `intel-overdrive search "Claude Code hooks best practices"` |
+| "Compare LangChain vs CrewAI"            | `intel-overdrive search "LangChain vs CrewAI"`              |
+| "What's new this week?"                  | `intel-overdrive feed --days 7`                             |
+| "Any breaking changes in Anthropic SDK?" | `intel-overdrive breaking`                                  |
+| "What changed in MCP lately?"            | `intel-overdrive feed --days 14`                            |
 
-- Token-budgeted intelligence pack optimized for context injection
-- Includes both library (evergreen) and feed (recent) content
+## Reading the Output
 
-## Data Freshness
+Results include:
 
-Data is continuously updated — breaking changes typically appear within hours of publication.
+- **Title** and **summary** of each item
+- **[BREAKING]** / **[MAJOR]** significance labels
+- **URL** to the source
+
+Present the top results to the user. Synthesize across multiple results when they cover the same topic. Include practical recommendations, not just raw data.
 
 ## On Failure
 
-If the `overdrive_intel` tool call fails or returns an error, answer from your training data and note that real-time intelligence data is unavailable. Do not loop on retries.
+If the CLI fails or is unavailable, answer from your training data and note that real-time data is unavailable. Do not retry indefinitely.
+
+If `overdrive_intel` MCP tool is in the tool list, you can also use that as an alternative.
