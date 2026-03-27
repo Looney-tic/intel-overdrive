@@ -1,6 +1,6 @@
 {
   "name": "intel-overdrive",
-  "version": "0.9.5",
+  "version": "0.9.9",
   "description": "AI coding ecosystem intelligence — CLI + skill for your AI agent, with optional MCP server. Breaking changes, new tools, and security alerts from 1100+ sources.",
   "type": "module",
   "bin": {
