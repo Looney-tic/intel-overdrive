@@ -56,12 +56,20 @@ This takes ~10 seconds, installs globally, and works immediately. Then run your 
 | "What MCP servers exist for X?"          | `intel-overdrive search "MCP X"`                |
 | "Best practice for Claude Code hooks"    | `intel-overdrive library "Claude Code hooks"`   |
 | "Compare LangChain vs CrewAI"            | `intel-overdrive similar "LangChain vs CrewAI"` |
-| "What's new this week?"                  | `intel-overdrive feed --days 7`                 |
 | "Any breaking changes in Anthropic SDK?" | `intel-overdrive breaking`                      |
 | "What changed in MCP lately?"            | `intel-overdrive feed --days 14 --tag mcp`      |
-| "Catch me up on AI coding"               | `intel-overdrive briefing --days 7`             |
 | "What needs attention?"                  | `intel-overdrive action-items`                  |
 | "Is the pipeline healthy?"               | `intel-overdrive status`                        |
+
+### For "what's new" / "catch me up" questions — run MULTIPLE commands
+
+When the user asks for a general catch-up ("what's new", "what did I miss", "catch me up"), run these commands in sequence and synthesize into a newsletter-style briefing:
+
+1. `intel-overdrive breaking --days 7` — breaking changes (lead with these)
+2. `intel-overdrive feed --days 7` — new tools, updates, releases
+3. `intel-overdrive action-items` — security alerts if any
+
+Present the results as a structured briefing with sections: **Breaking Changes**, **New Tools & Updates**, **Security Alerts** (if any). Include dates. Skip items that appear in multiple results.
 
 ## Reading the Output
 
