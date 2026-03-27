@@ -832,22 +832,94 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 
 // ---------------------------------------------------------------------------
+// CLI helpers
+// ---------------------------------------------------------------------------
+
+/** Parse --days N and --type T from CLI args. */
+function parseFeedArgs(args: string[]): { days?: number; type?: string } {
+  const result: { days?: number; type?: string } = {};
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--days" && args[i + 1]) {
+      const n = parseInt(args[i + 1], 10);
+      if (!isNaN(n)) result.days = n;
+      i++;
+    } else if (args[i] === "--type" && args[i + 1]) {
+      result.type = args[i + 1];
+      i++;
+    }
+  }
+  return result;
+}
+
+/** Print usage to stderr (never stdout — would corrupt MCP stdio). */
+function printHelp(): void {
+  process.stderr.write(
+    [
+      "Usage: overdrive-intel <command> [options]",
+      "",
+      "Commands:",
+      "  setup                    Provision API key, register MCP server, install SKILL.md",
+      "  search <query>           Search for items matching a query",
+      "  feed [--days N]          Show recent feed items",
+      "  breaking [--days N]      Show breaking changes",
+      "",
+      "Options:",
+      "  --version, -v            Print version",
+      "  --help, -h               Print this help",
+      "",
+      "No arguments: start MCP stdio server (for Claude Code)",
+      "",
+    ].join("\n"),
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Entrypoint — dispatch CLI or MCP
 // ---------------------------------------------------------------------------
 
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
+  const command = args[0];
 
-  // --version flag
-  if (args.includes("--version") || args.includes("-v")) {
+  // Named CLI commands
+  if (command === "setup") {
+    const { runSetup } = await import("./cli/setup.js");
+    await runSetup();
+    return;
+  }
+  if (command === "search") {
+    const { runSearch } = await import("./cli/commands.js");
+    await runSearch(args.slice(1).join(" "));
+    return;
+  }
+  if (command === "feed") {
+    const { runFeed } = await import("./cli/commands.js");
+    await runFeed(parseFeedArgs(args.slice(1)));
+    return;
+  }
+  if (command === "breaking") {
+    const { runBreaking } = await import("./cli/commands.js");
+    await runBreaking(parseFeedArgs(args.slice(1)));
+    return;
+  }
+  if (command === "--version" || command === "-v") {
     process.stdout.write(VERSION + "\n");
-    process.exit(0);
+    return;
+  }
+  if (command === "--help" || command === "-h") {
+    printHelp();
+    return;
   }
 
-  // CLI commands will be added in Plan 02
-  // For now, any unrecognized args fall through to MCP stdio mode.
+  // Unknown command with args — print error and exit (prevent MCP stdio hang)
+  if (args.length > 0) {
+    process.stderr.write(`Unknown command: ${command}\n\n`);
+    printHelp();
+    process.exit(1);
+  }
 
-  // MCP stdio server — no stdout output before transport connects
+  // No CLI command and no args — start MCP stdio server
+  // CRITICAL: zero stdout output before transport connects
   const transport = new StdioServerTransport();
   await server.connect(transport);
 }
