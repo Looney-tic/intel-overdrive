@@ -150,7 +150,13 @@ class LLMClient:
                 model=self.settings.LLM_MODEL,
                 max_tokens=1024,
                 temperature=0.1,
-                system=system_prompt,
+                system=[
+                    {
+                        "type": "text",
+                        "text": system_prompt,
+                        "cache_control": {"type": "ephemeral"},
+                    }
+                ],
                 messages=[{"role": "user", "content": content}],
             )
         except APIStatusError as exc:
@@ -256,7 +262,13 @@ class LLMClient:
                     "model": self.settings.LLM_MODEL,
                     "max_tokens": 1024,
                     "temperature": 0.1,
-                    "system": system_prompt,
+                    "system": [
+                        {
+                            "type": "text",
+                            "text": system_prompt,
+                            "cache_control": {"type": "ephemeral", "ttl": "1h"},
+                        }
+                    ],
                     "messages": [{"role": "user", "content": item["content"]}],
                 },
             }
