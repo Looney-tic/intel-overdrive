@@ -1,17 +1,21 @@
 #!/usr/bin/env node
 
 /**
- * Intel Overdrive MCP Server
+ * Overdrive Intel — CLI and MCP Server
  *
  * Single tool: `overdrive_intel` — query the AI coding ecosystem intelligence API.
  * The agent controls routing via the `type` parameter.
  *
- * Usage:
- *   npx overdrive-intel-mcp
+ * Usage (MCP stdio server):
+ *   npx overdrive-intel
+ *
+ * Usage (CLI):
+ *   overdrive-intel --version
+ *   overdrive-intel setup      (Plan 02)
  *
  * Environment:
- *   OVERDRIVE_API_KEY   API key (required, prefix: dti_v1_)
- *   OVERDRIVE_API_URL   Base URL (default: https://inteloverdrive.com)
+ *   OVERDRIVE_INTEL_API_KEY   API key (required, prefix: dti_v1_)
+ *   OVERDRIVE_API_URL         Base URL (default: https://inteloverdrive.com)
  */
 
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
@@ -20,34 +24,13 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import { readFileSync } from "node:fs";
-import { homedir } from "node:os";
-import { join } from "node:path";
+
+import { getApiKey, getApiUrl, VERSION } from "./shared/config.js";
 
 // ---------------------------------------------------------------------------
-// Config
-// ---------------------------------------------------------------------------
-
-const API_URL = (
-  process.env.OVERDRIVE_API_URL || "https://inteloverdrive.com"
-).replace(/\/+$/, "");
-
-let API_KEY = process.env.OVERDRIVE_API_KEY || "";
-
-if (!API_KEY) {
-  try {
-    const keyFile = join(homedir(), ".config", "overdrive-intel", "key");
-    API_KEY = readFileSync(keyFile, "utf-8").trim();
-  } catch {
-    // No key file — will error on first call
-  }
-}
-
-function getApiUrl(): string {
-  return API_URL;
-}
-
 // Anon user nudge — session-scoped counter (resets on MCP server restart)
+// ---------------------------------------------------------------------------
+
 let anonCallCount = 0;
 
 // Query chain tracking — detect refinement patterns
@@ -64,13 +47,14 @@ const QUERY_CHAIN_WINDOW_MS = 5 * 60 * 1000; // 5 minutes
 // HTTP helper
 // ---------------------------------------------------------------------------
 
-function headers(): Record<string, string> {
-  return { "X-API-Key": API_KEY, Accept: "application/json" };
+function headers(apiKey: string): Record<string, string> {
+  return { "X-API-Key": apiKey, Accept: "application/json" };
 }
 
 async function apiGet(
   path: string,
   params: Record<string, string | number> = {},
+  apiKey: string,
 ): Promise<unknown> {
   const url = new URL(`${getApiUrl()}${path}`);
   for (const [k, v] of Object.entries(params)) {
@@ -81,7 +65,7 @@ async function apiGet(
 
   const response = await fetch(url.toString(), {
     method: "GET",
-    headers: headers(),
+    headers: headers(apiKey),
     signal: AbortSignal.timeout(30_000),
   });
 
@@ -98,11 +82,12 @@ async function apiGet(
 async function apiPost(
   path: string,
   body: Record<string, unknown>,
+  apiKey: string,
 ): Promise<unknown> {
   const url = `${getApiUrl()}${path}`;
   const response = await fetch(url, {
     method: "POST",
-    headers: { ...headers(), "Content-Type": "application/json" },
+    headers: { ...headers(apiKey), "Content-Type": "application/json" },
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(10_000),
   });
@@ -117,12 +102,10 @@ async function apiPost(
 // ---------------------------------------------------------------------------
 
 import {
-  cleanItem,
   cleanItems,
   computeResultQuality,
   generateTldr,
   checkQueryRelevance,
-  formatItemMarkdown,
   formatAsMarkdown,
   MAX_RESPONSE_CHARS,
   MAX_BRIEFING_CHARS,
@@ -358,7 +341,7 @@ function buildRoutes(
 // ---------------------------------------------------------------------------
 
 const server = new Server(
-  { name: "overdrive-intel", version: "0.8.0" },
+  { name: "overdrive-intel", version: VERSION },
   {
     capabilities: { tools: {} },
     instructions:
@@ -519,17 +502,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     };
   }
 
-  if (!API_KEY) {
+  const apiKey = getApiKey();
+  if (!apiKey) {
     return {
       content: [
         {
           type: "text" as const,
-          text: JSON.stringify({
-            error:
-              "No API key. Run: bash <(curl -s " +
-              getApiUrl() +
-              "/dl/setup.sh)",
-          }),
+          text: "overdrive_intel: No API key configured. Run: npm install -g overdrive-intel && overdrive-intel setup",
         },
       ],
       isError: true,
@@ -572,14 +551,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
     // Execute all routes in parallel (with fallback support for library)
     const promises = routes.map(async (route) => {
-      let data = await apiGet(route.endpoint, route.params);
+      let data = await apiGet(route.endpoint, route.params, apiKey);
       // If primary returned empty results and a fallback exists, try it
       if (route.fallback) {
         const d = data as Record<string, unknown>;
         const items =
           (d?.items as unknown[]) || (d?.results as unknown[]) || [];
         if (items.length === 0 && !("error" in (d || {}))) {
-          data = await apiGet(route.fallback.endpoint, route.fallback.params);
+          data = await apiGet(
+            route.fallback.endpoint,
+            route.fallback.params,
+            apiKey,
+          );
         }
       }
       return { source: route.label, data };
@@ -698,7 +681,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
     // Anon user nudge — subtle value-prop after 5+ uses
     // P2-45: Suggest topic browse (always has content) instead of library search (may return empty)
-    if (API_KEY.startsWith("dti_v1_anon_")) {
+    if (apiKey.startsWith("dti_v1_anon_")) {
       anonCallCount++;
       if (anonCallCount > 5) {
         output["_tip"] =
@@ -724,9 +707,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
         for (const fb of feedback) {
           writebacks.push(
-            apiPost(`/v1/items/${fb.item_id}/signal`, {
-              action: actionMap[fb.action] || fb.action,
-            }).catch(() => {}),
+            apiPost(
+              `/v1/items/${fb.item_id}/signal`,
+              {
+                action: actionMap[fb.action] || fb.action,
+              },
+              apiKey,
+            ).catch(() => {}),
           );
         }
       }
@@ -735,9 +722,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const contextStack = args.context_stack as string[] | undefined;
       if (contextStack && contextStack.length > 0) {
         writebacks.push(
-          apiPost("/v1/profile", {
-            tech_stack: contextStack,
-          }).catch(() => {}),
+          apiPost(
+            "/v1/profile",
+            {
+              tech_stack: contextStack,
+            },
+            apiKey,
+          ).catch(() => {}),
         );
       }
 
@@ -758,17 +749,21 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         (resultQuality === "LOW" || resultCount === 0)
       ) {
         implicitWritebacks.push(
-          apiPost("/v1/feedback/auto", {
-            report_type: "auto_miss",
-            query,
-            result_count: resultCount,
-          }).catch(() => {}),
+          apiPost(
+            "/v1/feedback/auto",
+            {
+              report_type: "auto_miss",
+              query,
+              result_count: resultCount,
+            },
+            apiKey,
+          ).catch(() => {}),
         );
       }
 
       // Query chain detection — compare with last query from same API key
       const now = Date.now();
-      const lastQ = lastQueryByKey.get(API_KEY);
+      const lastQ = lastQueryByKey.get(apiKey);
       if (
         lastQ &&
         now - lastQ.timestamp < QUERY_CHAIN_WINDOW_MS &&
@@ -776,18 +771,22 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         query.trim() !== ""
       ) {
         implicitWritebacks.push(
-          apiPost("/v1/feedback/auto", {
-            report_type: "query_refinement",
-            query,
-            original_query: lastQ.query,
-            result_count: resultCount,
-          }).catch(() => {}),
+          apiPost(
+            "/v1/feedback/auto",
+            {
+              report_type: "query_refinement",
+              query,
+              original_query: lastQ.query,
+              result_count: resultCount,
+            },
+            apiKey,
+          ).catch(() => {}),
         );
       }
 
       // Update last query tracker
       if (query.trim()) {
-        lastQueryByKey.set(API_KEY, {
+        lastQueryByKey.set(apiKey, {
           query,
           type,
           resultCount,
@@ -824,9 +823,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       content: [
         {
           type: "text" as const,
-          text: JSON.stringify({
-            error: err instanceof Error ? err.message : String(err),
-          }),
+          text: err instanceof Error ? err.message : String(err),
         },
       ],
       isError: true,
@@ -835,10 +832,22 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 
 // ---------------------------------------------------------------------------
-// Entrypoint
+// Entrypoint — dispatch CLI or MCP
 // ---------------------------------------------------------------------------
 
 async function main(): Promise<void> {
+  const args = process.argv.slice(2);
+
+  // --version flag
+  if (args.includes("--version") || args.includes("-v")) {
+    process.stdout.write(VERSION + "\n");
+    process.exit(0);
+  }
+
+  // CLI commands will be added in Plan 02
+  // For now, any unrecognized args fall through to MCP stdio mode.
+
+  // MCP stdio server — no stdout output before transport connects
   const transport = new StdioServerTransport();
   await server.connect(transport);
 }
