@@ -9,10 +9,10 @@ Get a context-packed intelligence briefing tailored to your current project or a
 
 ## SETUP REQUIRED
 
-This skill requires the Overdrive Intel MCP server. If `overdrive_intel` is not available as a tool, instruct the user to run:
+This skill works best with the Intel Overdrive CLI. If `intel-overdrive` is not installed, run setup:
 
 ```bash
-npm install -g intel-overdrive && intel-overdrive setup
+npx intel-overdrive setup
 ```
 
 ## When to Use
@@ -72,6 +72,15 @@ Present the briefing as a structured document:
 4. **Action items** — anything you should do or consider doing
 
 Keep it concise. A briefing should be scannable in under a minute.
+
+## CLI Alternative
+
+For agents with Bash access, use the CLI directly. The `briefing` command is now available directly:
+
+```bash
+intel-overdrive briefing --days 7
+intel-overdrive briefing --topic "MCP ecosystem" --days 7
+```
 
 ## On Failure
 
