@@ -1008,121 +1008,112 @@
 
       <!-- LIVE OUTPUT EXAMPLES -->
       <section class="live-section reveal">
-        <div class="section-label">What your agent sees</div>
+        <div class="section-label">Replace your newsletters</div>
         <div class="section-title">
-          Ask what's new. Or don't &mdash; it checks automatically.
+          Ask what you missed. Get caught up instantly.
         </div>
         <p class="section-desc">
-          Ask "what's the best MCP for databases?" and get a ranked answer
-          instantly. Or just write code &mdash; your agent checks for breaking
-          changes on its own before writing outdated patterns.
+          No more scrolling Twitter, Reddit, and newsletters to stay current.
+          Ask your agent and it already knows what shipped, what broke, and
+          what's trending.
         </p>
 
-        <!-- Breaking changes example -->
+        <!-- Feed example — "what's new" -->
         <div class="terminal" style="margin-bottom: 24px">
           <div class="terminal-bar">
             <div class="terminal-dot"></div>
             <div class="terminal-dot"></div>
             <div class="terminal-dot"></div>
-            <span class="terminal-title">$ intel-overdrive breaking</span>
+            <span class="terminal-title"
+              >You: "What did I miss this week in AI coding?"</span
+            >
           </div>
           <div class="terminal-body">
             <div style="color: var(--text-dim); margin-bottom: 16px">
-              Breaking changes (last 30 days)
+              Agent runs intel-overdrive feed --days 7
             </div>
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">1.</span>
                 <span class="result-title"
-                  >slash-commands: switch to MCP Commander App token +
-                  auto-merge</span
+                  >Claude Code: scheduled tasks + multi-agent code review</span
                 >
-                <span class="result-badge badge-breaking">BREAKING</span>
+                <span class="result-badge badge-major">MAJOR</span>
               </div>
               <div class="result-summary">
-                MCP slash-commands workflow now uses GitHub App tokens instead
-                of custom commit-status checks, requiring migration to native
-                required-reviews + auto-merge.
+                Claude Code now supports scheduled task execution and
+                multi-agent code review that automatically detects bugs and
+                ranks by severity.
               </div>
             </div>
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">2.</span>
                 <span class="result-title"
-                  >Claude Code marketplace install flow changed</span
+                  >Gemini 2.5 Flash &mdash; new &ldquo;thinking budget&rdquo;
+                  feature</span
                 >
-                <span class="result-badge badge-breaking">BREAKING</span>
+                <span class="result-badge badge-major">MAJOR</span>
               </div>
               <div class="result-summary">
-                Use /plugin marketplace add + /plugin install instead of
-                deprecated /plugin add. Update installation docs.
+                Fine-grained reasoning control with competitive pricing.
+                Evaluate for tasks where you need adjustable depth.
+              </div>
+            </div>
+            <div class="result-item">
+              <div class="result-header">
+                <span class="result-num">3.</span>
+                <span class="result-title"
+                  >How to split work between Claude Code and Codex</span
+                >
+              </div>
+              <div class="result-summary">
+                Workflow pattern: Claude Code for understanding and debugging,
+                Codex for execution and routine tasks.
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Search example -->
+        <!-- Breaking changes example -->
         <div class="terminal reveal">
           <div class="terminal-bar">
             <div class="terminal-dot"></div>
             <div class="terminal-dot"></div>
             <div class="terminal-dot"></div>
             <span class="terminal-title"
-              >$ intel-overdrive search "MCP servers database"</span
+              >You: "Any breaking changes I should know about?"</span
             >
           </div>
           <div class="terminal-body">
+            <div style="color: var(--text-dim); margin-bottom: 16px">
+              Agent runs intel-overdrive breaking
+            </div>
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">1.</span>
-                <span class="result-title">mysql-mcp-server</span>
+                <span class="result-title"
+                  >MCP C# SDK v0.9.0 &mdash; 7 breaking changes before 1.0</span
+                >
+                <span class="result-badge badge-breaking">BREAKING</span>
               </div>
               <div class="result-summary">
-                Read-only MySQL access for Claude Code &mdash; list schemas,
-                describe tables, execute SELECT queries with SQL injection
-                protection.
-              </div>
-              <div class="result-meta">
-                <a
-                  href="https://www.npmjs.com/package/mysql-mcp-server"
-                  style="color: var(--accent); text-decoration: none"
-                  >npmjs.com/package/mysql-mcp-server</a
-                >
+                Binary data now uses ReadOnlyMemory&lt;byte&gt; instead of
+                string, filter config split into separate types. Update before
+                upgrading.
               </div>
             </div>
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">2.</span>
-                <span class="result-title">FreePeak/db-mcp-server</span>
+                <span class="result-title"
+                  >Claude Code plugin install flow changed</span
+                >
+                <span class="result-badge badge-breaking">BREAKING</span>
               </div>
               <div class="result-summary">
-                MySQL and PostgreSQL &mdash; execute queries, manage
-                transactions, explore schemas. Built in Golang for Cursor IDE
-                integration.
-              </div>
-              <div class="result-meta">
-                <a
-                  href="https://github.com/FreePeak/db-mcp-server"
-                  style="color: var(--accent); text-decoration: none"
-                  >github.com/FreePeak/db-mcp-server</a
-                >
-              </div>
-            </div>
-            <div class="result-item">
-              <div class="result-header">
-                <span class="result-num">3.</span>
-                <span class="result-title">mcp-postgres-server</span>
-              </div>
-              <div class="result-summary">
-                PostgreSQL &mdash; execute SQL, insert/update/delete, inspect
-                schemas with prepared statements.
-              </div>
-              <div class="result-meta">
-                <a
-                  href="https://www.npmjs.com/package/mcp-postgres-server"
-                  style="color: var(--accent); text-decoration: none"
-                  >npmjs.com/package/mcp-postgres-server</a
-                >
+                Use /plugin marketplace add instead of deprecated /plugin add.
+                Old commands will stop working.
               </div>
             </div>
           </div>
@@ -1136,8 +1127,7 @@
             margin-top: 16px;
           "
         >
-          Live results &mdash; output changes as new tools and updates are
-          indexed.
+          Real results from the live index &mdash; updated continuously.
         </p>
       </section>
 
@@ -1173,7 +1163,7 @@
               auth?"<br />
               <span class="agent">Agent:</span>
               <code style="color: var(--accent); font-size: 11px"
-                >intel-overdrive search "auth MCP server"</code
+                >intel-overdrive feed --days 7</code
               ><br />
               <span style="color: var(--green); font-size: 11px"
                 >&rarr; Auth0, Clerk, Supabase Auth — ranked by quality</span

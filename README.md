@@ -16,45 +16,41 @@ npx intel-overdrive setup
 
 No email, no account, no restart. Works immediately.
 
-Then try it:
+Then ask your agent anything about the AI ecosystem:
 
-```bash
-$ intel-overdrive search "MCP servers for auth"
-
-Search results for: "MCP servers for auth"
-
-1. Identity & Authentication MCP Servers — Okta, Auth0, Keycloak, Entra ID
-   Comparison of authentication MCP servers with setup guides and trade-offs...
-   https://github.com/anthropics/awesome-mcp-servers
-
-2. mcp-remote
-   Bridges stdio-only MCP clients to remote OAuth-authenticated servers...
-   https://www.npmjs.com/package/mcp-remote
-
-3. supabase-mcp
-   Official Supabase MCP server with auth, database, and storage access...
-   https://github.com/supabase/mcp
 ```
+You: "What did I miss this week in AI coding?"
+
+Agent runs intel-overdrive feed --days 7:
+
+  Claude Code now supports scheduled tasks and multi-agent code review
+  Gemini 2.5 Flash — new "thinking budget" for fine-grained reasoning control
+  MCP slash-commands workflow migration — update branch protection rules
+  OpenClaw 2026.3.24 — breaking changes to Gateway/OpenAI compatibility
+  How to split work between Claude Code and Codex in real projects
+```
+
+No more scrolling Twitter, Reddit, and newsletters. Your agent already knows.
 
 > [!TIP]
 > Also available via [skills.sh](https://skills.sh/Looney-tic/agent-skills): `npx skills add Looney-tic/agent-skills --skill intel-overdrive -g -y`
 
 ## What you can ask
 
-| Question                                | What your agent finds                               |
-| --------------------------------------- | --------------------------------------------------- |
-| "What MCP servers exist for databases?" | Quality-ranked list with stars and maturity labels  |
-| "Did anything break in the OpenAI SDK?" | Specific version, what broke, how to migrate        |
-| "What's new this week?"                 | Curated feed of the most significant updates        |
-| "Best practice for Claude Code hooks?"  | Synthesized patterns from community sources         |
-| "Compare LangChain vs CrewAI"           | Side-by-side with community traction and trade-offs |
+| Instead of...                        | Ask your agent                                  |
+| ------------------------------------ | ----------------------------------------------- |
+| Scrolling Twitter for AI news        | "What's new in AI coding this week?"            |
+| Checking changelogs before upgrading | "Any breaking changes I should know about?"     |
+| Googling "best tool for X"           | "What's the best MCP server for databases?"     |
+| Reading newsletters you're behind on | "Catch me up on Claude Code — what changed?"    |
+| Wondering if your SDK is outdated    | "Is the Anthropic SDK I'm using still current?" |
 
-Your agent calls it **automatically** — when you ask about AI tools, SDKs, or frameworks, the skill triggers and runs `intel-overdrive search` via Bash. You can also use the CLI directly:
+Your agent calls it **automatically** when you ask about AI tools, SDKs, or frameworks. Or use the CLI directly:
 
 ```bash
-intel-overdrive search "MCP servers for auth"
-intel-overdrive feed --days 7
-intel-overdrive breaking
+intel-overdrive feed --days 7           # what's new this week
+intel-overdrive breaking                # breaking changes to watch for
+intel-overdrive search "Claude Code hooks best practices"
 ```
 
 ## How it works
