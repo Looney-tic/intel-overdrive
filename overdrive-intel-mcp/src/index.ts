@@ -835,9 +835,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 // CLI helpers
 // ---------------------------------------------------------------------------
 
-/** Parse --days N and --type T from CLI args. */
-function parseFeedArgs(args: string[]): { days?: number; type?: string } {
-  const result: { days?: number; type?: string } = {};
+/** Parse --days N, --type T, and --tag T from CLI args. */
+function parseFeedArgs(args: string[]): {
+  days?: number;
+  type?: string;
+  tag?: string;
+} {
+  const result: { days?: number; type?: string; tag?: string } = {};
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--days" && args[i + 1]) {
       const n = parseInt(args[i + 1], 10);
@@ -845,6 +849,28 @@ function parseFeedArgs(args: string[]): { days?: number; type?: string } {
       i++;
     } else if (args[i] === "--type" && args[i + 1]) {
       result.type = args[i + 1];
+      i++;
+    } else if (args[i] === "--tag" && args[i + 1]) {
+      result.tag = args[i + 1];
+      i++;
+    }
+  }
+  return result;
+}
+
+/** Parse --days N and --topic T from CLI args for briefing command. */
+function parseBriefingArgs(args: string[]): {
+  days?: number;
+  topic?: string;
+} {
+  const result: { days?: number; topic?: string } = {};
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--days" && args[i + 1]) {
+      const n = parseInt(args[i + 1], 10);
+      if (!isNaN(n)) result.days = n;
+      i++;
+    } else if (args[i] === "--topic" && args[i + 1]) {
+      result.topic = args[i + 1];
       i++;
     }
   }
@@ -858,15 +884,20 @@ function printHelp(): void {
       "Usage: intel-overdrive <command> [options]",
       "",
       "Commands:",
-      "  setup                    Provision API key, install CLI globally, add skill",
-      "  search <query>           Search for items matching a query",
-      "  feed [--days N]          Show recent feed items",
-      "  breaking [--days N]      Show breaking changes",
-      "  mcp-enable               Optional: register as MCP server in Claude Code",
+      "  setup                              Provision API key, install CLI globally, add skill",
+      "  search <query>                     Search for items matching a query",
+      "  feed [--days N] [--tag T]          Show recent feed items",
+      "  breaking [--days N] [--tag T]      Show breaking changes",
+      "  briefing [--days N] [--topic T]    Get intelligence briefing",
+      "  library <query>                    Search best practices and guides",
+      "  similar <concept>                  Find semantically similar items",
+      "  action-items [query]               Show items needing attention",
+      "  status                             Show pipeline health",
+      "  mcp-enable                         Optional: register as MCP server in Claude Code",
       "",
       "Options:",
-      "  --version, -v            Print version",
-      "  --help, -h               Print this help",
+      "  --version, -v                      Print version",
+      "  --help, -h                         Print this help",
       "",
       "No arguments: start MCP stdio server (for agents with MCP support)",
       "",
@@ -901,6 +932,32 @@ async function main(): Promise<void> {
   if (command === "breaking") {
     const { runBreaking } = await import("./cli/commands.js");
     await runBreaking(parseFeedArgs(args.slice(1)));
+    return;
+  }
+  if (command === "briefing") {
+    const { runBriefing } = await import("./cli/commands.js");
+    await runBriefing(parseBriefingArgs(args.slice(1)));
+    return;
+  }
+  if (command === "library") {
+    const { runLibrary } = await import("./cli/commands.js");
+    await runLibrary(args.slice(1).join(" "));
+    return;
+  }
+  if (command === "similar") {
+    const { runSimilar } = await import("./cli/commands.js");
+    await runSimilar(args.slice(1).join(" "));
+    return;
+  }
+  if (command === "action-items") {
+    const { runActionItems } = await import("./cli/commands.js");
+    const query = args.slice(1).join(" ");
+    await runActionItems(query || undefined);
+    return;
+  }
+  if (command === "status") {
+    const { runStatus } = await import("./cli/commands.js");
+    await runStatus();
     return;
   }
   if (command === "mcp-enable") {
