@@ -271,13 +271,13 @@ function buildRoutes(
         {
           endpoint: "/v1/feed",
           params: {
-            significance: "breaking",
+            significance: "breaking,major",
             days,
             limit: 10,
             sort: "significance",
             ...(query ? { q: query } : {}),
           },
-          label: `Breaking changes (last ${days} days)`,
+          label: `Breaking & major changes (last ${days} days)`,
         },
       ];
 
@@ -322,7 +322,7 @@ function buildRoutes(
       return [
         {
           endpoint: "/v1/action-items",
-          params: {},
+          params: { ...(query ? { q: query } : {}) },
           label: "Action items needing attention",
         },
       ];

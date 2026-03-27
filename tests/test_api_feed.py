@@ -1244,3 +1244,160 @@ async def test_feed_source_type_diversity(
 
     # RSS items should be present
     assert len(returned_rss) >= 1, "RSS items should appear in diversified feed"
+
+
+# ---------------------------------------------------------------------------
+# Comma-separated significance filter (Phase 34 RANK-01)
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_feed_comma_separated_significance(
+    client, api_key_header, session, source_factory
+):
+    """Phase 34 RANK-01: significance=breaking,major returns both breaking and major items."""
+    source = await source_factory(id="test:comma-sig", name="Comma Significance Source")
+
+    now = datetime.now(timezone.utc)
+
+    breaking_item = IntelItem(
+        id=uuid.uuid4(),
+        source_id=source.id,
+        external_id="ext-comma-breaking",
+        url=f"https://example.com/comma-breaking-{uuid.uuid4()}",
+        title="Breaking API Change",
+        content="A breaking change that should appear with comma-separated filter.",
+        primary_type="update",
+        tags=["comma-sig-test"],
+        status="processed",
+        significance="breaking",
+        relevance_score=0.8,
+        quality_score=0.8,
+        confidence_score=0.9,
+        created_at=now,
+    )
+
+    major_item = IntelItem(
+        id=uuid.uuid4(),
+        source_id=source.id,
+        external_id="ext-comma-major",
+        url=f"https://example.com/comma-major-{uuid.uuid4()}",
+        title="Major SDK Release",
+        content="A major release that should appear with comma-separated filter.",
+        primary_type="update",
+        tags=["comma-sig-test"],
+        status="processed",
+        significance="major",
+        relevance_score=0.8,
+        quality_score=0.8,
+        confidence_score=0.9,
+        created_at=now,
+    )
+
+    minor_item = IntelItem(
+        id=uuid.uuid4(),
+        source_id=source.id,
+        external_id="ext-comma-minor",
+        url=f"https://example.com/comma-minor-{uuid.uuid4()}",
+        title="Minor Patch Update",
+        content="A minor update that should NOT appear with breaking,major filter.",
+        primary_type="update",
+        tags=["comma-sig-test"],
+        status="processed",
+        significance="minor",
+        relevance_score=0.8,
+        quality_score=0.8,
+        confidence_score=0.9,
+        created_at=now,
+    )
+
+    session.add_all([breaking_item, major_item, minor_item])
+    await session.commit()
+
+    response = await client.get(
+        "/v1/feed?tag=comma-sig-test&significance=breaking,major&days=7",
+        headers=api_key_header["headers"],
+    )
+    assert response.status_code == 200
+    data = response.json()
+    items = data["items"]
+
+    item_ids = {item["id"] for item in items}
+    assert str(breaking_item.id) in item_ids, "Breaking item should appear"
+    assert str(major_item.id) in item_ids, "Major item should appear"
+    assert str(minor_item.id) not in item_ids, "Minor item should NOT appear"
+
+
+@pytest.mark.asyncio
+async def test_feed_single_significance_still_works(
+    client, api_key_header, session, source_factory
+):
+    """Phase 34: Single significance value (no comma) still works as before."""
+    source = await source_factory(
+        id="test:single-sig", name="Single Significance Source"
+    )
+
+    now = datetime.now(timezone.utc)
+
+    breaking_item = IntelItem(
+        id=uuid.uuid4(),
+        source_id=source.id,
+        external_id="ext-single-breaking",
+        url=f"https://example.com/single-breaking-{uuid.uuid4()}",
+        title="Single Sig Breaking Change",
+        content="Breaking item for single-value test.",
+        primary_type="update",
+        tags=["single-sig-test"],
+        status="processed",
+        significance="breaking",
+        relevance_score=0.8,
+        quality_score=0.8,
+        confidence_score=0.9,
+        created_at=now,
+    )
+
+    major_item = IntelItem(
+        id=uuid.uuid4(),
+        source_id=source.id,
+        external_id="ext-single-major",
+        url=f"https://example.com/single-major-{uuid.uuid4()}",
+        title="Single Sig Major Update",
+        content="Major item that should NOT appear with significance=breaking.",
+        primary_type="update",
+        tags=["single-sig-test"],
+        status="processed",
+        significance="major",
+        relevance_score=0.8,
+        quality_score=0.8,
+        confidence_score=0.9,
+        created_at=now,
+    )
+
+    session.add_all([breaking_item, major_item])
+    await session.commit()
+
+    response = await client.get(
+        "/v1/feed?tag=single-sig-test&significance=breaking&days=7",
+        headers=api_key_header["headers"],
+    )
+    assert response.status_code == 200
+    data = response.json()
+    items = data["items"]
+
+    item_ids = {item["id"] for item in items}
+    assert str(breaking_item.id) in item_ids, "Breaking item should appear"
+    assert (
+        str(major_item.id) not in item_ids
+    ), "Major item should NOT appear with single significance filter"
+
+
+@pytest.mark.asyncio
+async def test_feed_invalid_comma_significance_rejected(client, api_key_header):
+    """Phase 34: Invalid value in comma-separated significance returns 400."""
+    response = await client.get(
+        "/v1/feed?significance=breaking,invalid_value&days=7",
+        headers=api_key_header["headers"],
+    )
+    assert response.status_code == 400
+    data = response.json()
+    assert "invalid_significance" in str(data)

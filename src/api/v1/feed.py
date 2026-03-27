@@ -358,16 +358,21 @@ async def get_feed(
                 }
             },
         )
-    if significance and significance not in VALID_SIGNIFICANCES:
-        return JSONResponse(
-            status_code=400,
-            content={
-                "error": {
-                    "code": "invalid_significance",
-                    "message": f"Invalid significance '{significance}'. Valid values: {', '.join(sorted(VALID_SIGNIFICANCES))}",
-                }
-            },
-        )
+    # Support comma-separated significance values (e.g. "breaking,major")
+    significance_values: list[str] | None = None
+    if significance:
+        significance_values = [s.strip() for s in significance.split(",") if s.strip()]
+        invalid = [s for s in significance_values if s not in VALID_SIGNIFICANCES]
+        if invalid:
+            return JSONResponse(
+                status_code=400,
+                content={
+                    "error": {
+                        "code": "invalid_significance",
+                        "message": f"Invalid significance '{','.join(invalid)}'. Valid values: {', '.join(sorted(VALID_SIGNIFICANCES))}",
+                    }
+                },
+            )
 
     # Apply persona presets BEFORE building filters.
     # Preset values act as defaults — explicit caller params override persona presets.
@@ -486,8 +491,11 @@ async def get_feed(
         )
         filters[-1] = filters[-1].bindparams(bindparam("q_feed", value=q, type_=String))
 
-    if significance:
-        filters.append(IntelItem.significance == significance)
+    if significance_values:
+        if len(significance_values) == 1:
+            filters.append(IntelItem.significance == significance_values[0])
+        else:
+            filters.append(IntelItem.significance.in_(significance_values))
     elif preset_significances:
         # Persona preset: filter by multiple significance values (IN clause)
         filters.append(IntelItem.significance.in_(preset_significances))
