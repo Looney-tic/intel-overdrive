@@ -9,7 +9,7 @@
     </title>
     <meta
       name="description"
-      content="Everything new in AI coding — delivered straight to Claude Code. New MCP servers, skills, agent frameworks, SDK updates from 1,000+ sources. One command to install."
+      content="Everything new in AI coding — delivered straight to Claude Code. New MCP servers, skills, agent frameworks, SDK updates from 1,100+ sources. One command to install."
     />
     <meta
       property="og:title"
@@ -17,7 +17,7 @@
     />
     <meta
       property="og:description"
-      content="Everything new in AI coding — delivered straight to Claude Code. New MCP servers, skills, agent frameworks, SDK updates from 1,000+ sources."
+      content="Everything new in AI coding — delivered straight to Claude Code. New MCP servers, skills, agent frameworks, SDK updates from 1,100+ sources."
     />
     <meta property="og:url" content="https://inteloverdrive.com" />
     <meta property="og:type" content="website" />
@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="Intel Overdrive" />
     <meta
       name="twitter:description"
-      content="New MCP servers, skills, and SDK updates — delivered straight to Claude Code. 1,000+ sources, one command to install."
+      content="New MCP servers, skills, and SDK updates — delivered straight to Claude Code. 1,100+ sources, one command to install."
     />
     <meta
       name="keywords"
@@ -39,7 +39,7 @@
         "name": "Intel Overdrive",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Cross-platform",
-        "description": "MCP server that gives Claude Code real-time intelligence about new tools, MCP servers, breaking changes, and best practices from 1,000+ monitored sources.",
+        "description": "Skill + CLI that gives your AI coding agent real-time intelligence about new tools, breaking changes, and best practices from 1,100+ monitored sources.",
         "url": "https://inteloverdrive.com",
         "offers": {
           "@type": "Offer",
@@ -803,7 +803,7 @@
         <div class="nav-links">
           <a href="/v1/guide" class="nav-link">API</a>
           <a
-            href="https://www.npmjs.com/package/intel-overdrive-mcp"
+            href="https://www.npmjs.com/package/intel-overdrive"
             class="nav-link"
             >npm</a
           >
@@ -825,7 +825,7 @@
       <section class="hero">
         <div class="hero-badge">
           <span class="dot"></span>
-          <span>MCP Server &middot; 1,000+ sources &middot; live</span>
+          <span>1,100+ sources &middot; skill + CLI &middot; live</span>
         </div>
 
         <h1>
@@ -835,11 +835,10 @@
 
         <p class="hero-sub">
           New MCP servers, Claude Code skills, agent frameworks, SDK updates
-          &mdash; the ecosystem moves faster than anyone can follow via Twitter,
-          newsletters, and Discord. Intel Overdrive monitors 1,000+ sources and
-          feeds the knowledge directly into Claude Code. Your agent
-          automatically knows about tools and features that aren't in its
-          training data.
+          &mdash; the ecosystem moves faster than anyone can follow. Intel
+          Overdrive monitors 1,100+ sources and feeds live intelligence directly
+          into your AI coding agent. One command to install. No restart needed.
+          Works immediately.
         </p>
 
         <div class="hero-actions">
@@ -874,7 +873,7 @@
             style="font-size: 14px; color: var(--text-dim); margin-bottom: 16px"
           >
             Copy this command, paste it into your Claude Code conversation, and
-            you're done.
+            you're done. No restart needed.
           </div>
           <div
             class="install-cmd"
@@ -883,17 +882,16 @@
             tabindex="0"
           >
             <span class="prompt">$</span>
-            <span class="text"
-              >bash &lt;(curl -s https://inteloverdrive.com/dl/setup.sh)</span
-            >
+            <span class="text">npx intel-overdrive setup</span>
             <span class="copy">Copy</span>
           </div>
           <div class="install-time">
-            No email &middot; No API keys to manage &middot; Free tier
+            No email &middot; No restart &middot; Works immediately &middot;
+            Free tier
             <span style="margin-left: 16px; color: var(--text-muted)"
-              >or:
+              >or via skills.sh:
               <code style="color: var(--text-dim); font-family: var(--mono)"
-                >npm i -g intel-overdrive-mcp</code
+                >npx skills add Looney-tic/agent-skills</code
               ></span
             >
           </div>
@@ -926,31 +924,19 @@
       <!-- WHAT IS MCP -->
       <section class="mcp-explainer reveal">
         <div class="mcp-box">
-          <h3>What is an MCP server?</h3>
+          <h3>How it works</h3>
           <p>
-            Think of it as a
-            <strong style="color: var(--text)">plugin for your AI agent</strong
-            >. The
-            <a
-              href="https://modelcontextprotocol.io"
-              style="
-                color: var(--accent);
-                text-decoration: none;
-                border-bottom: 1px solid var(--accent-dim);
-              "
-              >Model Context Protocol</a
-            >
-            lets your agent query external tools on its own. Instead of you
-            reading newsletters, scrolling Reddit, and checking release notes,
-            your agent calls <code>intel_overdrive</code> and already knows what
-            changed.
+            Intel Overdrive installs a
+            <strong style="color: var(--text)">skill + CLI</strong> into your
+            agent. The skill tells the agent when to query. The CLI does the
+            querying. No MCP server needed, no restart, no configuration.
           </p>
           <div class="mcp-flow">
             <div class="mcp-flow-step">You ask a question</div>
             <span class="mcp-flow-arrow">&rarr;</span>
             <div class="mcp-flow-step">
-              Agent calls
-              <code style="color: var(--accent)">intel_overdrive</code>
+              Agent runs
+              <code style="color: var(--accent)">intel-overdrive search</code>
             </div>
             <span class="mcp-flow-arrow">&rarr;</span>
             <div class="mcp-flow-step">Gets live, ranked results</div>
@@ -1184,8 +1170,8 @@
         <div class="section-label">How it works</div>
         <div class="section-title">Install once, intelligence everywhere</div>
         <p class="section-desc">
-          One command registers the MCP server globally. From then on, your
-          agent calls it automatically whenever a question matches.
+          One command installs the skill and CLI. From then on, your agent
+          queries it automatically whenever a question matches.
         </p>
 
         <div class="how-grid">
@@ -1193,8 +1179,9 @@
             <div class="how-step-num">01</div>
             <h3>Run one command</h3>
             <p>
-              The setup script registers anonymously, installs the MCP server,
-              and configures your tool. No account, no email.
+              <code>npx intel-overdrive setup</code> registers anonymously,
+              installs the CLI, and adds the skill. No account, no email, no
+              restart.
             </p>
           </div>
           <div class="how-step">
@@ -1210,7 +1197,7 @@
               auth?"<br />
               <span class="agent">Agent:</span>
               <code style="color: var(--accent); font-size: 11px"
-                >intel_overdrive({ query: "auth MCP server" })</code
+                >intel-overdrive search "auth MCP server"</code
               ><br />
               <span style="color: var(--green); font-size: 11px"
                 >&rarr; Auth0, Clerk, Supabase Auth — ranked by quality</span
@@ -1234,7 +1221,7 @@
         <div class="section-label">Capabilities</div>
         <div class="section-title">Built for AI agents</div>
         <p class="section-desc">
-          One MCP tool, eight query types. Your agent knows when to call it.
+          One CLI, eight query types. Your agent knows when to call it.
         </p>
 
         <div class="features-grid">
@@ -1295,7 +1282,7 @@
       <!-- SOURCES -->
       <section class="sources-section reveal">
         <div class="section-label">Coverage</div>
-        <div class="source-count">1,000+</div>
+        <div class="source-count">1,100+</div>
         <div class="section-title">Sources monitored</div>
         <p class="section-desc" style="margin-bottom: 32px">
           22,000+ GitHub repos scanned, 280+ RSS feeds, 30+ vendor MCP servers,
@@ -1326,8 +1313,8 @@
         <div class="section-label">Built for</div>
         <div class="section-title">Claude Code</div>
         <p class="section-desc">
-          Installs as an MCP server. Your agent calls it automatically &mdash;
-          no manual steps after setup. Also available as a
+          Installs a skill + CLI. Your agent calls it automatically &mdash; no
+          restart, no manual steps after setup. Also available as a
           <a
             href="/v1/guide"
             style="
@@ -1355,9 +1342,7 @@
             style="max-width: 620px"
           >
             <span class="prompt">$</span>
-            <span class="text"
-              >bash &lt;(curl -s https://inteloverdrive.com/dl/setup.sh)</span
-            >
+            <span class="text">npx intel-overdrive setup</span>
             <span class="copy">Copy</span>
           </div>
         </div>
@@ -1384,7 +1369,7 @@
         >
         <div style="display: flex; gap: 24px; flex-wrap: wrap">
           <a href="/v1/guide">API Docs</a>
-          <a href="https://www.npmjs.com/package/intel-overdrive-mcp">npm</a>
+          <a href="https://www.npmjs.com/package/intel-overdrive">npm</a>
           <a href="https://github.com/Looney-tic/intel-overdrive">GitHub</a>
           <a href="https://github.com/Looney-tic/intel-overdrive/issues"
             >Feedback</a
@@ -1397,7 +1382,7 @@
 
     <script>
       function copyInstall(el) {
-        const cmd = "bash <(curl -s https://inteloverdrive.com/dl/setup.sh)";
+        const cmd = "npx intel-overdrive setup";
         navigator.clipboard.writeText(cmd).then(() => {
           el.classList.add("copied");
           el.querySelector(".copy").textContent = "Copied!";
