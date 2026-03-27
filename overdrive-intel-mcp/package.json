@@ -1,6 +1,6 @@
 {
   "name": "intel-overdrive",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Breaking changes, new tools, and security alerts for AI coding agents. 1100+ sources, one command to install.",
   "type": "module",
   "bin": {

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a0c"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#grid)" opacity="0.15"/>
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1e1e26" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <!-- Title -->
+  <text x="80" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="800" fill="#e4e4e8" letter-spacing="-2">Intel Overdrive</text>
+  <!-- Tagline -->
+  <text x="80" y="250" font-family="system-ui, sans-serif" font-size="28" fill="#7a7a88">Your AI coding agent, updated in real time.</text>
+  <!-- Stats -->
+  <text x="80" y="340" font-family="monospace" font-size="22" fill="#3b82f6">1,100+ sources</text>
+  <text x="350" y="340" font-family="monospace" font-size="22" fill="#7a7a88">·</text>
+  <text x="380" y="340" font-family="monospace" font-size="22" fill="#22c55e">49,000+ items</text>
+  <text x="650" y="340" font-family="monospace" font-size="22" fill="#7a7a88">·</text>
+  <text x="680" y="340" font-family="monospace" font-size="22" fill="#f59e0b">updated every 15 min</text>
+  <!-- Terminal preview -->
+  <rect x="80" y="390" width="1040" height="180" rx="8" fill="#111115" stroke="#1e1e26" stroke-width="1"/>
+  <circle cx="104" cy="414" r="5" fill="#ef4444"/>
+  <circle cx="124" cy="414" r="5" fill="#f59e0b"/>
+  <circle cx="144" cy="414" r="5" fill="#22c55e"/>
+  <text x="100" y="460" font-family="monospace" font-size="16" fill="#7a7a88">$ intel-overdrive feed --days 7</text>
+  <text x="100" y="490" font-family="monospace" font-size="14" fill="#ef4444">[BREAKING]</text>
+  <text x="210" y="490" font-family="monospace" font-size="14" fill="#e4e4e8">Claude Code plugin install flow changed</text>
+  <text x="100" y="515" font-family="monospace" font-size="14" fill="#f59e0b">[MAJOR]</text>
+  <text x="195" y="515" font-family="monospace" font-size="14" fill="#e4e4e8">Gemini 2.5 Flash — new thinking budget feature</text>
+  <text x="100" y="540" font-family="monospace" font-size="14" fill="#3b82f6">[NEW]</text>
+  <text x="175" y="540" font-family="monospace" font-size="14" fill="#e4e4e8">How to split work between Claude Code and Codex</text>
+  <!-- Install CTA -->
+  <text x="80" y="610" font-family="monospace" font-size="16" fill="#4a4a56">npx intel-overdrive setup</text>
+</svg>

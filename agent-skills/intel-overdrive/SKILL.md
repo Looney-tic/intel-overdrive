@@ -1,6 +1,6 @@
 ---
 name: intel-overdrive
-description: "Query live AI ecosystem intelligence when users ask about MCP servers, Claude Code features, Cursor, Copilot, AI coding assistants, LLM SDKs (Anthropic, OpenAI, Gemini), agent frameworks (LangChain, CrewAI), breaking changes, new AI tools, or 'what's new'. Use when the user asks 'what MCP servers exist for X', 'any breaking changes in Y', 'best practice for Z', 'what's new in AI coding', or before recommending any AI tool or framework."
+description: "Real-time intelligence from 1,100+ AI coding sources. Search MCP servers, catch breaking SDK changes, discover new tools, and get best-practice briefings — before your agent's stale training data leads you wrong. Use when users ask about MCP servers, Claude Code, Cursor, Copilot, LLM SDKs, agent frameworks, breaking changes, or 'what's new in AI coding'."
 ---
 
 # Intel Overdrive
