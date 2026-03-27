@@ -942,7 +942,7 @@
             >
             lets your agent query external tools on its own. Instead of you
             reading newsletters, scrolling Reddit, and checking release notes,
-            your agent calls <code>overdrive_intel</code> and already knows what
+            your agent calls <code>intel_overdrive</code> and already knows what
             changed.
           </p>
           <div class="mcp-flow">
@@ -950,7 +950,7 @@
             <span class="mcp-flow-arrow">&rarr;</span>
             <div class="mcp-flow-step">
               Agent calls
-              <code style="color: var(--accent)">overdrive_intel</code>
+              <code style="color: var(--accent)">intel_overdrive</code>
             </div>
             <span class="mcp-flow-arrow">&rarr;</span>
             <div class="mcp-flow-step">Gets live, ranked results</div>
@@ -1053,7 +1053,7 @@
             <div class="terminal-dot"></div>
             <div class="terminal-dot"></div>
             <span class="terminal-title"
-              >overdrive_intel({ type: "breaking", query: "breaking changes",
+              >intel_overdrive({ type: "breaking", query: "breaking changes",
               days: 14 })</span
             >
           </div>
@@ -1119,7 +1119,7 @@
             <div class="terminal-dot"></div>
             <div class="terminal-dot"></div>
             <span class="terminal-title"
-              >overdrive_intel({ type: "search", query: "Anthropic Claude SDK
+              >intel_overdrive({ type: "search", query: "Anthropic Claude SDK
               latest changes" })</span
             >
           </div>
@@ -1210,7 +1210,7 @@
               auth?"<br />
               <span class="agent">Agent:</span>
               <code style="color: var(--accent); font-size: 11px"
-                >overdrive_intel({ query: "auth MCP server" })</code
+                >intel_overdrive({ query: "auth MCP server" })</code
               ><br />
               <span style="color: var(--green); font-size: 11px"
                 >&rarr; Auth0, Clerk, Supabase Auth — ranked by quality</span

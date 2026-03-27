@@ -19,7 +19,7 @@ You: "I need to add Stripe payments to this app"
 
 Without Intel Overdrive → agent writes raw API integration from scratch
 
-With Intel Overdrive → agent calls overdrive_intel first:
+With Intel Overdrive → agent calls intel_overdrive first:
   ⚡ Stripe MCP Server (stripe/ai) — ★ 3.2k · established
     "Official Stripe MCP. Create payment intents, manage subscriptions,
      and query transactions directly from Claude Code."
@@ -31,7 +31,7 @@ With Intel Overdrive → agent calls overdrive_intel first:
 ```
 You: "What did I miss? Anything important in AI coding lately?"
 
-Agent calls overdrive_intel({ type: "feed", days: 14 }):
+Agent calls intel_overdrive({ type: "feed", days: 14 }):
 
   🔴 BREAKING  Anthropic SDK v0.86 — streaming API changed, update client code
   🔴 BREAKING  OpenAI dropped prompt_cache_key — remove before upgrading
@@ -62,7 +62,7 @@ Built for **Claude Code**. Also available as a [REST API](https://inteloverdrive
 
 ```mermaid
 flowchart LR
-    S["🔄 1,000+ sources\npolled every 15 min"] --> C["🧠 AI classification\ntype · significance · tags\nHaiku LLM + Voyage embeddings"] --> Q["⭐ Quality scoring\nGitHub stars · maintenance\nmaturity labels"] --> D[("📦 49k+ items\nPostgreSQL + pgvector")] --> M["⚡ overdrive_intel\nMCP tool"] --> A["💻 Claude Code"]
+    S["🔄 1,000+ sources\npolled every 15 min"] --> C["🧠 AI classification\ntype · significance · tags\nHaiku LLM + Voyage embeddings"] --> Q["⭐ Quality scoring\nGitHub stars · maintenance\nmaturity labels"] --> D[("📦 49k+ items\nPostgreSQL + pgvector")] --> M["⚡ intel_overdrive\nMCP tool"] --> A["💻 Claude Code"]
 ```
 
 ## What you can ask
@@ -107,7 +107,7 @@ Every item is auto-classified into types (tool, update, practice, security, docs
 ## How it works
 
 1. **Install once** — paste the setup command into Claude Code
-2. **Agent detects automatically** — when you ask about tools, SDKs, or new features, Claude Code calls `overdrive_intel` before searching the web
+2. **Agent detects automatically** — when you ask about tools, SDKs, or new features, Claude Code calls `intel_overdrive` before searching the web
 3. **Or just ask** — "what's new?", "best MCP for X?", "any breaking changes in Y?"
 4. **Results are ranked** — quality-scored with GitHub stars, maintenance status, and maturity labels
 
