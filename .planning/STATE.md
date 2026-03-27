@@ -4,14 +4,14 @@ milestone: v1.0
 milestone_name: milestone
 current_plan: 35-01 (complete)
 status: executing
-stopped_at: Completed 35-03-PLAN.md
-last_updated: "2026-03-27T12:31:23.610Z"
+stopped_at: Completed 35-02-PLAN.md
+last_updated: "2026-03-27T12:38:42.564Z"
 last_activity: 2026-03-27
 progress:
   total_phases: 34
-  completed_phases: 31
+  completed_phases: 32
   total_plans: 143
-  completed_plans: 141
+  completed_plans: 142
   percent: 82
 ---
 
@@ -165,6 +165,7 @@ _Updated after each plan completion_
 | Phase 34-search-ranking-quality-fixes P01 | 25min | 2 tasks | 6 files |
 | Phase 34-search-ranking-quality-fixes P02 | 6min | 1 tasks | 3 files |
 | Phase 35-unified-cli-skills-sh-distribution P03 | 18 | 2 tasks | 7 files |
+| Phase 35 P02 | 4 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -419,6 +420,9 @@ Recent decisions affecting current work:
 - [Phase 35-03]: Agent-neutral SKILL.md: removed ToolSearch/deferred-tool/session-start, added SETUP REQUIRED block directing to npm install -g overdrive-intel && overdrive-intel setup
 - [Phase 35-03]: On Failure section added to all SKILL.md files to prevent agent retry loops when MCP server unavailable
 - [Phase 35-03]: Data Freshness polling intervals removed from internal SKILL.md; replaced with one-line freshness statement (backend detail per L-3)
+- [Phase 35]: CLI modules use dynamic import() to avoid loading CLI code in MCP mode
+- [Phase 35]: Unknown CLI commands exit(1) instead of hanging in MCP stdio mode
+- [Phase 35]: setup.sh uses npm install -g overdrive-intel@latest (DIST-FIX-01) and no -e env flags (L-2 fix)
 
 ### Pending Todos
 
@@ -472,6 +476,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-27T12:31:23.604Z
-Stopped at: Completed 35-03-PLAN.md
+Last session: 2026-03-27T12:38:36.223Z
+Stopped at: Completed 35-02-PLAN.md
 Resume file: None

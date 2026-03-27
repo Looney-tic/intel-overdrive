@@ -262,12 +262,12 @@
 ### Unified CLI + Skills.sh Distribution (Phase 35)
 
 - [x] **DIST-CLI-01**: Unified `overdrive-intel` npm package (replaces `intel-overdrive-mcp`) as both CLI and MCP server
-- [ ] **DIST-CLI-02**: `overdrive-intel setup` provisions API key + registers MCP + installs SKILL.md
-- [ ] **DIST-CLI-03**: `overdrive-intel search/feed/breaking` human-facing CLI commands
+- [x] **DIST-CLI-02**: `overdrive-intel setup` provisions API key + registers MCP + installs SKILL.md
+- [x] **DIST-CLI-03**: `overdrive-intel search/feed/breaking` human-facing CLI commands
 - [x] **DIST-CLI-04**: Same binary serves as MCP server in stdio mode (no args)
 - [x] **DIST-SKILLS-01**: `Looney-tic/agent-skills` GitHub repo content with agent-neutral SKILL.md
 - [x] **DIST-SKILLS-02**: SKILL.md rewritten to be agent-neutral (no ToolSearch, no deferred-tool)
-- [ ] **DIST-FIX-01**: Fix C-2: replace tgz install with npm install from registry
+- [x] **DIST-FIX-01**: Fix C-2: replace tgz install with npm install from registry
 - [x] **DIST-FIX-02**: Fix H-2: standardize on `OVERDRIVE_INTEL_API_KEY` everywhere; legacy fallback
 - [x] **DIST-FIX-03**: Fix H-6: single source of truth for version (read from package.json at runtime)
 - [x] **DIST-FIX-04**: Fix M-3: plain-text error messages instead of JSON.stringify wrapping

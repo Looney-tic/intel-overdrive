@@ -838,7 +838,7 @@ Plans:
 **Goal:** Transform intel-overdrive-mcp into a unified overdrive-intel npm package (CLI + MCP server), fix all critical distribution bugs, and create agent-neutral SKILL.md files for skills.sh distribution
 **Requirements**: DIST-CLI-01, DIST-CLI-02, DIST-CLI-03, DIST-CLI-04, DIST-SKILLS-01, DIST-SKILLS-02, DIST-FIX-01, DIST-FIX-02, DIST-FIX-03, DIST-FIX-04
 **Depends on:** Phase 34
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 
 Plans:
 - [x] 35-01 (Wave 1): Package rename + shared config + DIST-FIX issues — rename to overdrive-intel, extract config.ts, fix version/env/errors, update server.json (DIST-CLI-01, DIST-CLI-04, DIST-FIX-02, DIST-FIX-03, DIST-FIX-04)
