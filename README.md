@@ -1,10 +1,11 @@
 # Intel Overdrive
 
 [![npm version](https://img.shields.io/npm/v/intel-overdrive.svg)](https://www.npmjs.com/package/intel-overdrive)
-[![Node version](https://img.shields.io/node/v/intel-overdrive.svg)](https://nodejs.org)
+[![npm downloads](https://img.shields.io/npm/dm/intel-overdrive)](https://www.npmjs.com/package/intel-overdrive)
+[![GitHub stars](https://img.shields.io/github/stars/Looney-tic/intel-overdrive)](https://github.com/Looney-tic/intel-overdrive)
 [![License](https://img.shields.io/badge/license-ELv2-blue.svg)](LICENSE)
 
-Live AI ecosystem intelligence for your coding agent. Breaking changes, new tools, and security alerts from 1,100+ sources — before they hit training data.
+Your AI coding agent doesn't know what shipped last week. Intel Overdrive gives it a live feed of breaking changes, new tools, and security alerts from 1,100+ sources — so it stops generating wrong code.
 
 ## Get started
 

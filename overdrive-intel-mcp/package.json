@@ -1,7 +1,7 @@
 {
   "name": "intel-overdrive",
   "version": "0.11.0",
-  "description": "AI coding ecosystem intelligence — CLI + skill for your AI agent, with optional MCP server. Breaking changes, new tools, and security alerts from 1100+ sources.",
+  "description": "Breaking changes, new tools, and security alerts for AI coding agents. 1100+ sources, one command to install.",
   "type": "module",
   "bin": {
     "intel-overdrive": "dist/index.js",

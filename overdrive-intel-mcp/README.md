@@ -1,10 +1,10 @@
 # Intel Overdrive
 
 [![npm version](https://img.shields.io/npm/v/intel-overdrive.svg)](https://www.npmjs.com/package/intel-overdrive)
-[![Node version](https://img.shields.io/node/v/intel-overdrive.svg)](https://nodejs.org)
-[![License](https://img.shields.io/badge/license-ELv2-blue.svg)](LICENSE)
+[![npm downloads](https://img.shields.io/npm/dm/intel-overdrive)](https://www.npmjs.com/package/intel-overdrive)
+[![GitHub stars](https://img.shields.io/github/stars/Looney-tic/intel-overdrive)](https://github.com/Looney-tic/intel-overdrive)
 
-Live AI ecosystem intelligence for your coding agent. Breaking changes, new tools, and security alerts from 1,100+ sources — before they hit training data.
+Your AI coding agent doesn't know what shipped last week. This gives it a live feed of breaking changes, new tools, and security alerts from 1,100+ sources — so it stops generating wrong code.
 
 ## Get started
 
@@ -14,32 +14,28 @@ npx intel-overdrive setup
 
 No email, no account, no restart. Works immediately.
 
+| Instead of...                        | Ask your agent                              |
+| ------------------------------------ | ------------------------------------------- |
+| Scrolling Twitter for AI news        | "What's new in AI coding this week?"        |
+| Checking changelogs before upgrading | "Any breaking changes I should know about?" |
+| Googling "best tool for X"           | "What's the best MCP server for databases?" |
+
 > [!TIP]
 > Also via [skills.sh](https://skills.sh/Looney-tic/agent-skills): `npx skills add Looney-tic/agent-skills --skill intel-overdrive -g -y`
 
-## How it works
-
-1. **Skill** tells your agent when to query (`~/.claude/skills/`)
-2. **CLI** does the querying via Bash — fast, authenticated, no background process
-3. **1,100+ sources** monitored continuously
-
-Your agent runs `intel-overdrive search "query"` automatically. Or use the CLI directly:
-
-```bash
-intel-overdrive search "MCP servers for auth"
-intel-overdrive feed --days 7
-intel-overdrive breaking
-```
-
 ## CLI reference
 
-| Command                               | Description                              |
-| ------------------------------------- | ---------------------------------------- |
-| `intel-overdrive setup`               | Register API key, install CLI, add skill |
-| `intel-overdrive search "query"`      | Search for tools, docs, best practices   |
-| `intel-overdrive feed [--days N]`     | Recent updates sorted by significance    |
-| `intel-overdrive breaking [--days N]` | Breaking changes and deprecations        |
-| `intel-overdrive mcp-enable`          | Optional: register as MCP server         |
+| Command                                     | Description                              |
+| ------------------------------------------- | ---------------------------------------- |
+| `intel-overdrive setup`                     | Register API key, install CLI, add skill |
+| `intel-overdrive search "query"`            | Find tools, docs, best practices         |
+| `intel-overdrive feed [--days N] [--tag T]` | Recent updates sorted by significance    |
+| `intel-overdrive breaking [--days N]`       | Breaking changes and deprecations        |
+| `intel-overdrive briefing [--days N]`       | Synthesized intelligence briefing        |
+| `intel-overdrive library "query"`           | Best practices and guides                |
+| `intel-overdrive similar "concept"`         | Semantically similar items               |
+| `intel-overdrive action-items`              | Security alerts, urgent items            |
+| `intel-overdrive status`                    | Pipeline health                          |
 
 ## Links
 
