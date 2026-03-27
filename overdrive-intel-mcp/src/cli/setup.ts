@@ -1,5 +1,5 @@
 /**
- * Setup command: key provisioning, MCP registration, SKILL.md install
+ * Setup command: key provisioning, CLI install, SKILL.md install
  *
  * Ports setup.sh logic to Node.js for a clean cross-platform experience.
  * Uses only Node.js built-ins — no external deps.

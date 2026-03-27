@@ -1,11 +1,11 @@
 #!/bin/bash
-# intel-overdrive setup — one-command install, zero user input
+# intel-overdrive setup — one-command install for CLI + skill
 # Usage: bash <(curl -s https://inteloverdrive.com/dl/setup.sh)
 #
 # What it does:
 #   1. Registers anonymously → gets API key instantly
 #   2. Verifies the key works (shows item count + breaking changes)
-#   3. Installs MCP server (available in all projects)
+#   3. Installs CLI + skill (works immediately, no restart)
 #   4. Shows success summary
 
 set -e
@@ -185,14 +185,13 @@ elif [ -n "$ITEM_COUNT" ]; then
 fi
 
 echo ""
-if [ "$MCP_OK" = true ] && [ "$CLAUDE_OK" = true ]; then
-  echo "  Binary installed. MCP server registered with Claude Code."
-  echo "  Restart Claude Code to activate the overdrive_intel tool."
-elif [ "$MCP_OK" = true ]; then
-  echo "  Binary installed, but Claude CLI not found."
-  echo "  To register manually: claude mcp add -s user -t stdio intel-overdrive -- intel-overdrive"
+if [ "$NPM_OK" = true ]; then
+  echo "  CLI installed. Your agent can now use: intel-overdrive search \"query\""
+  echo "  Try it:  intel-overdrive search \"MCP servers for auth\""
+  echo ""
+  echo "  Optional: intel-overdrive mcp-enable  (register as MCP tool in Claude Code)"
 else
-  echo "  MCP tool not installed. After installing Node.js, run this script again."
+  echo "  CLI not installed. After installing Node.js, run this script again."
 fi
 
 echo ""
