@@ -825,7 +825,9 @@
       <section class="hero">
         <div class="hero-badge">
           <span class="dot"></span>
-          <span>1,100+ sources &middot; skill + CLI &middot; live</span>
+          <span
+            >1,100+ sources &middot; auto-updates your agent &middot; live</span
+          >
         </div>
 
         <h1>
@@ -834,31 +836,12 @@
         </h1>
 
         <p class="hero-sub">
-          New MCP servers, Claude Code skills, agent frameworks, SDK updates
-          &mdash; the ecosystem moves faster than anyone can follow. Intel
-          Overdrive monitors 1,100+ sources and feeds live intelligence directly
-          into your AI coding agent. One command to install. No restart needed.
-          Works immediately.
+          The AI coding ecosystem moves faster than any training cutoff. Intel
+          Overdrive monitors 1,100+ sources and feeds your agent what it's
+          missing.
         </p>
 
-        <div class="hero-actions">
-          <a
-            href="https://github.com/Looney-tic/intel-overdrive"
-            class="hero-star-btn"
-          >
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
-              <path
-                d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
-              />
-            </svg>
-            Star on GitHub
-          </a>
-          <span style="font-size: 14px; color: var(--text-muted)"
-            >Open source &middot; Elastic License 2.0</span
-          >
-        </div>
-
-        <div class="install-block">
+        <div class="install-block" style="margin-top: 40px">
           <div
             style="
               font-size: 18px;
@@ -876,7 +859,8 @@
             you're done. No restart needed.
           </div>
           <div
-            class="install-cmd" aria-label="Copy install command"
+            class="install-cmd"
+            aria-label="Copy install command"
             onclick="copyInstall(this)"
             role="button"
             tabindex="0"
@@ -896,28 +880,30 @@
             >
           </div>
         </div>
-      </section>
 
-      <!-- DEMO VIDEO -->
-      <section class="reveal" style="padding: 40px 0 80px">
-        <div class="section-label">See it in action</div>
-        <div
-          style="
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            max-width: 720px;
-          "
-        >
-          <video
-            autoplay
-            loop
-            muted
-            playsinline
-            style="width: 100%; display: block"
+        <div class="hero-actions" style="margin-top: 20px">
+          <a
+            href="https://github.com/Looney-tic/intel-overdrive"
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+              font-size: 13px;
+              color: var(--text-dim);
+              text-decoration: none;
+              transition: color 0.2s;
+            "
           >
-            <source src="/dl/demo.mp4" type="video/mp4" />
-          </video>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+              <path
+                d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
+              />
+            </svg>
+            Star on GitHub
+          </a>
+          <span style="font-size: 13px; color: var(--text-muted)"
+            >Free and source-available</span
+          >
         </div>
       </section>
 
@@ -1011,10 +997,10 @@
             <div
               style="font-size: 14px; color: var(--text-dim); line-height: 1.7"
             >
-              One API call, instant results<br />
-              Single call, pre-compressed response<br />
-              Pre-indexed, verified, quality-scored<br />
-              Star counts, quality labels, significance tiers
+              One call, sub-second answer<br />
+              3x fewer tokens than web search<br />
+              Every result verified and quality-ranked<br />
+              Your agent recommends proven tools, not random repos
             </div>
           </div>
         </div>
@@ -1038,61 +1024,38 @@
             <div class="terminal-dot"></div>
             <div class="terminal-dot"></div>
             <div class="terminal-dot"></div>
-            <span class="terminal-title"
-              >intel_overdrive({ type: "breaking", query: "breaking changes",
-              days: 14 })</span
-            >
+            <span class="terminal-title">$ intel-overdrive breaking</span>
           </div>
           <div class="terminal-body">
+            <div style="color: var(--text-dim); margin-bottom: 16px">
+              Breaking changes (last 30 days)
+            </div>
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">1.</span>
-                <span class="result-title">OpenAI Python SDK v2.25.0</span>
-                <span class="result-badge badge-breaking">breaking</span>
-                <span class="result-badge badge-established">established</span>
-              </div>
-              <div class="result-meta">
-                <span class="stars">&#9733; 30.3k</span>
-                <span>update</span>
-                <span>2026-03-22</span>
+                <span class="result-title"
+                  >slash-commands: switch to MCP Commander App token +
+                  auto-merge</span
+                >
+                <span class="result-badge badge-breaking">BREAKING</span>
               </div>
               <div class="result-summary">
-                Removes prompt_cache_key from chat completion responses. Update
-                code that reads this field before upgrading.
+                MCP slash-commands workflow now uses GitHub App tokens instead
+                of custom commit-status checks, requiring migration to native
+                required-reviews + auto-merge.
               </div>
             </div>
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">2.</span>
-                <span class="result-title">Semantic Kernel .NET 1.74.0</span>
-                <span class="result-badge badge-breaking">breaking</span>
-                <span class="result-badge badge-established">established</span>
-              </div>
-              <div class="result-meta">
-                <span class="stars">&#9733; 27.5k</span>
-                <span>update</span>
-                <span>2026-03-20</span>
-              </div>
-              <div class="result-summary">
-                WebFileDownloadPlugin and DocumentPlugin now deny access by
-                default. Review plugin configurations immediately.
-              </div>
-            </div>
-            <div class="result-item">
-              <div class="result-header">
-                <span class="result-num">3.</span>
                 <span class="result-title"
-                  >ContextCrush: Context7 MCP Vulnerability</span
+                  >Claude Code marketplace install flow changed</span
                 >
-                <span class="result-badge badge-breaking">breaking</span>
-              </div>
-              <div class="result-meta">
-                <span>security</span>
-                <span>2026-03-23</span>
+                <span class="result-badge badge-breaking">BREAKING</span>
               </div>
               <div class="result-summary">
-                Critical vulnerability in Context7 MCP server allows
-                unauthorized context manipulation. Patch or disable immediately.
+                Use /plugin marketplace add + /plugin install instead of
+                deprecated /plugin add. Update installation docs.
               </div>
             </div>
           </div>
@@ -1105,64 +1068,77 @@
             <div class="terminal-dot"></div>
             <div class="terminal-dot"></div>
             <span class="terminal-title"
-              >intel_overdrive({ type: "search", query: "Anthropic Claude SDK
-              latest changes" })</span
+              >$ intel-overdrive search "MCP servers database"</span
             >
           </div>
           <div class="terminal-body">
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">1.</span>
-                <span class="result-title">Anthropic Python SDK v0.86.0</span>
-                <span class="result-badge badge-major">major</span>
-                <span class="result-badge badge-established">established</span>
-              </div>
-              <div class="result-meta">
-                <span class="stars">&#9733; 8.2k</span>
-                <span>update</span>
-                <span>2026-03-24</span>
+                <span class="result-title">mysql-mcp-server</span>
               </div>
               <div class="result-summary">
-                Adds native streaming support for extended thinking. New
-                client.messages.stream() API replaces manual SSE parsing.
+                Read-only MySQL access for Claude Code &mdash; list schemas,
+                describe tables, execute SELECT queries with SQL injection
+                protection.
+              </div>
+              <div class="result-meta">
+                <a
+                  href="https://www.npmjs.com/package/mysql-mcp-server"
+                  style="color: var(--accent); text-decoration: none"
+                  >npmjs.com/package/mysql-mcp-server</a
+                >
               </div>
             </div>
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">2.</span>
-                <span class="result-title"
-                  >Claude Code Hooks: best practices</span
-                >
-                <span class="result-badge badge-practice">practice</span>
-              </div>
-              <div class="result-meta">
-                <span>practice</span>
-                <span>2026-03-22</span>
+                <span class="result-title">FreePeak/db-mcp-server</span>
               </div>
               <div class="result-summary">
-                Pre-commit, post-tool, and notification hooks. Use PreToolUse
-                for permission gating, PostToolUse for logging.
+                MySQL and PostgreSQL &mdash; execute queries, manage
+                transactions, explore schemas. Built in Golang for Cursor IDE
+                integration.
+              </div>
+              <div class="result-meta">
+                <a
+                  href="https://github.com/FreePeak/db-mcp-server"
+                  style="color: var(--accent); text-decoration: none"
+                  >github.com/FreePeak/db-mcp-server</a
+                >
               </div>
             </div>
             <div class="result-item">
               <div class="result-header">
                 <span class="result-num">3.</span>
-                <span class="result-title">Claude Agent SDK v0.2.0</span>
-                <span class="result-badge badge-major">major</span>
-                <span class="result-badge badge-emerging">emerging</span>
-              </div>
-              <div class="result-meta">
-                <span class="stars">&#9733; 4.1k</span>
-                <span>update</span>
-                <span>2026-03-23</span>
+                <span class="result-title">mcp-postgres-server</span>
               </div>
               <div class="result-summary">
-                Multi-agent orchestration, handoff patterns, and guardrail
-                hooks. Python-first with TypeScript SDK in beta.
+                PostgreSQL &mdash; execute SQL, insert/update/delete, inspect
+                schemas with prepared statements.
+              </div>
+              <div class="result-meta">
+                <a
+                  href="https://www.npmjs.com/package/mcp-postgres-server"
+                  style="color: var(--accent); text-decoration: none"
+                  >npmjs.com/package/mcp-postgres-server</a
+                >
               </div>
             </div>
           </div>
         </div>
+
+        <p
+          style="
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: var(--mono);
+            margin-top: 16px;
+          "
+        >
+          Live results &mdash; output changes as new tools and updates are
+          indexed.
+        </p>
       </section>
 
       <!-- HOW IT WORKS -->
@@ -1219,7 +1195,7 @@
       <!-- FEATURES -->
       <section class="features-section reveal">
         <div class="section-label">Capabilities</div>
-        <div class="section-title">Built for AI agents</div>
+        <div class="section-title">What your agent gains</div>
         <p class="section-desc">
           One CLI, eight query types. Your agent knows when to call it.
         </p>
@@ -1227,7 +1203,7 @@
         <div class="features-grid">
           <div class="feature">
             <div class="feature-icon">&#128269;</div>
-            <h3>Search &amp; Discovery</h3>
+            <h3>Find the right tool instantly</h3>
             <p>
               Find MCP servers, tools, and frameworks. Intent-aware routing
               prioritizes the right result type. Quality-ranked with star
@@ -1236,7 +1212,7 @@
           </div>
           <div class="feature">
             <div class="feature-icon">&#9888;&#65039;</div>
-            <h3>Breaking Changes</h3>
+            <h3>Stop shipping broken code</h3>
             <p>
               SDK updates, API removals, protocol changes &mdash; classified by
               significance. Your agent warns before you ship broken code.
@@ -1244,16 +1220,16 @@
           </div>
           <div class="feature">
             <div class="feature-icon">&#128274;</div>
-            <h3>Security Alerts</h3>
+            <h3>Know about vulnerabilities first</h3>
             <p>
               CVEs, supply-chain attacks, MCP vulnerabilities surfaced within
-              hours of disclosure. Instant Slack notifications for critical
-              issues.
+              hours of disclosure. Your agent checks automatically before using
+              affected tools.
             </p>
           </div>
           <div class="feature">
             <div class="feature-icon">&#128218;</div>
-            <h3>Knowledge Library</h3>
+            <h3>Best practices that stay current</h3>
             <p>
               Synthesized best practices and gotchas across 50+ topics.
               Evergreen guides updated from community patterns.
@@ -1261,7 +1237,7 @@
           </div>
           <div class="feature">
             <div class="feature-icon">&#128202;</div>
-            <h3>Quality Signals</h3>
+            <h3>Skip the junk, use what's proven</h3>
             <p>
               GitHub stars, maintenance status, quality labels. Distinguish a
               2,400-star battle-tested tool from a weekend project.
@@ -1269,7 +1245,7 @@
           </div>
           <div class="feature">
             <div class="feature-icon">&#127919;</div>
-            <h3>Semantic Search</h3>
+            <h3>Find tools you didn't know existed</h3>
             <p>
               Vector similarity search across the full corpus. Find related
               tools, compare alternatives, and surface connections your agent
@@ -1311,31 +1287,23 @@
       <!-- WORKS WITH -->
       <section class="compat-section reveal">
         <div class="section-label">Built for</div>
-        <div class="section-title">Claude Code</div>
+        <div class="section-title">Claude Code and beyond</div>
         <p class="section-desc">
-          Installs a skill + CLI. Your agent calls it automatically &mdash; no
-          restart, no manual steps after setup. Also available as a
-          <a
-            href="/v1/guide"
-            style="
-              color: var(--accent);
-              text-decoration: none;
-              border-bottom: 1px solid var(--accent-dim);
-            "
-            >REST API</a
-          >
-          with 44 endpoints.
+          Native skill + CLI for Claude Code. MCP server mode for Cursor,
+          Windsurf, and any MCP client. REST API with 40+ endpoints for
+          everything else.
         </p>
       </section>
 
       <!-- CTA -->
       <section class="cta-section reveal">
-        <h2>Paste into Claude Code. Done.</h2>
-        <p>One command. Zero configuration. No email required.</p>
+        <h2>Try it in 30 seconds.</h2>
+        <p>No account. No restart. Works immediately.</p>
 
         <div class="cta-actions">
           <div
-            class="install-cmd" aria-label="Copy install command"
+            class="install-cmd"
+            aria-label="Copy install command"
             onclick="copyInstall(this)"
             role="button"
             tabindex="0"
