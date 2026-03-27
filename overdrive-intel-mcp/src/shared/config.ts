@@ -1,5 +1,5 @@
 /**
- * Shared config module for overdrive-intel.
+ * Shared config module for intel-overdrive.
  *
  * Exports:
  *   VERSION    — read from package.json at module init
@@ -78,7 +78,7 @@ export function getApiUrl(): string {
     return process.env.OVERDRIVE_API_URL.replace(/\/+$/, "");
   }
 
-  // 2. File fallback — written by `overdrive-intel setup`
+  // 2. File fallback — written by `intel-overdrive setup`
   try {
     const urlFile = join(homedir(), ".config", "overdrive-intel", "api_url");
     const val = readFileSync(urlFile, "utf-8").trim();

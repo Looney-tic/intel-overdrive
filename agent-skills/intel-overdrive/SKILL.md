@@ -1,6 +1,6 @@
 ---
-name: overdrive-intel
-description: "Know before your agent codes wrong: breaking SDK changes, new tools, and security alerts from 1100+ monitored sources — before they hit training data. Where Context7 gives you docs, overdrive-intel gives you what changed since your agent was trained."
+name: intel-overdrive
+description: "Know before your agent codes wrong: breaking SDK changes, new tools, and security alerts from 1100+ monitored sources — before they hit training data. Where Context7 gives you docs, intel-overdrive gives you what changed since your agent was trained."
 ---
 
 # Overdrive Intel
@@ -12,7 +12,7 @@ Real-time AI coding ecosystem intelligence — breaking changes, new tools, secu
 This skill requires the Overdrive Intel MCP server. If `overdrive_intel` is not available as a tool, instruct the user to run:
 
 ```bash
-npm install -g overdrive-intel && overdrive-intel setup
+npm install -g intel-overdrive && intel-overdrive setup
 ```
 
 This installs the server, provisions the API key, and registers the MCP server with the agent.
@@ -22,8 +22,8 @@ For Cursor users: add the server to `.cursor/mcp.json`:
 ```json
 {
   "mcpServers": {
-    "overdrive-intel": {
-      "command": "overdrive-intel",
+    "intel-overdrive": {
+      "command": "intel-overdrive",
       "env": { "OVERDRIVE_INTEL_API_KEY": "<your-key>" }
     }
   }
@@ -104,6 +104,6 @@ If the `overdrive_intel` tool call fails or returns an error, answer from your t
 
 ## Supported Agents
 
-- **Claude Code** — native MCP, zero configuration after `overdrive-intel setup`
+- **Claude Code** — native MCP, zero configuration after `intel-overdrive setup`
 - **Cursor** — add server to `.cursor/mcp.json` as shown in SETUP REQUIRED above
 - Any MCP-compatible agent that supports stdio MCP servers

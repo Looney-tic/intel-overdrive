@@ -1,5 +1,5 @@
 /**
- * Shared HTTP helper functions for overdrive-intel CLI commands.
+ * Shared HTTP helper functions for intel-overdrive CLI commands.
  *
  * Uses Node.js built-in `fetch` (available since Node 18) — no external deps.
  * Both apiGet and apiPost use getApiKey() and getApiUrl() from config.ts.

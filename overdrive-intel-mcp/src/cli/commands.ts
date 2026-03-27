@@ -47,7 +47,7 @@ function formatItem(
 function requireApiKey(): string {
   const key = getApiKey();
   if (!key) {
-    process.stderr.write("No API key. Run: overdrive-intel setup\n");
+    process.stderr.write("No API key. Run: intel-overdrive setup\n");
     process.exit(1);
   }
   return key;
@@ -64,7 +64,7 @@ export async function runSearch(query: string): Promise<void> {
   requireApiKey();
 
   if (!query.trim()) {
-    process.stderr.write("Usage: overdrive-intel search <query>\n");
+    process.stderr.write("Usage: intel-overdrive search <query>\n");
     process.exit(1);
   }
 

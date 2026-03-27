@@ -26,7 +26,7 @@ npx skills add Looney-tic/agent-skills
 
 ```bash
 # Unified skill (recommended — covers all use cases)
-npx skills add Looney-tic/agent-skills/overdrive-intel
+npx skills add Looney-tic/agent-skills/intel-overdrive
 
 # Focused skills (pick what you need)
 npx skills add Looney-tic/agent-skills/skills/intel-search
@@ -40,7 +40,7 @@ npx skills add Looney-tic/agent-skills/skills/intel-brief
 The MCP server must be installed and configured before agents can use these skills:
 
 ```bash
-npm install -g overdrive-intel && overdrive-intel setup
+npm install -g intel-overdrive && intel-overdrive setup
 ```
 
 The `setup` command provisions an API key, registers the MCP server with your agent, and installs the skill.
@@ -49,7 +49,7 @@ The `setup` command provisions an API key, registers the MCP server with your ag
 
 | Skill             | Description                                   |
 | ----------------- | --------------------------------------------- |
-| `overdrive-intel` | Unified skill — all query types in one file   |
+| `intel-overdrive` | Unified skill — all query types in one file   |
 | `intel-search`    | Find tools, docs, best practices, comparisons |
 | `intel-breaking`  | Breaking changes and deprecation alerts       |
 | `intel-feed`      | Recent updates, releases, changelogs          |
@@ -57,12 +57,12 @@ The `setup` command provisions an API key, registers the MCP server with your ag
 
 ## Supported Agents
 
-- **Claude Code** — native MCP support, zero configuration after `overdrive-intel setup`
+- **Claude Code** — native MCP support, zero configuration after `intel-overdrive setup`
 - **Cursor** — add the server to `.cursor/mcp.json` (see SKILL.md for config)
 - Any MCP-compatible agent supporting stdio MCP servers
 
 ## Links
 
-- **Main project**: [github.com/Looney-tic/overdrive-intel](https://github.com/Looney-tic/overdrive-intel)
-- **npm package**: [npmjs.com/package/overdrive-intel](https://www.npmjs.com/package/overdrive-intel)
+- **Main project**: [github.com/Looney-tic/intel-overdrive](https://github.com/Looney-tic/intel-overdrive)
+- **npm package**: [npmjs.com/package/intel-overdrive](https://www.npmjs.com/package/intel-overdrive)
 - **skills.sh**: [skills.sh](https://skills.sh)

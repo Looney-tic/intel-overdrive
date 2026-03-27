@@ -12,7 +12,7 @@ Search the Overdrive Intel intelligence database for AI coding ecosystem knowled
 This skill requires the Overdrive Intel MCP server. If `overdrive_intel` is not available as a tool, instruct the user to run:
 
 ```bash
-npm install -g overdrive-intel && overdrive-intel setup
+npm install -g intel-overdrive && intel-overdrive setup
 ```
 
 ## When to Use

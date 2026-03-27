@@ -7,11 +7,11 @@
  * The agent controls routing via the `type` parameter.
  *
  * Usage (MCP stdio server):
- *   npx overdrive-intel
+ *   npx intel-overdrive
  *
  * Usage (CLI):
- *   overdrive-intel --version
- *   overdrive-intel setup      (Plan 02)
+ *   intel-overdrive --version
+ *   intel-overdrive setup      (Plan 02)
  *
  * Environment:
  *   OVERDRIVE_INTEL_API_KEY   API key (required, prefix: dti_v1_)
@@ -341,7 +341,7 @@ function buildRoutes(
 // ---------------------------------------------------------------------------
 
 const server = new Server(
-  { name: "overdrive-intel", version: VERSION },
+  { name: "intel-overdrive", version: VERSION },
   {
     capabilities: { tools: {} },
     instructions:
@@ -508,7 +508,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       content: [
         {
           type: "text" as const,
-          text: "overdrive_intel: No API key configured. Run: npm install -g overdrive-intel && overdrive-intel setup",
+          text: "overdrive_intel: No API key configured. Run: npm install -g intel-overdrive && intel-overdrive setup",
         },
       ],
       isError: true,
@@ -855,7 +855,7 @@ function parseFeedArgs(args: string[]): { days?: number; type?: string } {
 function printHelp(): void {
   process.stderr.write(
     [
-      "Usage: overdrive-intel <command> [options]",
+      "Usage: intel-overdrive <command> [options]",
       "",
       "Commands:",
       "  setup                    Provision API key, register MCP server, install SKILL.md",
