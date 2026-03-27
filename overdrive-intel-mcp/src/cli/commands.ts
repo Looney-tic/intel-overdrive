@@ -117,7 +117,7 @@ export async function runFeed(options: {
 
   console.log(`\nRecent feed (last ${days} days)\n`);
   for (let i = 0; i < items.length; i++) {
-    console.log(formatItem(i + 1, items[i]));
+    console.log(formatItem(i + 1, items[i], true));
     console.log();
   }
 }
