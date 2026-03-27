@@ -902,6 +902,44 @@ async function main(): Promise<void> {
     await runBreaking(parseFeedArgs(args.slice(1)));
     return;
   }
+  if (command === "mcp-enable") {
+    const { execFileSync } = await import("node:child_process");
+    try {
+      execFileSync(
+        "claude",
+        ["mcp", "remove", "intel-overdrive", "-s", "user"],
+        { stdio: "ignore" },
+      );
+    } catch {
+      /* ignore */
+    }
+    try {
+      execFileSync(
+        "claude",
+        [
+          "mcp",
+          "add",
+          "-s",
+          "user",
+          "-t",
+          "stdio",
+          "intel-overdrive",
+          "--",
+          "intel-overdrive",
+        ],
+        { stdio: "inherit" },
+      );
+      console.log(
+        "\n  ✓ MCP server registered. Restart Claude Code to activate the overdrive_intel tool.\n",
+      );
+    } catch {
+      console.error("\n  Claude CLI not found. Register manually:");
+      console.error(
+        "    claude mcp add -s user -t stdio intel-overdrive -- intel-overdrive\n",
+      );
+    }
+    return;
+  }
   if (command === "--version" || command === "-v") {
     process.stdout.write(VERSION + "\n");
     return;

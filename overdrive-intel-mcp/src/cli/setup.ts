@@ -266,42 +266,24 @@ export async function runSetup(): Promise<void> {
     // Non-fatal — key may still be valid
   }
 
-  // Step f: Register MCP server
-  console.log("  Registering MCP server with Claude Code...");
-  let claudeOk = false;
+  // Step f: Ensure global install (handles npx case)
+  let globalOk = false;
   try {
-    // Remove existing registration (ignore errors)
-    try {
-      execFileSync(
-        "claude",
-        ["mcp", "remove", "intel-overdrive", "-s", "user"],
-        {
-          stdio: "ignore",
-        },
-      );
-    } catch {
-      // Ignore — may not exist
-    }
-
-    // Add new registration — no -e flags (key is read from file at startup)
-    execFileSync(
-      "claude",
-      [
-        "mcp",
-        "add",
-        "-s",
-        "user",
-        "-t",
-        "stdio",
-        "intel-overdrive",
-        "--",
-        "intel-overdrive",
-      ],
-      { stdio: "inherit" },
-    );
-    claudeOk = true;
+    execFileSync("which", ["intel-overdrive"], { stdio: "ignore" });
+    globalOk = true; // Already globally installed
   } catch {
-    // Claude CLI not available — not fatal
+    // Not globally installed — install now
+    console.log("  Installing intel-overdrive globally...");
+    try {
+      execFileSync("npm", ["install", "-g", "intel-overdrive@latest"], {
+        stdio: "inherit",
+      });
+      globalOk = true;
+    } catch {
+      console.error(
+        "  Warning: Could not install globally. Use npx intel-overdrive <command> instead.",
+      );
+    }
   }
 
   // Step g: Install SKILL.md
@@ -325,20 +307,19 @@ export async function runSetup(): Promise<void> {
 
   // Step h: Print success summary
   console.log("");
-  console.log(`  Ready. API key: ${apiKey.slice(0, 20)}...`);
+  console.log(`  ✓ Ready. API key: ${apiKey.slice(0, 20)}...`);
   if (itemCount) {
-    console.log(`  Verified: ${itemCount} items tracked`);
+    console.log(`  ✓ Verified: ${itemCount} items tracked`);
   }
+  if (globalOk) {
+    console.log("  ✓ CLI installed globally");
+  }
+  console.log("  ✓ SKILL.md installed");
   console.log("");
-  if (claudeOk) {
-    console.log("  MCP server registered with Claude Code.");
-    console.log("  Restart Claude Code to activate the overdrive_intel tool.");
-  } else {
-    console.log("  Claude CLI not found — MCP not registered automatically.");
-    console.log("  To register manually:");
-    console.log(
-      "    claude mcp add -s user -t stdio intel-overdrive -- intel-overdrive",
-    );
-  }
+  console.log('  Your agent can now use: intel-overdrive search "query"');
+  console.log('  Try it:  intel-overdrive search "MCP servers for auth"');
+  console.log("");
+  console.log("  Optional: register as MCP server for structured tool access:");
+  console.log("    intel-overdrive mcp-enable");
   console.log("");
 }
