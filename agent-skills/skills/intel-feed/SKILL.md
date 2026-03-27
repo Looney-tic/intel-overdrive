@@ -9,10 +9,10 @@ Get the latest AI coding ecosystem updates from Overdrive Intel.
 
 ## SETUP REQUIRED
 
-This skill requires the Overdrive Intel MCP server. If `overdrive_intel` is not available as a tool, instruct the user to run:
+This skill works best with the Intel Overdrive CLI. If `intel-overdrive` is not installed, run setup:
 
 ```bash
-npm install -g intel-overdrive && intel-overdrive setup
+npx intel-overdrive setup
 ```
 
 ## When to Use
@@ -61,6 +61,17 @@ Present the results as a concise summary:
 2. Lead with actionable items
 3. Include links/references when available
 4. Skip items that aren't relevant to the current project context
+
+## CLI Alternative
+
+For agents with Bash access, use the CLI directly:
+
+```bash
+intel-overdrive feed --days 7
+intel-overdrive feed --days 30
+intel-overdrive feed --days 7 --tag anthropic
+intel-overdrive feed --days 7 --tag mcp
+```
 
 ## On Failure
 

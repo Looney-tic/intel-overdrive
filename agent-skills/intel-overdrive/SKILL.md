@@ -31,9 +31,14 @@ which intel-overdrive
 
 ```bash
 intel-overdrive search "MCP servers for auth"
-intel-overdrive search "Claude Code hooks best practices"
+intel-overdrive library "Claude Code best practices"
+intel-overdrive similar "LangChain alternatives"
 intel-overdrive feed --days 7
+intel-overdrive feed --days 7 --tag anthropic
 intel-overdrive breaking
+intel-overdrive briefing --days 7
+intel-overdrive action-items
+intel-overdrive status
 ```
 
 **Step 2b:** If not found, install it:
@@ -46,14 +51,17 @@ This takes ~10 seconds, installs globally, and works immediately. Then run your 
 
 ## Choosing the Right Command
 
-| User asks...                             | Command                                                     |
-| ---------------------------------------- | ----------------------------------------------------------- |
-| "What MCP servers exist for X?"          | `intel-overdrive search "MCP X"`                            |
-| "Best practice for Claude Code hooks"    | `intel-overdrive search "Claude Code hooks best practices"` |
-| "Compare LangChain vs CrewAI"            | `intel-overdrive search "LangChain vs CrewAI"`              |
-| "What's new this week?"                  | `intel-overdrive feed --days 7`                             |
-| "Any breaking changes in Anthropic SDK?" | `intel-overdrive breaking`                                  |
-| "What changed in MCP lately?"            | `intel-overdrive feed --days 14`                            |
+| User asks...                             | Command                                         |
+| ---------------------------------------- | ----------------------------------------------- |
+| "What MCP servers exist for X?"          | `intel-overdrive search "MCP X"`                |
+| "Best practice for Claude Code hooks"    | `intel-overdrive library "Claude Code hooks"`   |
+| "Compare LangChain vs CrewAI"            | `intel-overdrive similar "LangChain vs CrewAI"` |
+| "What's new this week?"                  | `intel-overdrive feed --days 7`                 |
+| "Any breaking changes in Anthropic SDK?" | `intel-overdrive breaking`                      |
+| "What changed in MCP lately?"            | `intel-overdrive feed --days 14 --tag mcp`      |
+| "Catch me up on AI coding"               | `intel-overdrive briefing --days 7`             |
+| "What needs attention?"                  | `intel-overdrive action-items`                  |
+| "Is the pipeline healthy?"               | `intel-overdrive status`                        |
 
 ## Reading the Output
 
@@ -61,6 +69,7 @@ Results include:
 
 - **Title** and **summary** of each item
 - **[BREAKING]** / **[MAJOR]** significance labels
+- **Date** — shown for all items so you can assess recency
 - **URL** to the source
 
 Present the top results to the user. Synthesize across multiple results when they cover the same topic. Include practical recommendations, not just raw data.

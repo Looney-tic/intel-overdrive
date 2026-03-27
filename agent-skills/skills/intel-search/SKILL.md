@@ -9,10 +9,10 @@ Search the Overdrive Intel intelligence database for AI coding ecosystem knowled
 
 ## SETUP REQUIRED
 
-This skill requires the Overdrive Intel MCP server. If `overdrive_intel` is not available as a tool, instruct the user to run:
+This skill works best with the Intel Overdrive CLI. If `intel-overdrive` is not installed, run setup:
 
 ```bash
-npm install -g intel-overdrive && intel-overdrive setup
+npx intel-overdrive setup
 ```
 
 ## When to Use
@@ -68,6 +68,22 @@ Present search results clearly:
 2. Synthesize across multiple results when they cover the same topic
 3. Include practical recommendations, not just raw data
 4. Mention recency — note if information might be from training data rather than live results
+
+## CLI Alternative
+
+For agents with Bash access, use the CLI directly:
+
+```bash
+intel-overdrive search "best MCP servers for browser automation"
+intel-overdrive search "how to build multi-agent system"
+```
+
+For best-practice and how-to queries, the `library` command is optimized for synthesized guidance:
+
+```bash
+intel-overdrive library "Claude Code hooks best practices"
+intel-overdrive library "MCP server development patterns"
+```
 
 ## On Failure
 
