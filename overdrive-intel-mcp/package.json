@@ -1,9 +1,10 @@
 {
-  "name": "intel-overdrive-mcp",
-  "version": "0.9.3",
-  "description": "Real-time intelligence for Claude Code — new MCP servers, tools, skills, and SDK updates from 1,000+ monitored sources. Paste the install command into Claude Code and your agent stays current automatically.",
+  "name": "overdrive-intel",
+  "version": "0.9.4",
+  "description": "AI coding ecosystem intelligence — CLI and MCP server. Breaking changes, new tools, and security alerts from 1100+ sources.",
   "type": "module",
   "bin": {
+    "overdrive-intel": "./dist/index.js",
     "intel-overdrive-mcp": "./dist/index.js"
   },
   "files": [
@@ -25,12 +26,18 @@
     "model-context-protocol",
     "developer-tools",
     "tool-discovery",
-    "ai-agent"
+    "ai-agent",
+    "cli"
   ],
   "license": "SEE LICENSE IN LICENSE",
   "engines": {
     "node": ">=18.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Looney-tic/intel-overdrive"
+  },
+  "homepage": "https://inteloverdrive.com",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0"
   },
