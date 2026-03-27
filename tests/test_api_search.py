@@ -309,16 +309,16 @@ async def test_field_selector_strips_library_key(
 # --- 31-01: RRF Weight Tests ---
 
 
-def test_rrf_quality_weight_is_0_25():
-    """Verify the RRF SQL contains 0.25 weight for quality signal."""
+def test_rrf_quality_weight_is_0_35():
+    """Verify the RRF SQL contains 0.35 weight for quality signal (RANK-04)."""
     import inspect
     from src.api.v1.search import search_intel_items
 
     source = inspect.getsource(search_intel_items)
-    # The quality weight line: 0.25 * COALESCE(1.0 / (:rrf_k + q.rn), 0)
+    # The quality weight line: 0.35 * COALESCE(1.0 / (:rrf_k + q.rn), 0)
     assert (
-        "0.25 * COALESCE(1.0 / (:rrf_k + q.rn), 0)" in source
-    ), "Quality weight should be 0.25 in RRF SQL"
+        "0.35 * COALESCE(1.0 / (:rrf_k + q.rn), 0)" in source
+    ), "Quality weight should be 0.35 in RRF SQL"
 
 
 def test_rrf_weights_sum_to_one():
@@ -452,3 +452,83 @@ async def test_intent_routing_fallback_on_few_results(
     data = response.json()
     # Without intent filtering, should get multiple results
     assert data["total"] >= 3, "Unfiltered query should return 3+ results"
+
+
+# --- 34-01: Source filter tests ---
+
+
+@pytest.mark.asyncio
+async def test_search_source_filter(client, api_key_header, session, source_factory):
+    """RANK-05: source parameter filters search results to a specific source ID."""
+    source_a = await source_factory(id="test:search-src-a", name="Source A")
+    source_b = await source_factory(id="test:search-src-b", name="Source B")
+
+    now = datetime.now(timezone.utc)
+    items = [
+        IntelItem(
+            id=uuid.uuid4(),
+            source_id=source_a.id,
+            external_id="ext-src-filter-a1",
+            url="https://example.com/src-filter-a1",
+            title="Source A Claude Code Tool",
+            content="A tool for Claude Code from source A. This comprehensive integration guide covers setup, configuration, and advanced workflows for AI coding agents.",
+            primary_type="tool",
+            tags=["claude"],
+            status="processed",
+            relevance_score=0.9,
+            quality_score=0.8,
+            confidence_score=0.9,
+            created_at=now,
+        ),
+        IntelItem(
+            id=uuid.uuid4(),
+            source_id=source_b.id,
+            external_id="ext-src-filter-b1",
+            url="https://example.com/src-filter-b1",
+            title="Source B Claude Code Update",
+            content="An update for Claude Code from source B. This release note covers breaking changes, new features, and migration guidance for the latest version.",
+            primary_type="update",
+            tags=["claude"],
+            status="processed",
+            relevance_score=0.85,
+            quality_score=0.8,
+            confidence_score=0.9,
+            created_at=now,
+        ),
+    ]
+    for item in items:
+        session.add(item)
+    await session.commit()
+
+    # Filter by source A
+    response = await client.get(
+        f"/v1/search?q=Claude+Code&source={source_a.id}",
+        headers=api_key_header["headers"],
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert data["total"] >= 1
+    returned_ids = {item["id"] for item in data["items"]}
+    assert str(items[0].id) in returned_ids, "Source A item should be present"
+    assert str(items[1].id) not in returned_ids, "Source B item should be excluded"
+
+
+# --- 34-01: RRF weight verification (updated weights) ---
+
+
+def test_rrf_weights_updated_to_quality_0_35():
+    """RANK-04: Verify the RRF SQL contains updated 0.35 quality weight and 0.05 freshness."""
+    import inspect
+    from src.api.v1.search import search_intel_items
+
+    source = inspect.getsource(search_intel_items)
+    # Check that the new weights are present
+    assert (
+        "0.25 * COALESCE(1.0 / (:rrf_k + s.rn), 0)" in source
+    ), "Semantic weight should be 0.25"
+    assert (
+        "0.35 * COALESCE(1.0 / (:rrf_k + q.rn), 0)" in source
+    ), "Quality weight should be 0.35"
+    assert (
+        "0.05 * COALESCE(1.0 / (:rrf_k + fr.rn), 0)" in source
+    ), "Freshness weight should be 0.05"

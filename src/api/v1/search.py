@@ -84,6 +84,7 @@ async def search_intel_items(
     ),
     limit: int = Query(20, ge=1, le=100),
     offset: int = Query(0, ge=0, le=10_000_000),
+    source: Optional[str] = Query(None, description="Filter by source ID"),
     fields: Optional[str] = Query(
         None,
         description="Comma-separated list of fields to include in response items. id is always included.",
@@ -115,6 +116,7 @@ async def search_intel_items(
             "days": days,
             "limit": limit,
             "offset": offset,
+            "source": source,
             "fields": fields,
         }
         _cache_key = make_cache_key("search", _cache_params)
@@ -140,6 +142,9 @@ async def search_intel_items(
             "CAST(tags AS jsonb) @> jsonb_build_array(CAST(:tag AS text))"
         )
         params["tag"] = tag
+    if source:
+        extra_clauses.append("source_id = :source")
+        params["source"] = source
 
     # Auto-detect intent from query when user hasn't specified explicit filters
     _intent_applied = False
@@ -188,7 +193,7 @@ async def search_intel_items(
         # RRF hybrid search: 4 CTEs (semantic, fulltext, quality, freshness)
         # Each CTE produces ranked candidates; final score is weighted sum of
         # reciprocal ranks: 1/(k + rank_position)
-        # weights must sum to 1.0: semantic=0.30 + fulltext=0.35 + quality=0.25 + freshness=0.10
+        # weights must sum to 1.0: semantic=0.25 + fulltext=0.35 + quality=0.35 + freshness=0.05
         rrf_sql = text(
             f"""
             WITH semantic AS (
@@ -244,10 +249,10 @@ async def search_intel_items(
             ),
             combined AS (
                 SELECT COALESCE(s.id, f.id, q.id, fr.id) AS id,
-                    0.30 * COALESCE(1.0 / (:rrf_k + s.rn), 0) +
+                    0.25 * COALESCE(1.0 / (:rrf_k + s.rn), 0) +
                     0.35 * COALESCE(1.0 / (:rrf_k + f.rn), 0) +
-                    0.25 * COALESCE(1.0 / (:rrf_k + q.rn), 0) +
-                    0.10 * COALESCE(1.0 / (:rrf_k + fr.rn), 0) AS rrf_score
+                    0.35 * COALESCE(1.0 / (:rrf_k + q.rn), 0) +
+                    0.05 * COALESCE(1.0 / (:rrf_k + fr.rn), 0) AS rrf_score
                 FROM semantic s
                 FULL OUTER JOIN fulltext f ON s.id = f.id
                 FULL OUTER JOIN quality q ON COALESCE(s.id, f.id) = q.id
@@ -384,10 +389,10 @@ async def search_intel_items(
                     ),
                     combined AS (
                         SELECT COALESCE(s.id, f.id, q.id, fr.id) AS id,
-                            0.30 * COALESCE(1.0 / (:rrf_k + s.rn), 0) +
+                            0.25 * COALESCE(1.0 / (:rrf_k + s.rn), 0) +
                             0.35 * COALESCE(1.0 / (:rrf_k + f.rn), 0) +
-                            0.25 * COALESCE(1.0 / (:rrf_k + q.rn), 0) +
-                            0.10 * COALESCE(1.0 / (:rrf_k + fr.rn), 0) AS rrf_score
+                            0.35 * COALESCE(1.0 / (:rrf_k + q.rn), 0) +
+                            0.05 * COALESCE(1.0 / (:rrf_k + fr.rn), 0) AS rrf_score
                         FROM semantic s
                         FULL OUTER JOIN fulltext f ON s.id = f.id
                         FULL OUTER JOIN quality q ON COALESCE(s.id, f.id) = q.id

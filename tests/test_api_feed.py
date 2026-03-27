@@ -1086,3 +1086,66 @@ async def test_feed_semantic_distance_primary_with_query(
             f"Query-matching item should rank above unrelated item when q is provided "
             f"(semantic/full-text distance is primary), but got {items[0]['title']} first"
         )
+
+
+# ---------------------------------------------------------------------------
+# Source filter tests (Phase 34, RANK-05)
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_feed_source_filter(client, api_key_header, session, source_factory):
+    """RANK-05: source parameter filters feed results to a specific source ID."""
+    source_a = await source_factory(id="test:feed-src-a", name="Feed Source A")
+    source_b = await source_factory(id="test:feed-src-b", name="Feed Source B")
+
+    now = datetime.now(timezone.utc)
+
+    item_a = IntelItem(
+        id=uuid.uuid4(),
+        source_id=source_a.id,
+        external_id="ext-feed-src-a1",
+        url=f"https://example.com/feed-src-a1-{uuid.uuid4()}",
+        title="Feed Source A Item",
+        content="Content from source A for feed source filter test. This provides enough text to pass minimum content length quality gates.",
+        primary_type="tool",
+        tags=["source-filter-test"],
+        status="processed",
+        relevance_score=0.8,
+        quality_score=0.8,
+        confidence_score=0.9,
+        created_at=now,
+    )
+    item_b = IntelItem(
+        id=uuid.uuid4(),
+        source_id=source_b.id,
+        external_id="ext-feed-src-b1",
+        url=f"https://example.com/feed-src-b1-{uuid.uuid4()}",
+        title="Feed Source B Item",
+        content="Content from source B for feed source filter test. This provides enough text to pass minimum content length quality gates.",
+        primary_type="tool",
+        tags=["source-filter-test"],
+        status="processed",
+        relevance_score=0.8,
+        quality_score=0.8,
+        confidence_score=0.9,
+        created_at=now,
+    )
+
+    session.add(item_a)
+    session.add(item_b)
+    await session.commit()
+
+    # Filter by source A
+    response = await client.get(
+        f"/v1/feed?tag=source-filter-test&source={source_a.id}&days=7",
+        headers=api_key_header["headers"],
+    )
+    assert response.status_code == 200
+    data = response.json()
+    returned_ids = {item["id"] for item in data["items"]}
+
+    assert str(item_a.id) in returned_ids, "Source A item should be in filtered feed"
+    assert (
+        str(item_b.id) not in returned_ids
+    ), "Source B item should be excluded from feed"

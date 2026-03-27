@@ -245,6 +245,7 @@ async def get_feed(
         max_length=200,
         description="Filter feed items by search query (full-text match on title/excerpt/content)",
     ),
+    source: Optional[str] = Query(None, description="Filter by source ID"),
     persona: Optional[str] = Query(
         None,
         pattern="^(agent-builder|curator|learner|agent)$",
@@ -284,6 +285,7 @@ async def get_feed(
             "limit": limit,
             "offset": offset,
             "q": q,
+            "source": source,
             "persona": persona,
             "fields": fields,
             "api_key_id": api_key.id,  # include user identity — feed is profile-personalized
@@ -380,6 +382,8 @@ async def get_feed(
         ),
     ]
 
+    if source:
+        filters.append(IntelItem.source_id == source)
     if type:
         filters.append(IntelItem.primary_type == type)
     elif preset_types:
