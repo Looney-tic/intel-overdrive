@@ -36,18 +36,17 @@ export async function apiGet(
   if (!response.ok) {
     const status = response.status;
     if (status === 401 || status === 403) {
-      process.stderr.write(
-        "Error: Invalid or expired API key. Run: intel-overdrive setup\n",
+      console.log(
+        "Error: Invalid or expired API key. Run: intel-overdrive setup",
       );
-      process.exit(1);
+      return { error: true, status } as unknown;
     }
     if (status === 429) {
-      process.stderr.write(
-        "Error: Rate limit reached. Wait a moment and try again.\n",
-      );
-      process.exit(1);
+      console.log("Error: Rate limit reached. Wait a moment and try again.");
+      return { error: true, status } as unknown;
     }
-    throw new Error(`API error ${status}`);
+    console.log(`Error: API returned ${status}. Try again later.`);
+    return { error: true, status } as unknown;
   }
 
   return response.json();

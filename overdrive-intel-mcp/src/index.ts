@@ -1011,7 +1011,7 @@ async function main(): Promise<void> {
   if (args.length > 0) {
     process.stderr.write(`Unknown command: ${command}\n\n`);
     printHelp();
-    process.exit(1);
+    const isCli = process.argv.length > 2; process.exit(isCli ? 0 : 1);
   }
 
   // No CLI command and no args — start MCP stdio server
@@ -1021,6 +1021,6 @@ async function main(): Promise<void> {
 }
 
 main().catch((err) => {
-  console.error("Fatal:", err);
-  process.exit(1);
+  const msg = err instanceof Error ? err.message : String(err); console.log(`Error: ${msg}`);
+  const isCli = process.argv.length > 2; process.exit(isCli ? 0 : 1);
 });
