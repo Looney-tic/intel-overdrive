@@ -211,9 +211,9 @@ class SlowWorkerSettings:
         ),  # every 5 min, offset +2
         cron(
             classify_items,
-            minute={4, 9, 14, 19, 24, 29, 34, 39, 44, 49, 54, 59},
+            minute={4, 34},
             timeout=1800,  # 30 min — Batch API takes 15+ min for large batches
-        ),  # every 5 min, offset +4
+        ),  # every 30 min — pools items for larger batches + better prompt cache hits
         cron(
             cluster_items, minute={0, 30}, run_at_startup=False
         ),  # every 30 min — clusters processed items by embedding similarity
