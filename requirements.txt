@@ -1,1 +1,2 @@
 # See pyproject.toml
+openai>=1.50.0

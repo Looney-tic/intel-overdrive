@@ -25,6 +25,9 @@ class Settings(BaseSettings):
     ANTHROPIC_API_KEY: Optional[str] = None
     VOYAGE_API_KEY: Optional[str] = None
 
+    # OpenAI (classification — cheaper than Anthropic for structured extraction)
+    OPENAI_API_KEY: Optional[str] = None
+
     # External API keys (optional)
     GITHUB_TOKEN: Optional[str] = None
     SLACK_WEBHOOK_URL: Optional[str] = None  # System-level alerts (dead man's switch)
@@ -39,7 +42,10 @@ class Settings(BaseSettings):
     MAILGUN_WEBHOOK_SIGNING_KEY: Optional[str] = None
 
     # LLM model selection
-    LLM_MODEL: str = "claude-haiku-4-5"  # alias — always resolves to latest Haiku
+    LLM_MODEL: str = (
+        "gpt-4o-mini"  # OpenAI for classification (3.6x cheaper than Haiku)
+    )
+    LLM_PROVIDER: str = "openai"  # "openai" or "anthropic"
 
     # Embedding config
     EMBEDDING_MODEL: str = "voyage-3.5-lite"
