@@ -212,7 +212,7 @@ class SlowWorkerSettings:
         cron(
             classify_items,
             minute={4, 34},
-            timeout=1800,  # 30 min — Batch API takes 15+ min for large batches
+            timeout=3600,  # 60 min — OpenAI batch can take 20+ min; must wait to avoid double-paying
         ),  # every 30 min — pools items for larger batches + better prompt cache hits
         cron(
             cluster_items, minute={0, 30}, run_at_startup=False
